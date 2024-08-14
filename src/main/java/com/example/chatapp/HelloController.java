@@ -83,9 +83,9 @@ public class HelloController implements Initializable {
                 applyFadeTransition(oxChatLabel, 3500, 0.0, 1.0);
                 applyFadeTransition(forget, 3500, 0.0, 1.0);
                 // login Pane component
-                applyFadeTransition(signupButton, 3500, 0.0, 1.0);
+                applyFadeTransition(signupButton, 4000, 0.0, 1.0);
                 applyFadeTransition(image1, 2000, 0.0, 1.0);
-                applyFadeTransition(adLabel, 3500, 0.0, 1.0);
+                applyFadeTransition(adLabel, 4000, 0.0, 1.0);
                 slideAnchorPaneToLeft(loginPage,2000,301,0);
 
         }
