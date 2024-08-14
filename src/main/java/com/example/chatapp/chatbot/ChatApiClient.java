@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class ChatApiClient {
 
-    private static final String API_URL = "http://localhost:5000/chat";
+    private static final String API_URL = "http://localhost:5050/chat";
     private MediaPlayer mediaPlayer;
     private MediaPlayer audioPlayer;
     private ImageView defaultImageView;

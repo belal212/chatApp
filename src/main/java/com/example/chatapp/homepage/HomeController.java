@@ -9,14 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Pagination;
-
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import java.io.IOException;
+import java.util.Vector;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -26,21 +24,28 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
-
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import java.awt.*;
-import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.Vector;
+import java.util.*;
 
 public class HomeController implements Initializable {
+    @FXML
+    private Label GemLabel;
+
     @FXML
     private AnchorPane Root;
 
     @FXML
     private Tab aboutTab;
+
+    @FXML
+    private Label activitesLabel;
+
+    @FXML
+    private MenuItem arabic;
 
     @FXML
     private Button bookingBtn;
@@ -70,10 +75,16 @@ public class HomeController implements Initializable {
     private Button contactBtn;
 
     @FXML
+    private Label contactLabel;
+
+    @FXML
     private Tab contactTab;
 
     @FXML
     private Pagination cover;
+
+    @FXML
+    private MenuItem english;
 
     @FXML
     private Pagination gem;
@@ -82,10 +93,25 @@ public class HomeController implements Initializable {
     private Tab homeTab;
 
     @FXML
+    private Label hoursLabel;
+
+    @FXML
+    private Label introLabel;
+
+    @FXML
     private Pagination kids;
 
     @FXML
+    private Label kidsLabel;
+
+    @FXML
+    private SplitMenuButton languageSelcetor;
+
+    @FXML
     private Hyperlink link1;
+
+    @FXML
+    private Label newsLabel;
 
     @FXML
     private Hyperlink link10;
@@ -124,16 +150,26 @@ public class HomeController implements Initializable {
     private Tab newsTab;
 
     @FXML
+    private Label pyramidLabel;
+
+    @FXML
     private TabPane tabPane;
 
     @FXML
+    private Label timeLabel;
+
+    @FXML
     private Pagination tour;
+
+    @FXML
+    private Label welcomeLabel;
     int coverCurrentIndex = 0;
 
     Vector<Pagination> pags = new Vector<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        applyFadeTransition(Root,1500);
+        applyFadeTransition(Root, 1500);
         setLinksFunctional();
         imageLoader();
         pagsTransitions();
@@ -153,9 +189,11 @@ public class HomeController implements Initializable {
             Stage stage = (Stage) tabPane.getScene().getWindow();
             stage.setOnCloseRequest(this::handleCloseRequest);
         });
+        chatbotButton.setOnAction(this::setChatbotButtonAction);
 
     }
-    private void handleCloseRequest(WindowEvent e){
+
+    private void handleCloseRequest(WindowEvent e) {
         try {
             Rectangle2D screenBounds = Screen.getPrimary().getBounds();
             double screenWidth = screenBounds.getWidth();
@@ -167,7 +205,7 @@ public class HomeController implements Initializable {
             s.close();
 
             Stage stage = new Stage();
-            Scene scene = new Scene(homePageRoot,screenWidth,screenHeight,Color.TRANSPARENT);
+            Scene scene = new Scene(homePageRoot, screenWidth, screenHeight, Color.TRANSPARENT);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.setScene(scene);
             stage.show();
@@ -176,7 +214,7 @@ public class HomeController implements Initializable {
         }
     }
 
-    private void imageLoader(){
+    private void imageLoader() {
         try {
             // Create ImageViews for cover pages and other images
             ImageView[] covers = {
@@ -233,8 +271,8 @@ public class HomeController implements Initializable {
         }
 
 
+    }
 
-}
     private void setupImagesWithRoundedCorners(Vector<ImageView> images) {
         for (ImageView image : images) {
             Rectangle clip = new Rectangle(220, 220);
@@ -245,6 +283,7 @@ public class HomeController implements Initializable {
             image.setFitHeight(220);
         }
     }
+
     public void setPageFactory(Pagination pagination, Vector<ImageView> imageViews, int startIdx, int endIdx) {
         int pageCount = endIdx - startIdx + 1;
 
@@ -265,7 +304,8 @@ public class HomeController implements Initializable {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
-    private void setLinksFunctional(){
+
+    private void setLinksFunctional() {
         link1.setOnAction(actionEvent -> openLink("https://www.youtube.com/watch?v=0nwZkVldpvI"));
         link2.setOnAction(actionEvent -> openLink("https://globaldesignnews.com/heneghan-peng-architects-complete-worlds-largest-museum-building-encompassing-90000-square-meters-the-grand-egyptian-museum/"));
         link3.setOnAction(actionEvent -> openLink("https://www.dailynewsegypt.com/2024/04/01/tourism-minister-inspects-grand-egyptian-museum-giza-pyramids/"));
@@ -277,6 +317,7 @@ public class HomeController implements Initializable {
         link9.setOnAction(actionEvent -> openLink("https://egyptianstreets.com/2021/08/08/in-photos-pharaoh-khufus-boat-transported-to-the-grand-egyptian-museum/#google_vignette"));
         link10.setOnAction(actionEvent -> openLink("https://egyptindependent.com/preparations-for-grand-egyptian-museums-opening-ceremony-90-complete-official/"));
     }
+
     private void openLink(String url) {
         try {
             Desktop.getDesktop().browse(new URI(url));
@@ -284,6 +325,7 @@ public class HomeController implements Initializable {
             System.out.println("Error in Open Link");
         }
     }
+
     private void openWebpage(String url) {
         try {
             Desktop.getDesktop().browse(new URI(url));
@@ -300,7 +342,8 @@ public class HomeController implements Initializable {
             }
         }
     }
-    private void pagsTransitions(){
+
+    private void pagsTransitions() {
         pags.add(gem);
         pags.add(tour);
         pags.add(kids);
@@ -326,12 +369,14 @@ public class HomeController implements Initializable {
 
         });
     }
+
     private void applyFadeTransition(Node node, int durationInMillis) {
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(durationInMillis), node);
         fadeTransition.setFromValue(0.0);
         fadeTransition.setToValue(1.0);
         fadeTransition.play();
     }
+
     private void loadTabContent(String tabId, String fxmlFile) throws IOException {
         // Find the tab by ID from the tabPane's tabs list
         Tab targetTab = tabPane.getTabs().stream()
@@ -350,6 +395,7 @@ public class HomeController implements Initializable {
             System.err.println("Tab with id " + tabId + " not found.");
         }
     }
+
     private void handleTabSelection(Tab selectedTab) {
         if (selectedTab.equals(aboutTab)) {
             loadAbout();
@@ -361,23 +407,26 @@ public class HomeController implements Initializable {
 
         // Handle other tabs if needed
     }
-    private void loadAbout(){
+
+    private void loadAbout() {
         try {
-            loadTabContent(aboutTab.getId(),"About.fxml");
+            loadTabContent(aboutTab.getId(), "About.fxml");
         } catch (IOException e) {
             System.out.println("About pane can not loaded");
         }
     }
-    private void loadChatRoom(){
+
+    private void loadChatRoom() {
         try {
-            loadTabContent(chatroomTab.getId(),"chatRoom-view.fxml");
+            loadTabContent(chatroomTab.getId(), "chatRoom-view.fxml");
         } catch (IOException e) {
             System.out.println("chat room pane can not loaded");
         }
     }
-    private void loadContact(){
+
+    private void loadContact() {
         try {
-            loadTabContent(contactTab.getId(),"contact.fxml");
+            loadTabContent(contactTab.getId(), "contact.fxml");
         } catch (IOException e) {
             System.out.println("contact pane can not loaded");
         }
@@ -435,6 +484,8 @@ public class HomeController implements Initializable {
         translateTransition.play();
     }
 
-
 }
+
+
+
 
