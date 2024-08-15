@@ -6,7 +6,7 @@
 
 #signupButton{
     -fx-background-color: #fd7e14;
-    -fx-font-family: "Segoe Script";
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-background-radius: 22;
     -fx-font-weight: bold;
     -fx-font-size: 13;
@@ -15,36 +15,36 @@
 #signupButton:hover{
     -fx-background-color: #e96a00;
     -fx-background-radius: 22;
-    -fx-font-family: "Segoe Script";
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-weight: bold;
     -fx-font-size: 13;
     -fx-text-fill: white;
 }#signInButton{
     -fx-background-color: #fd7e14;
-    -fx-font-family: "Segoe Script";
-    -fx-background-radius: 15;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-radius: 22;
     -fx-font-weight: bold;
     -fx-font-size: 13;
     -fx-text-fill: white;
 }
 #signInButton:hover{
     -fx-background-color: #e96a00;
-    -fx-background-radius: 15;
-    -fx-font-family: "Segoe Script";
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-weight: bold;
     -fx-font-size: 13;
     -fx-text-fill: white;
 }
 #forget{
     -fx-background-color:  #F5F4EF;
-    -fx-font-family: "Segoe Script";
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-weight: bold;
     -fx-font-size: 11;
     -fx-text-fill: black;
 }
 #forget:hover{
     -fx-background-color:  #F5F4EF;
-    -fx-font-family: "Segoe Script";
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-weight: bold;
     -fx-font-size: 11;
     -fx-text-fill: #e96a00;
@@ -84,5 +84,24 @@
 
 #password:hover {
     -fx-border-color: #fd7e14; /* Change border color when focused */
+}
+#emailLabel{
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-color:  #F5F4EF;
+}
+#passwordLabel{
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-color:  #F5F4EF;
+}
+#adLabel{
+    -fx-font-family: "Arial Rounded MT Bold";
+}
+#instructionLabel{
+    -fx-font-family: "Arial Rounded MT Bold";
+}
+#welcomeLabel{
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
 }
 

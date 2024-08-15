@@ -10,70 +10,48 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootPane" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.Login">
-   <children>
-      <StackPane fx:id="stackPane" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane fx:id="subRoot" prefHeight="400.0" prefWidth="600.0">
-               <children>
-                  <AnchorPane fx:id="SignInPane" layoutX="301.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #F5F4EF;">
-                     <children>
-                        <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="72.0" prefHeight="59.0" prefWidth="240.0" text="Welcome Back !">
-                           <font>
-                              <Font name="Segoe Script Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <ImageView fx:id="pcIcon" fitHeight="77.0" fitWidth="113.0" layoutX="10.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@logo.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="instructionLabel" alignment="CENTER" layoutX="12.0" layoutY="120.0" prefHeight="38.0" prefWidth="200.0" style="-fx-text-fill: gray;" text="Please enter login details below">
-                           <font>
-                              <Font name="Segoe Print" size="11.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="email" layoutX="13.0" layoutY="184.0" prefHeight="40.0" prefWidth="240.0" promptText="Enter the email" stylesheets="@style.css" />
-                        <Label fx:id="emailLabel" alignment="BOTTOM_LEFT" layoutX="28.0" layoutY="153.0" prefHeight="36.0" prefWidth="42.0" style="-fx-text-fill: black; -fx-background-color: #F5F4EF;" text=" Email ">
-                           <font>
-                              <Font name="Segoe Print Bold" size="11.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="password" layoutX="13.0" layoutY="257.0" prefHeight="40.0" prefWidth="240.0" promptText="Enter the Password" stylesheets="@style.css" />
-                        <Label fx:id="passwordLabel" alignment="BOTTOM_LEFT" layoutX="28.0" layoutY="226.0" prefHeight="36.0" prefWidth="57.0" style="-fx-text-fill: black; -fx-background-color: #F5F4EF;" text="Password">
-                           <font>
-                              <Font name="Segoe Print Bold" size="11.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="forget" layoutX="142.0" layoutY="297.0" mnemonicParsing="false" stylesheets="@style.css" text="Forgot password?" />
-                        <Button fx:id="signInButton" layoutX="13.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" stylesheets="@style.css" text="SIGN IN">
-                           <font>
-                              <Font name="Segoe Script" size="12.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="loginPage" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: white;" styleClass="loginPage" stylesheets="@style.css">
-                     <children>
-                        <ImageView fx:id="image1" fitHeight="448.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@26f814f8-14a3-4751-9da2-5a3d0cef9e91.jpeg" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="adLabel" layoutX="17.0" layoutY="350.0" prefHeight="38.0" prefWidth="266.0" text="Chat easy and more efficient with oxChat ">
-                           <font>
-                              <Font name="Segoe Print" size="12.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="signupButton" layoutX="82.0" layoutY="309.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="133.0" text="SIGN UP">
-                           <font>
-                              <Font name="Segoe Script" size="12.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-         </children>
-      </StackPane>
-   </children>
+   <StackPane fx:id="stackPane" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="subRoot" prefHeight="400.0" prefWidth="600.0">
+         <AnchorPane fx:id="SignInPane" layoutX="301.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #F5F4EF;">
+            <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="72.0" prefHeight="59.0" prefWidth="240.0" stylesheets="@style.css" text="Welcome Back !">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="pcIcon" fitHeight="77.0" fitWidth="113.0" layoutX="10.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@logo.png" />
+            </ImageView>
+            <Label fx:id="instructionLabel" alignment="CENTER" layoutX="12.0" layoutY="120.0" prefHeight="38.0" prefWidth="200.0" style="-fx-font-family: Arial Rounded MT Bold;" stylesheets="@style.css" text="Please enter login details below" />
+            <TextField fx:id="email" layoutX="13.0" layoutY="184.0" prefHeight="40.0" prefWidth="240.0" promptText="Enter the email" stylesheets="@style.css" />
+            <Label fx:id="emailLabel" alignment="BOTTOM_LEFT" layoutX="28.0" layoutY="153.0" prefHeight="36.0" prefWidth="35.0" stylesheets="@style.css" text=" Email">
+               <font>
+                  <Font name="Segoe Print Bold" size="11.0" />
+               </font>
+            </Label>
+            <TextField fx:id="password" layoutX="13.0" layoutY="257.0" prefHeight="40.0" prefWidth="240.0" promptText="Enter the Password" stylesheets="@style.css" />
+            <Label fx:id="passwordLabel" alignment="BOTTOM_LEFT" layoutX="28.0" layoutY="226.0" prefHeight="36.0" prefWidth="57.0" stylesheets="@style.css" text=" Password">
+               <font>
+                  <Font name="Segoe Print Bold" size="11.0" />
+               </font>
+            </Label>
+            <Button fx:id="forget" layoutX="142.0" layoutY="297.0" mnemonicParsing="false" stylesheets="@style.css" text="Forgot password?" />
+            <Button fx:id="signInButton" layoutX="13.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" stylesheets="@style.css" text="SIGN IN">
+               <font>
+                  <Font name="Segoe Script" size="12.0" />
+               </font>
+            </Button>
+         </AnchorPane>
+         <AnchorPane fx:id="loginPage" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: white;" stylesheets="@style.css">
+            <ImageView fx:id="image1" fitHeight="448.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@26f814f8-14a3-4751-9da2-5a3d0cef9e91.jpeg" />
+            </ImageView>
+            <Label fx:id="adLabel" alignment="CENTER" layoutX="17.0" layoutY="350.0" prefHeight="38.0" prefWidth="266.0" stylesheets="@style.css" text="Chat easy and more efficient with oxChat " />
+            <Button fx:id="signupButton" layoutX="58.0" layoutY="310.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="183.0" text="SIGN UP">
+               <font>
+                  <Font name="Segoe Script" size="12.0" />
+               </font>
+            </Button>
+         </AnchorPane>
+      </AnchorPane>
+   </StackPane>
 </AnchorPane>
