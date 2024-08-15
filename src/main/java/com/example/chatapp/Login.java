@@ -15,7 +15,7 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class Login implements Initializable {
         @FXML
         private AnchorPane SignInPane;
 
@@ -39,9 +39,6 @@ public class HelloController implements Initializable {
 
         @FXML
         private AnchorPane loginPage;
-
-        @FXML
-        private Label oxChatLabel;
 
         @FXML
         private TextField password;
@@ -80,11 +77,9 @@ public class HelloController implements Initializable {
                 applyFadeTransition(welcomeLabel, 3500, 0.0, 1.0);
                 applyFadeTransition(instructionLabel, 3500, 0.0, 1.0);
                 applyFadeTransition(pcIcon, 3500, 0.0, 1.0);
-                applyFadeTransition(oxChatLabel, 3500, 0.0, 1.0);
                 applyFadeTransition(forget, 3500, 0.0, 1.0);
                 // login Pane component
                 applyFadeTransition(signupButton, 4000, 0.0, 1.0);
-                applyFadeTransition(image1, 2000, 0.0, 1.0);
                 applyFadeTransition(adLabel, 4000, 0.0, 1.0);
                 slideAnchorPaneToLeft(loginPage,2000,301,0);
 

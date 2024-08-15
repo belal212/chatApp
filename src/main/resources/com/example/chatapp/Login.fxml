@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.HelloController">
+<AnchorPane fx:id="rootPane" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.Login">
    <children>
       <StackPane fx:id="stackPane" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -22,19 +22,14 @@
                               <Font name="Segoe Script Bold" size="24.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="pcIcon" fitHeight="52.0" fitWidth="58.0" layoutX="19.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="pcIcon" fitHeight="77.0" fitWidth="113.0" layoutX="10.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@messages.png" />
+                              <Image url="@logo.png" />
                            </image>
                         </ImageView>
                         <Label fx:id="instructionLabel" alignment="CENTER" layoutX="12.0" layoutY="120.0" prefHeight="38.0" prefWidth="200.0" style="-fx-text-fill: gray;" text="Please enter login details below">
                            <font>
                               <Font name="Segoe Print" size="11.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="oxChatLabel" layoutX="77.0" layoutY="23.0" prefHeight="40.0" prefWidth="58.0" text="oxChat">
-                           <font>
-                              <Font name="Arial Bold" size="13.0" />
                            </font>
                         </Label>
                         <TextField fx:id="email" layoutX="13.0" layoutY="184.0" prefHeight="40.0" prefWidth="240.0" promptText="Enter the email" stylesheets="@style.css" />
@@ -61,7 +56,7 @@
                      <children>
                         <ImageView fx:id="image1" fitHeight="448.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@c96527f3-0abe-48dc-a8ca-9fe33df57bf6.jpeg" />
+                              <Image url="@26f814f8-14a3-4751-9da2-5a3d0cef9e91.jpeg" />
                            </image>
                         </ImageView>
                         <Label fx:id="adLabel" layoutX="17.0" layoutY="350.0" prefHeight="38.0" prefWidth="266.0" text="Chat easy and more efficient with oxChat ">
