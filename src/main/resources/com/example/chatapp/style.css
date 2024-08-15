@@ -20,13 +20,13 @@
     -fx-font-size: 13;
     -fx-text-fill: white;
 }#signInButton{
-    -fx-background-color: #fd7e14;
-    -fx-font-family: "Arial Rounded MT Bold";
-    -fx-background-radius: 22;
-    -fx-font-weight: bold;
-    -fx-font-size: 13;
-    -fx-text-fill: white;
-}
+     -fx-background-color: #fd7e14;
+     -fx-font-family: "Arial Rounded MT Bold";
+     -fx-background-radius: 22;
+     -fx-font-weight: bold;
+     -fx-font-size: 13;
+     -fx-text-fill: white;
+ }
 #signInButton:hover{
     -fx-background-color: #e96a00;
     -fx-background-radius: 22;
@@ -78,6 +78,39 @@
     -fx-font-size: 13px; /* Larger text size for better visibility */
 }
 
+#cpassword {
+    -fx-padding: 8px; /* Adjust padding for better text alignment */
+    -fx-border-color: #000000; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-background-radius: 10px; /* Background also needs to be rounded */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 13px; /* Larger text size for better visibility */
+}
+
+#user {
+    -fx-padding: 8px; /* Adjust padding for better text alignment */
+    -fx-border-color: #000000; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-background-radius: 10px; /* Background also needs to be rounded */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 13px; /* Larger text size for better visibility */
+}
+#cn {
+    -fx-padding: 8px; /* Adjust padding for better text alignment */
+    -fx-border-color: #000000; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-background-radius: 10px; /* Background also needs to be rounded */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 13px; /* Larger text size for better visibility */
+}
+
+
 #password:focused {
     -fx-border-color: #e96a00; /* Change border color when focused */
 }
@@ -90,6 +123,18 @@
     -fx-background-color:  #F5F4EF;
 }
 #passwordLabel{
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-color:  #F5F4EF;
+}
+#Nationality{
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-color:  #F5F4EF;
+}
+#userLabel{
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-color:  #F5F4EF;
+}
+#cpasswordLabel{
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-background-color:  #F5F4EF;
 }

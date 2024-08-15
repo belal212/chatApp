@@ -2,14 +2,20 @@ package com.example.chatapp;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.BufferedReader;
@@ -134,7 +140,8 @@ public class Signup implements Initializable {
                 applyFadeTransition(signupButton, 4000, 0.0, 1.0);
                 applyFadeTransition(adLabel, 4000, 0.0, 1.0);
                 applyFadeTransition(image1,3500,0.7,1);
-                slideAnchorPaneToLeft(loginPage,2000,0,301);
+                slideAnchorPaneToLeft(loginPage,2000,-300,0);
+                signupButton.setOnAction(this::SignUpButtonEvent);
 
 
         }
@@ -151,5 +158,26 @@ public class Signup implements Initializable {
                 translateTransition.setToX(to);
                 translateTransition.play();
         }
+        private void SignUpButtonEvent(ActionEvent e) {
+                try {
+                        // Load the login page FXML
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+                        Parent loginRoot = loader.load();
+
+                        // Get the current stage (window)
+                        Stage stage = (Stage) signupButton.getScene().getWindow();
+
+                        // Create a new scene with the login page root
+                        Scene scene = new Scene(loginRoot);
+
+                        // Set the new scene on the stage
+                        stage.setScene(scene);
+                        stage.show();
+                } catch (IOException ex) {
+                        ex.printStackTrace();
+                }
+        }
+
+
 
 }
