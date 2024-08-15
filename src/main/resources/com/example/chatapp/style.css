@@ -67,7 +67,39 @@
 #email:hover {
     -fx-border-color: #fd7e14; /* Change border color when focused */
 }
+
+
+#email1 {
+    -fx-padding: 8px; /* Adjust padding for better text alignment */
+    -fx-border-color: #000000; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-background-radius: 10px; /* Background also needs to be rounded */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 13px; /* Larger text size for better visibility */
+}
+
+#email1:focused {
+    -fx-border-color: #e96a00; /* Change border color when focused */
+}
+
+#email1:hover {
+    -fx-border-color: #fd7e14; /* Change border color when focused */
+}
+
+
 #password {
+    -fx-padding: 8px; /* Adjust padding for better text alignment */
+    -fx-border-color: #000000; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-background-radius: 10px; /* Background also needs to be rounded */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 13px; /* Larger text size for better visibility */
+}
+#password1 {
     -fx-padding: 8px; /* Adjust padding for better text alignment */
     -fx-border-color: #000000; /* Black border */
     -fx-border-width: 2; /* Border thickness */
@@ -99,7 +131,13 @@
     -fx-prompt-text-fill: #888888; /* Gray placeholder text */
     -fx-font-size: 13px; /* Larger text size for better visibility */
 }
-#cn {
+#user:focused{
+    -fx-border-color: #e96a00; /* Change border color when focused */
+}
+#user:hover{
+    -fx-border-color: #fd7e14; /* Change border color when focused */
+}
+#user1 {
     -fx-padding: 8px; /* Adjust padding for better text alignment */
     -fx-border-color: #000000; /* Black border */
     -fx-border-width: 2; /* Border thickness */
@@ -109,13 +147,49 @@
     -fx-prompt-text-fill: #888888; /* Gray placeholder text */
     -fx-font-size: 13px; /* Larger text size for better visibility */
 }
+#user1:focused{
+    -fx-border-color: #e96a00; /* Change border color when focused */
+}
+#user1:hover{
+    -fx-border-color: #fd7e14; /* Change border color when focused */
+}
+#cn {
+    -fx-padding: 1px; /* Adjust padding for better text alignment */
+    -fx-border-color: black; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 10px; /* Larger text size for better visibility */
 
+}
+#cn:focused{
+    -fx-border-color: #fd7e14;
+}
+#cn:hover{
+    -fx-border-color: #fd7e14;
 
+}
 #password:focused {
     -fx-border-color: #e96a00; /* Change border color when focused */
 }
 
 #password:hover {
+    -fx-border-color: #fd7e14; /* Change border color when focused */
+}
+#cpassword:focused {
+    -fx-border-color: #e96a00; /* Change border color when focused */
+}
+
+#cpassword:hover {
+    -fx-border-color: #fd7e14; /* Change border color when focused */
+}
+
+#password1:focused {
+    -fx-border-color: #e96a00; /* Change border color when focused */
+}
+
+#password1:hover {
     -fx-border-color: #fd7e14; /* Change border color when focused */
 }
 #emailLabel{
@@ -148,5 +222,18 @@
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 24;
     -fx-font-weight: bold;
+}
+
+#male  .radio {
+    -fx-border-color: #fd7e14; /* Green border color when selected */
+    -fx-background-color: #F5F4EF ; /* Green fill color when selected */
+    -fx-border-radius: 50%;
+    -fx-border-width: 1px;
+}
+#female  .radio {
+    -fx-border-color: #fd7e14; /* Green border color when selected */
+    -fx-background-color: #F5F4EF ; /* Green fill color when selected */
+    -fx-border-radius: 50%;
+    -fx-border-width: 1px;
 }
 

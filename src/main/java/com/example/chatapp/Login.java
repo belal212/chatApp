@@ -1,6 +1,7 @@
 package com.example.chatapp;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -88,7 +89,6 @@ public class Login implements Initializable{
                 // login Pane component
                 applyFadeTransition(signupButton, 4000, 0.0, 1.0);
                 applyFadeTransition(adLabel, 4000, 0.0, 1.0);
-                applyFadeTransition(image1,3500,0.7,1);
                 slideAnchorPaneToLeft(loginPage,2000,301,0);
                 signupButton.setOnAction(this::SignUpButtonEvent);
 
@@ -110,6 +110,18 @@ public class Login implements Initializable{
         }
 
         private void SignUpButtonEvent(ActionEvent e) {
+                PauseTransition pause = new PauseTransition(Duration.millis(1000));
+
+                applyFadeTransition(email, 1000, 1.0, 0.0);
+                applyFadeTransition(password, 1000, 1.0, 0.0);
+                applyFadeTransition(signInButton, 1000, 1.0, 0.0);
+                applyFadeTransition(emailLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(passwordLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(welcomeLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(instructionLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(pcIcon, 1000, 1.0, 0.0);
+                applyFadeTransition(forget, 1000, 1.0, 0.0);
+                pause.setOnFinished(event -> {
                 try {
                         // Load the login page FXML
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("Signup.fxml"));
@@ -127,6 +139,10 @@ public class Login implements Initializable{
                 } catch (IOException ex) {
                         ex.printStackTrace();
                 }
+                });
+
+                // Start the pause (this will delay the action by 3500 milliseconds)
+                pause.play();
         }
 
 

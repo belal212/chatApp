@@ -1,8 +1,8 @@
 package com.example.chatapp;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,6 +28,13 @@ import java.util.ResourceBundle;
 
 public class Signup implements Initializable {
         ObservableList<String> c;
+
+        @FXML
+        private Label Gender;
+
+        @FXML
+        private Label Nationality;
+
         @FXML
         private AnchorPane SignInPane;
 
@@ -35,10 +42,22 @@ public class Signup implements Initializable {
         private Label adLabel;
 
         @FXML
-        private TextField email;
+        private ChoiceBox<String> cn;
+
+        @FXML
+        private TextField cpassword;
+
+        @FXML
+        private Label cpasswordLabel;
+
+        @FXML
+        private TextField email1;
 
         @FXML
         private Label emailLabel;
+
+        @FXML
+        private RadioButton female;
 
         @FXML
         private ImageView image1;
@@ -50,35 +69,13 @@ public class Signup implements Initializable {
         private AnchorPane loginPage;
 
         @FXML
-        private TextField password;
-
-        @FXML
-        private Label passwordLabel;
-
-        @FXML
-        private TextField cpassword;
-
-        @FXML
-        private Label cpasswordLabel;
-
-        @FXML
-        private TextField user;
-
-        @FXML
-        private Label userLabel;
-
-        @FXML
-        private Label Nationality;
-
-        @FXML
-        private Label Gender;
-
-        @FXML
         private RadioButton male;
 
         @FXML
-        private RadioButton female;
+        private TextField password1;
 
+        @FXML
+        private Label passwordLabel;
 
         @FXML
         private ImageView pcIcon;
@@ -99,7 +96,10 @@ public class Signup implements Initializable {
         private AnchorPane subRoot;
 
         @FXML
-        private ChoiceBox cn;
+        private TextField user1;
+
+        @FXML
+        private Label userLabel;
 
         @FXML
         private Label welcomeLabel;
@@ -119,9 +119,9 @@ public class Signup implements Initializable {
                 c= FXCollections.observableArrayList(itemsList);
                 cn.setItems(c);
                 //Sign in Pane component
-                applyFadeTransition(email, 3500, 0.0, 1.0);
-                applyFadeTransition(user, 3500, 0.0, 1.0);
-                applyFadeTransition(password, 3500, 0.0, 1.0);
+                applyFadeTransition(email1, 3500, 0.0, 1.0);
+                applyFadeTransition(user1, 3500, 0.0, 1.0);
+                applyFadeTransition(password1, 3500, 0.0, 1.0);
                 applyFadeTransition(cpassword, 3500, 0.0, 1.0);
                 applyFadeTransition(Gender, 3500, 0.0, 1.0);
                 applyFadeTransition(Nationality, 3500, 0.0, 1.0);
@@ -139,7 +139,6 @@ public class Signup implements Initializable {
                 // login Pane component
                 applyFadeTransition(signupButton, 4000, 0.0, 1.0);
                 applyFadeTransition(adLabel, 4000, 0.0, 1.0);
-                applyFadeTransition(image1,3500,0.7,1);
                 slideAnchorPaneToLeft(loginPage,2000,-300,0);
                 signupButton.setOnAction(this::SignUpButtonEvent);
 
@@ -159,6 +158,27 @@ public class Signup implements Initializable {
                 translateTransition.play();
         }
         private void SignUpButtonEvent(ActionEvent e) {
+                PauseTransition pause = new PauseTransition(Duration.millis(1000));
+
+                applyFadeTransition(email1, 1000, 1.0, 0.0);
+                applyFadeTransition(user1, 1000, 1.0, 0.0);
+                applyFadeTransition(password1, 1000, 1.0, 0.0);
+                applyFadeTransition(cpassword, 1000, 1.0, 0.0);
+                applyFadeTransition(Gender, 1000, 1.0, 0.0);
+                applyFadeTransition(Nationality, 1000, 1.0, 0.0);
+                applyFadeTransition(cn, 1000, 1.0, 0.0);
+                applyFadeTransition(male, 1000, 1.0, 0.0);
+                applyFadeTransition(female, 1000, 1.0, 0.0);
+                applyFadeTransition(signInButton, 1000, 1.0, 0.0);
+                applyFadeTransition(emailLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(passwordLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(cpasswordLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(userLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(welcomeLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(instructionLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(pcIcon, 1000, 1.0, 0.0);
+
+                pause.setOnFinished(event -> {
                 try {
                         // Load the login page FXML
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
@@ -176,7 +196,13 @@ public class Signup implements Initializable {
                 } catch (IOException ex) {
                         ex.printStackTrace();
                 }
+                });
+
+                // Start the pause (this will delay the action by 3500 milliseconds)
+                pause.play();
         }
+
+
 
 
 
