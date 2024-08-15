@@ -81,7 +81,9 @@ public class Login implements Initializable {
                 // login Pane component
                 applyFadeTransition(signupButton, 4000, 0.0, 1.0);
                 applyFadeTransition(adLabel, 4000, 0.0, 1.0);
+                applyFadeTransition(image1,3500,0.7,1);
                 slideAnchorPaneToLeft(loginPage,2000,301,0);
+
 
         }
 
