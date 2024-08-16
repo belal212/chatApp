@@ -12,16 +12,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -42,7 +40,7 @@ public class Signup implements Initializable {
         private Label adLabel;
 
         @FXML
-        private ChoiceBox<String> cn;
+        private ComboBox<Image> comboBox = new ComboBox<>();
 
         @FXML
         private TextField cpassword;
@@ -105,19 +103,63 @@ public class Signup implements Initializable {
         private Label welcomeLabel;
         @Override
         public void initialize(URL location, ResourceBundle resources) {
-                ArrayList<String> itemsList = new ArrayList<>();
-                try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/com/example/chatapp/nations.txt"))) {
-                        String line;
-                        while ((line = br.readLine()) != null) {
-                                itemsList.add(line);
+                File folder = new File("src/main/resources/png100px");
+                if (folder.isDirectory()) {
+                        // Load images from the specified folder
+                        File[] imageFiles = folder.listFiles((dir, name) -> name.endsWith(".png") || name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".gif"));
+                        if (imageFiles != null) {
+                                for (File imageFile : imageFiles) {
+                                        try {
+                                                Image image = new Image(imageFile.toURI().toString());
+                                                comboBox.getItems().add(image);
+                                        } catch (Exception e) {
+                                                e.printStackTrace();
+                                        }
+                                }
                         }
-                } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
-                } catch (IOException e) {
-                        e.printStackTrace();
                 }
-                c= FXCollections.observableArrayList(itemsList);
-                cn.setItems(c);
+                // Set a custom cell factory to display images
+                comboBox.setCellFactory(param -> new ListCell<Image>() {
+                        private final ImageView imageView = new ImageView();
+                        {
+                                imageView.setFitWidth(40);
+                                imageView.setFitHeight(25);
+                                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                        }
+
+                        @Override
+                        protected void updateItem(Image image, boolean empty) {
+                                super.updateItem(image, empty);
+                                if (empty || image == null) {
+                                        setGraphic(null);
+                                } else {
+                                        imageView.setImage(image);
+                                        setGraphic(imageView);
+                                }
+                        }
+                });
+
+                // Set a custom graphic display for the selected item
+                comboBox.setButtonCell(new ListCell<Image>() {
+                        private final ImageView imageView = new ImageView();
+
+                        {
+                                imageView.setFitWidth(30);
+                                imageView.setFitHeight(15);
+                                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                        }
+
+                        @Override
+                        protected void updateItem(Image image, boolean empty) {
+                                super.updateItem(image, empty);
+                                if (empty || image == null) {
+                                        setGraphic(null);
+                                } else {
+                                        imageView.setImage(image);
+                                        setGraphic(imageView);
+                                }
+                        }
+                });
                 //Sign in Pane component
                 applyFadeTransition(email1, 3500, 0.0, 1.0);
                 applyFadeTransition(user1, 3500, 0.0, 1.0);
@@ -125,7 +167,7 @@ public class Signup implements Initializable {
                 applyFadeTransition(cpassword, 3500, 0.0, 1.0);
                 applyFadeTransition(Gender, 3500, 0.0, 1.0);
                 applyFadeTransition(Nationality, 3500, 0.0, 1.0);
-                applyFadeTransition(cn, 3500, 0.0, 1.0);
+                applyFadeTransition(comboBox, 3500, 0.0, 1.0);
                 applyFadeTransition(male, 3500, 0.0, 1.0);
                 applyFadeTransition(female, 3500, 0.0, 1.0);
                 applyFadeTransition(signInButton, 3500, 0.0, 1.0);
@@ -166,7 +208,7 @@ public class Signup implements Initializable {
                 applyFadeTransition(cpassword, 1000, 1.0, 0.0);
                 applyFadeTransition(Gender, 1000, 1.0, 0.0);
                 applyFadeTransition(Nationality, 1000, 1.0, 0.0);
-                applyFadeTransition(cn, 1000, 1.0, 0.0);
+                applyFadeTransition(comboBox, 1000, 1.0, 0.0);
                 applyFadeTransition(male, 1000, 1.0, 0.0);
                 applyFadeTransition(female, 1000, 1.0, 0.0);
                 applyFadeTransition(signInButton, 1000, 1.0, 0.0);
@@ -179,23 +221,23 @@ public class Signup implements Initializable {
                 applyFadeTransition(pcIcon, 1000, 1.0, 0.0);
 
                 pause.setOnFinished(event -> {
-                try {
-                        // Load the login page FXML
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-                        Parent loginRoot = loader.load();
+                        try {
+                                // Load the login page FXML
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+                                Parent loginRoot = loader.load();
 
-                        // Get the current stage (window)
-                        Stage stage = (Stage) signupButton.getScene().getWindow();
+                                // Get the current stage (window)
+                                Stage stage = (Stage) signupButton.getScene().getWindow();
 
-                        // Create a new scene with the login page root
-                        Scene scene = new Scene(loginRoot);
+                                // Create a new scene with the login page root
+                                Scene scene = new Scene(loginRoot);
 
-                        // Set the new scene on the stage
-                        stage.setScene(scene);
-                        stage.show();
-                } catch (IOException ex) {
-                        ex.printStackTrace();
-                }
+                                // Set the new scene on the stage
+                                stage.setScene(scene);
+                                stage.show();
+                        } catch (IOException ex) {
+                                ex.printStackTrace();
+                        }
                 });
 
                 // Start the pause (this will delay the action by 3500 milliseconds)
