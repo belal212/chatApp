@@ -153,7 +153,7 @@
 #user1:hover{
     -fx-border-color: #fd7e14; /* Change border color when focused */
 }
-#cn {
+#comboBox {
     -fx-padding: 1px; /* Adjust padding for better text alignment */
     -fx-border-color: black; /* Black border */
     -fx-border-width: 2; /* Border thickness */
@@ -163,10 +163,10 @@
     -fx-font-size: 10px; /* Larger text size for better visibility */
 
 }
-#cn:focused{
+#comboBox:focused{
     -fx-border-color: #fd7e14;
 }
-#cn:hover{
+#comboBox:hover{
     -fx-border-color: #fd7e14;
 
 }
