@@ -160,6 +160,7 @@ public class Signup implements Initializable {
                                 }
                         }
                 });
+
                 //Sign in Pane component
                 applyFadeTransition(email1, 3500, 0.0, 1.0);
                 applyFadeTransition(user1, 3500, 0.0, 1.0);

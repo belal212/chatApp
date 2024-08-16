@@ -163,7 +163,7 @@
     -fx-font-size: 10px; /* Larger text size for better visibility */
 
 }
-#comboBox:focused{
+#comboBox:selected{
     -fx-border-color: #fd7e14;
 }
 #comboBox:hover{
