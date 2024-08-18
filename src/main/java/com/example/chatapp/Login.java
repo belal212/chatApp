@@ -1,9 +1,6 @@
 package com.example.chatapp;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
-import javafx.animation.TranslateTransition;
-import javafx.application.Application;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,13 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,7 +34,13 @@ public class Login implements Initializable{
         private Label emailLabel;
 
         @FXML
+        private Button eyeImage;
+
+        @FXML
         private Button forget;
+
+        @FXML
+        private PasswordField hiddenPasswordField;
 
         @FXML
         private ImageView image1;
@@ -53,6 +56,9 @@ public class Login implements Initializable{
 
         @FXML
         private Label passwordLabel;
+
+        @FXML
+        private Button hideImage;
 
         @FXML
         private ImageView pcIcon;
@@ -76,6 +82,15 @@ public class Login implements Initializable{
         private Label welcomeLabel;
         @Override
         public void initialize(URL location, ResourceBundle resources) {
+                openingFade();
+                signupButton.setOnAction(this::SignUpButtonEvent);
+                eyeImage.setOnAction(this::showPassword);
+                hideImage.setOnAction(this::hidePassword);
+                signInButton.setOnAction(this::SignInButtonAction);
+
+
+        }
+        private void openingFade(){
                 //Sign in Pane component
                 applyFadeTransition(email, 3500, 0.0, 1.0);
                 applyFadeTransition(password, 3500, 0.0, 1.0);
@@ -90,10 +105,20 @@ public class Login implements Initializable{
                 applyFadeTransition(signupButton, 4000, 0.0, 1.0);
                 applyFadeTransition(adLabel, 4000, 0.0, 1.0);
                 slideAnchorPaneToLeft(loginPage,2000,301,0);
-                signupButton.setOnAction(this::SignUpButtonEvent);
 
+        }
 
+        private void closingFade(){
 
+                applyFadeTransition(email, 1000, 1.0, 0.0);
+                applyFadeTransition(password, 1000, 1.0, 0.0);
+                applyFadeTransition(signInButton, 1000, 1.0, 0.0);
+                applyFadeTransition(emailLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(passwordLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(welcomeLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(instructionLabel, 1000, 1.0, 0.0);
+                applyFadeTransition(pcIcon, 1000, 1.0, 0.0);
+                applyFadeTransition(forget, 1000, 1.0, 0.0);
         }
 
         private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
@@ -111,29 +136,16 @@ public class Login implements Initializable{
 
         private void SignUpButtonEvent(ActionEvent e) {
                 PauseTransition pause = new PauseTransition(Duration.millis(1000));
-
-                applyFadeTransition(email, 1000, 1.0, 0.0);
-                applyFadeTransition(password, 1000, 1.0, 0.0);
-                applyFadeTransition(signInButton, 1000, 1.0, 0.0);
-                applyFadeTransition(emailLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(passwordLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(welcomeLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(instructionLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(pcIcon, 1000, 1.0, 0.0);
-                applyFadeTransition(forget, 1000, 1.0, 0.0);
+                closingFade();
                 pause.setOnFinished(event -> {
                 try {
-                        // Load the login page FXML
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("Signup.fxml"));
                         Parent loginRoot = loader.load();
 
-                        // Get the current stage (window)
                         Stage stage = (Stage) signupButton.getScene().getWindow();
 
-                        // Create a new scene with the login page root
                         Scene scene = new Scene(loginRoot);
 
-                        // Set the new scene on the stage
                         stage.setScene(scene);
                         stage.show();
                 } catch (IOException ex) {
@@ -141,12 +153,74 @@ public class Login implements Initializable{
                 }
                 });
 
-                // Start the pause (this will delay the action by 3500 milliseconds)
                 pause.play();
         }
 
 
+        private void showPassword(ActionEvent e){
+                hiddenPasswordField.setVisible(false);
+                password.setVisible(true);
+                password.setText(hiddenPasswordField.getText());
+                eyeImage.setVisible(false);
+                hideImage.setVisible(true);
 
+        }
+        private void hidePassword(ActionEvent e){
+                hiddenPasswordField.setVisible(true);
+                password.setVisible(false);
+                hiddenPasswordField.setText(password.getText());
+                eyeImage.setVisible(true);
+                hideImage.setVisible(false);
+
+        }
+
+        private void SignInButtonAction(ActionEvent e) {
+                boolean passwordErrors = false;
+                boolean emailErrors = false;
+
+                // Check if email field is empty
+                if (email.getText().isEmpty()) {
+                        email.setStyle("-fx-border-color: red;");
+                        emailErrors = true;
+                }
+
+                // Check if both password and hiddenPasswordField are empty
+                if (password.getText().isEmpty() && hiddenPasswordField.getText().isEmpty()) {
+                        password.setStyle("-fx-border-color: red;");
+                        hiddenPasswordField.setStyle("-fx-border-color: red;");
+                        passwordErrors = true;
+                }
+                // If only password is empty and hiddenPasswordField is not empty
+                else if (password.getText().isEmpty()) {
+                        password.setStyle("-fx-border-color: red;");
+                        hiddenPasswordField.setStyle("");
+                        passwordErrors = true;
+                }
+                // If only hiddenPasswordField is empty and password is not empty
+                else if (hiddenPasswordField.getText().isEmpty()) {
+                        hiddenPasswordField.setStyle("-fx-border-color: red;");
+                        password.setStyle("");
+                        passwordErrors = true;
+                }
+
+                // Reset styles after 2 seconds if there are any errors
+                if (passwordErrors || emailErrors) {
+                        Timeline timeline = new Timeline(new KeyFrame(
+                                Duration.seconds(2),
+                                ae -> resetStyles()
+                        ));
+                        timeline.play();
+                }
+        }
+
+        private void resetStyles() {
+                // Reset styles for email and password fields
+                email.setStyle("");
+                emailLabel.setStyle("");
+                password.setStyle("");
+                hiddenPasswordField.setStyle("");
+                passwordLabel.setStyle("");
+        }
 
 
 }
