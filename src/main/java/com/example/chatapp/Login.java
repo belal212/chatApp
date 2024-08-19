@@ -126,9 +126,28 @@ public class Login implements Initializable {
                 verifyButton.setOnAction(this::VerifyButtonAction);
                 CLOSEChangeButton.setOnAction(this::CloseChangePasswordButton);
                 ConfirmButton.setOnAction(this::ConfirmButtonAction);
+                makePaneDraggable(forgetPasswordPane);
+                makePaneDraggable(ChangePasswordPane);
+
 
 
         }
+
+        private void makePaneDraggable(AnchorPane pane) {
+                final double[] initialX = new double[1];
+                final double[] initialY = new double[1];
+
+                pane.setOnMousePressed(event -> {
+                        initialX[0] = event.getSceneX() - pane.getLayoutX();
+                        initialY[0] = event.getSceneY() - pane.getLayoutY();
+                });
+
+                pane.setOnMouseDragged(event -> {
+                        pane.setLayoutX(event.getSceneX() - initialX[0]);
+                        pane.setLayoutY(event.getSceneY() - initialY[0]);
+                });
+        }
+
 
         private void openingFade() {
                 //Sign in Pane component
