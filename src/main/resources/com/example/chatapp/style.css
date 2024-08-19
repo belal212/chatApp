@@ -1,5 +1,5 @@
 #loginPage{
-    -fx-background-color: linear-gradient(to bottom, #8ec5fc, #e0c3fc);
+    -fx-background-color: white;
     -fx-background-size: 300%;
     -fx-background-position: left;
 }
@@ -274,5 +274,152 @@
 #hideImage:hover{
     -fx-background-image: url("oHiding.png");
 }
+#forgetPasswordPane{
+    -fx-background-color: #F5F4EF;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+}
+#ChangePasswordPane{
+    -fx-background-color: #F5F4EF;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+}
+#CLOSEButton{
+    -fx-background-color: #F5F4EF;
+}
+#CLOSEButton:hover{
+    -fx-background-color: red;
+    -fx-border-width: 0px;
 
 
+}
+#CLOSEChangeButton{
+    -fx-background-color: #F5F4EF;
+}
+#CLOSEChangeButton:hover{
+    -fx-background-color: red;
+    -fx-border-width: 0px;
+
+
+}
+#passwordForgetField{
+    -fx-padding: 8px; /* Adjust padding for better text alignment */
+    -fx-border-color: #000000; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-background-radius: 10px; /* Background also needs to be rounded */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 13px; /* Larger text size for better visibility */
+}
+#passwordForgetField:focused {
+    -fx-border-color: #e96a00; /* Change border color when focused */
+}
+
+#passwordForgetField:hover {
+    -fx-border-color: #fd7e14; /* Change border color when focused */
+}
+#emailForgetField{
+    -fx-padding: 8px; /* Adjust padding for better text alignment */
+    -fx-border-color: #000000; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-background-radius: 10px; /* Background also needs to be rounded */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 13px; /* Larger text size for better visibility */
+}
+#emailForgetField:focused {
+    -fx-border-color: #e96a00; /* Change border color when focused */
+}
+
+#emailForgetField:hover {
+    -fx-border-color: #fd7e14; /* Change border color when focused */
+}
+#sendButton{
+    -fx-background-color: #fd7e14;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-radius: 22;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+#sendButton:hover{
+    -fx-background-color: #e96a00;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#verifyButton{
+    -fx-background-color: #fd7e14;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-radius: 22;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+#verifyButton:hover{
+    -fx-background-color: #e96a00;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#ConfirmButton{
+    -fx-background-color: #fd7e14;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-radius: 22;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+#ConfirmButton:hover{
+    -fx-background-color: #e96a00;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#newPasswordField{
+    -fx-padding: 8px; /* Adjust padding for better text alignment */
+    -fx-border-color: #000000; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-background-radius: 10px; /* Background also needs to be rounded */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 13px; /* Larger text size for better visibility */
+}
+#newPasswordField:focused {
+    -fx-border-color: #e96a00; /* Change border color when focused */
+}
+
+#newPasswordField:hover {
+    -fx-border-color: #fd7e14; /* Change border color when focused */
+}
+#confirmPasswordField{
+    -fx-padding: 8px; /* Adjust padding for better text alignment */
+    -fx-border-color: #000000; /* Black border */
+    -fx-border-width: 2; /* Border thickness */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-color:  #F5F4EF; /* White background */
+    -fx-background-radius: 10px; /* Background also needs to be rounded */
+    -fx-prompt-text-fill: #888888; /* Gray placeholder text */
+    -fx-font-size: 13px; /* Larger text size for better visibility */
+}
+#confirmPasswordField:focused {
+    -fx-border-color: #e96a00; /* Change border color when focused */
+}
+
+#confirmPasswordField:hover {
+    -fx-border-color: #fd7e14; /* Change border color when focused */
+}

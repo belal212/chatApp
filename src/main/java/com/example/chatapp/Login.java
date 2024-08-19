@@ -1,5 +1,4 @@
 package com.example.chatapp;
-
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,9 +17,22 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 
-public class Login implements Initializable{
+public class Login implements Initializable {
+        @FXML
+        private Button CLOSEButton;
+
+        @FXML
+        private Button CLOSEChangeButton;
+
+        @FXML
+        private AnchorPane ChangePasswordPane;
+
+        @FXML
+        private Button ConfirmButton;
+
         @FXML
         private AnchorPane SignInPane;
 
@@ -28,7 +40,13 @@ public class Login implements Initializable{
         private Label adLabel;
 
         @FXML
+        private TextField confirmPasswordField;
+
+        @FXML
         private TextField email;
+
+        @FXML
+        private TextField emailForgetField;
 
         @FXML
         private Label emailLabel;
@@ -40,7 +58,13 @@ public class Login implements Initializable{
         private Button forget;
 
         @FXML
+        private AnchorPane forgetPasswordPane;
+
+        @FXML
         private PasswordField hiddenPasswordField;
+
+        @FXML
+        private Button hideImage;
 
         @FXML
         private ImageView image1;
@@ -52,13 +76,16 @@ public class Login implements Initializable{
         private AnchorPane loginPage;
 
         @FXML
+        private TextField newPasswordField;
+
+        @FXML
         private TextField password;
 
         @FXML
-        private Label passwordLabel;
+        private TextField passwordForgetField;
 
         @FXML
-        private Button hideImage;
+        private Label passwordLabel;
 
         @FXML
         private ImageView pcIcon;
@@ -67,30 +94,43 @@ public class Login implements Initializable{
         private AnchorPane rootPane;
 
         @FXML
+        private Button sendButton;
+
+        @FXML
         private Button signInButton;
 
         @FXML
         private Button signupButton;
 
         @FXML
-        private StackPane stackPane;
-
-        @FXML
         private AnchorPane subRoot;
 
         @FXML
+        private Button verifyButton;
+
+        @FXML
         private Label welcomeLabel;
+        String verificationCode = "";
+
         @Override
         public void initialize(URL location, ResourceBundle resources) {
+
                 openingFade();
                 signupButton.setOnAction(this::SignUpButtonEvent);
                 eyeImage.setOnAction(this::showPassword);
                 hideImage.setOnAction(this::hidePassword);
                 signInButton.setOnAction(this::SignInButtonAction);
+                forget.setOnAction(this::forgetPasswordAction);
+                CLOSEButton.setOnAction(this::closeForgetPane);
+                sendButton.setOnAction(this::sendButtonAction);
+                verifyButton.setOnAction(this::VerifyButtonAction);
+                CLOSEChangeButton.setOnAction(this::CloseChangePasswordButton);
+                ConfirmButton.setOnAction(this::ConfirmButtonAction);
 
 
         }
-        private void openingFade(){
+
+        private void openingFade() {
                 //Sign in Pane component
                 applyFadeTransition(email, 3500, 0.0, 1.0);
                 applyFadeTransition(password, 3500, 0.0, 1.0);
@@ -104,11 +144,11 @@ public class Login implements Initializable{
                 // login Pane component
                 applyFadeTransition(signupButton, 4000, 0.0, 1.0);
                 applyFadeTransition(adLabel, 4000, 0.0, 1.0);
-                slideAnchorPaneToLeft(loginPage,2000,301,0);
+                slideAnchorPaneToLeft(loginPage, 2000, 301, 0);
 
         }
 
-        private void closingFade(){
+        private void closingFade() {
 
                 applyFadeTransition(email, 1000, 1.0, 0.0);
                 applyFadeTransition(password, 1000, 1.0, 0.0);
@@ -127,7 +167,8 @@ public class Login implements Initializable{
                 fadeTransition.setToValue(toValue);
                 fadeTransition.play();
         }
-        private void slideAnchorPaneToLeft(AnchorPane anchorPane, int durationInMillis, double from,double to) {
+
+        private void slideAnchorPaneToLeft(AnchorPane anchorPane, int durationInMillis, double from, double to) {
                 TranslateTransition translateTransition = new TranslateTransition(Duration.millis(durationInMillis), anchorPane);
                 translateTransition.setFromX(from);
                 translateTransition.setToX(to);
@@ -138,26 +179,26 @@ public class Login implements Initializable{
                 PauseTransition pause = new PauseTransition(Duration.millis(1000));
                 closingFade();
                 pause.setOnFinished(event -> {
-                try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Signup.fxml"));
-                        Parent loginRoot = loader.load();
+                        try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Signup.fxml"));
+                                Parent loginRoot = loader.load();
 
-                        Stage stage = (Stage) signupButton.getScene().getWindow();
+                                Stage stage = (Stage) signupButton.getScene().getWindow();
 
-                        Scene scene = new Scene(loginRoot);
+                                Scene scene = new Scene(loginRoot);
 
-                        stage.setScene(scene);
-                        stage.show();
-                } catch (IOException ex) {
-                        ex.printStackTrace();
-                }
+                                stage.setScene(scene);
+                                stage.show();
+                        } catch (IOException ex) {
+                                ex.printStackTrace();
+                        }
                 });
 
                 pause.play();
         }
 
 
-        private void showPassword(ActionEvent e){
+        private void showPassword(ActionEvent e) {
                 hiddenPasswordField.setVisible(false);
                 password.setVisible(true);
                 password.setText(hiddenPasswordField.getText());
@@ -165,7 +206,8 @@ public class Login implements Initializable{
                 hideImage.setVisible(true);
 
         }
-        private void hidePassword(ActionEvent e){
+
+        private void hidePassword(ActionEvent e) {
                 hiddenPasswordField.setVisible(true);
                 password.setVisible(false);
                 hiddenPasswordField.setText(password.getText());
@@ -175,35 +217,33 @@ public class Login implements Initializable{
         }
 
         private void SignInButtonAction(ActionEvent e) {
+                emptyRed();
+                LoginDB();
+        }
+
+        private void emptyRed() {
                 boolean passwordErrors = false;
                 boolean emailErrors = false;
 
-                // Check if email field is empty
                 if (email.getText().isEmpty()) {
                         email.setStyle("-fx-border-color: red;");
                         emailErrors = true;
                 }
 
-                // Check if both password and hiddenPasswordField are empty
                 if (password.getText().isEmpty() && hiddenPasswordField.getText().isEmpty()) {
                         password.setStyle("-fx-border-color: red;");
                         hiddenPasswordField.setStyle("-fx-border-color: red;");
                         passwordErrors = true;
-                }
-                // If only password is empty and hiddenPasswordField is not empty
-                else if (password.getText().isEmpty()) {
+                } else if (password.getText().isEmpty()) {
                         password.setStyle("-fx-border-color: red;");
                         hiddenPasswordField.setStyle("");
                         passwordErrors = true;
-                }
-                // If only hiddenPasswordField is empty and password is not empty
-                else if (hiddenPasswordField.getText().isEmpty()) {
+                } else if (hiddenPasswordField.getText().isEmpty()) {
                         hiddenPasswordField.setStyle("-fx-border-color: red;");
                         password.setStyle("");
                         passwordErrors = true;
                 }
 
-                // Reset styles after 2 seconds if there are any errors
                 if (passwordErrors || emailErrors) {
                         Timeline timeline = new Timeline(new KeyFrame(
                                 Duration.seconds(2),
@@ -214,7 +254,6 @@ public class Login implements Initializable{
         }
 
         private void resetStyles() {
-                // Reset styles for email and password fields
                 email.setStyle("");
                 emailLabel.setStyle("");
                 password.setStyle("");
@@ -222,5 +261,106 @@ public class Login implements Initializable{
                 passwordLabel.setStyle("");
         }
 
+        private void LoginDB() {
+                DataBaseConnection connection = new DataBaseConnection();
+                Connection connectDB = connection.getConnection();
 
+                String verify = "SELECT count(1) FROM users WHERE email = '" + this.email.getText() + "'AND passworder = '" + this.hiddenPasswordField.getText() + "'";
+                try {
+
+                        Statement statement = connectDB.createStatement();
+                        ResultSet result = statement.executeQuery(verify);
+                        while (result.next()) {
+                                if (result.getInt(1) == 1)
+                                        System.out.println("welcome");
+                                else
+                                        System.out.println("try again");
+                        }
+                } catch (Exception E) {
+                        E.printStackTrace();
+                }
+        }
+
+        private void forgetPasswordAction(ActionEvent e) {
+                applyFadeTransition(subRoot, 2000, 1.0, 0.2);
+                forgetPasswordPane.setVisible(true);
+                applyFadeTransition(forgetPasswordPane, 2000, 0.0, 1.0);
+        }
+
+        private void closeForgetPane(ActionEvent e) {
+                PauseTransition pause = new PauseTransition(Duration.millis(2000));
+                applyFadeTransition(forgetPasswordPane, 2000, 1.0, 0.0);
+                applyFadeTransition(subRoot, 2000, 0.2, 1);
+                pause.setOnFinished(event -> forgetPasswordPane.setVisible(false));
+                pause.play();
+        }
+
+        private void sendButtonAction(ActionEvent e) {
+                EmailSender sender = new EmailSender();
+                String checkEmail = emailForgetField.getText();
+                verificationCode = sender.generateVerificationCode();
+                if (!(emailForgetField.getText().isEmpty()))
+                        EmailSender.sendVerificationEmail(checkEmail, verificationCode);
+        }
+
+        private void VerifyButtonAction(ActionEvent e) {
+                if (passwordForgetField.getText().equals(verificationCode)) {
+                        System.out.println("welcome");
+                        forgetPasswordPane.setVisible(false);
+                        ChangePasswordPane.setVisible(true);
+                } else {
+                        System.out.println("try again");
+                        passwordForgetField.setStyle("-fx-border-color: red");
+                }
+
+        }
+
+        private void CloseChangePasswordButton(ActionEvent e) {
+                PauseTransition pause = new PauseTransition(Duration.millis(2000));
+                applyFadeTransition(ChangePasswordPane, 2000, 1.0, 0.0);
+                applyFadeTransition(subRoot, 2000, 0.2, 1);
+                pause.setOnFinished(event -> forgetPasswordPane.setVisible(false));
+                pause.play();
+        }
+
+        private void ConfirmButtonAction(ActionEvent event) {
+                String newPassword = newPasswordField.getText();
+                String confirmPassword = confirmPasswordField.getText();
+                String checkEmail = emailForgetField.getText();
+
+                // Check if the new password and confirm password fields are not empty
+                if (newPassword.isEmpty() || confirmPassword.isEmpty()) {
+                        newPasswordField.setStyle("-fx-border-color: red");
+                        confirmPasswordField.setStyle("-fx-border-color: red");
+                        return;
+                }
+
+                // Check if the new password matches the confirm password
+                if (newPassword.equals(confirmPassword)) {
+                        DataBaseConnection connection = new DataBaseConnection();
+                        Connection connectDB = connection.getConnection();
+
+                        String sql = "UPDATE users SET passworder = ? WHERE email = ?";
+                        try {
+                                PreparedStatement statement = connectDB.prepareStatement(sql);
+                                statement.setString(1, newPassword);
+                                statement.setString(2, checkEmail);
+
+                                int rowsAffected = statement.executeUpdate();
+                                if (rowsAffected > 0) {
+                                        System.out.println("Password updated successfully.");
+                                } else {
+                                        System.out.println("No matching email found.");
+                                }
+
+                        } catch (SQLException e) {
+                                e.printStackTrace();
+                        }
+
+                } else {
+                        newPasswordField.setStyle("-fx-border-color: red");
+                        confirmPasswordField.setStyle("-fx-border-color: red");
+                        System.out.println("Passwords do not match.");
+                }
+        }
 }
