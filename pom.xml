@@ -53,7 +53,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20230618</version> <!-- Check for the latest version -->
+            <version>20231013</version> <!-- Check for the latest version -->
         </dependency>
     </dependencies>
 

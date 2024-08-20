@@ -1,8 +1,6 @@
 package com.example.chatapp;
 
 import javafx.animation.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,9 +21,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Signup implements Initializable {
@@ -62,6 +59,8 @@ public class Signup implements Initializable {
 
         @FXML
         private RadioButton female;
+
+        private ToggleGroup toggleGroup = new ToggleGroup();
 
         @FXML
         private ImageView image1;
@@ -109,6 +108,9 @@ public class Signup implements Initializable {
         private Label welcomeLabel;
         @Override
         public void initialize(URL location, ResourceBundle resources) {
+                male.setToggleGroup(toggleGroup);
+                female.setToggleGroup(toggleGroup);
+
                 // Read the JSON file as a String
                 String content = null;
                 try {
@@ -269,19 +271,35 @@ public class Signup implements Initializable {
                 DataBaseConnection connection = new DataBaseConnection();
                 Connection connectDB = connection.getConnection();
 
-                String verify = "INSERT INTO user (username, email, password, nationality) \n VALUES ("  + this.user1.getText() + ","+ this.email1.getText() + "," + this.password1.getText() + ","+this.Nationality1+");";
-                try {
+                String checkQuery = "SELECT COUNT(*) FROM user WHERE username = ? OR email = ?";
+                String insertQuery = "INSERT INTO user (username, email, password, nationality) VALUES (?, ?, ?, ?)";
 
-                        Statement statement = connectDB.createStatement();
-                        ResultSet result = statement.executeQuery(verify);
-                        while (result.next()) {
-                                if (result.getInt(1) == 1)
-                                        System.out.println("welcome");
-                                else
-                                        System.out.println("try again");
+                try {
+                        // Step 1: Check if the username or email already exists
+                        PreparedStatement checkStatement = connectDB.prepareStatement(checkQuery);
+                        checkStatement.setString(1, this.user1.getText());
+                        checkStatement.setString(2, this.email1.getText());
+                        ResultSet checkResult = checkStatement.executeQuery();
+
+                        if (checkResult.next() && checkResult.getInt(1) > 0) {
+                                System.out.println("Username or Email already exists. Please choose a different one.");
+                        } else {
+                                // Step 2: If they are unique, insert the new user
+                                PreparedStatement insertStatement = connectDB.prepareStatement(insertQuery);
+                                insertStatement.setString(1, this.user1.getText());
+                                insertStatement.setString(2, this.email1.getText());
+                                insertStatement.setString(3, this.password1.getText());
+                                insertStatement.setString(4, this.Nationality1);
+
+                                int result = insertStatement.executeUpdate();
+                                if (result > 0) {
+                                        System.out.println("Welcome");
+                                } else {
+                                        System.out.println("Signup failed. Please try again.");
+                                }
                         }
-                } catch (Exception E) {
-                        E.printStackTrace();
+                } catch (Exception e) {
+                        e.printStackTrace();
                 }
         }
 
