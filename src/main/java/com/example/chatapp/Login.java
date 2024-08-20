@@ -160,10 +160,14 @@ public class Login implements Initializable {
                 applyFadeTransition(instructionLabel, 3500, 0.0, 1.0);
                 applyFadeTransition(pcIcon, 3500, 0.0, 1.0);
                 applyFadeTransition(forget, 3500, 0.0, 1.0);
+                applyFadeTransition(hiddenPasswordField,3500,0.0,1.0);
+                applyFadeTransition(eyeImage,3500,0.0,1.0);
+                applyFadeTransition(hideImage,3500,0.0,1.0);
                 // login Pane component
                 applyFadeTransition(signupButton, 4000, 0.0, 1.0);
                 applyFadeTransition(adLabel, 4000, 0.0, 1.0);
                 slideAnchorPaneToLeft(loginPage, 2000, 301, 0);
+
 
         }
 
@@ -178,6 +182,9 @@ public class Login implements Initializable {
                 applyFadeTransition(instructionLabel, 1000, 1.0, 0.0);
                 applyFadeTransition(pcIcon, 1000, 1.0, 0.0);
                 applyFadeTransition(forget, 1000, 1.0, 0.0);
+                applyFadeTransition(hiddenPasswordField,1000,1.0,0.0);
+                applyFadeTransition(eyeImage,1000,1.0,0.0);
+                applyFadeTransition(hideImage,1000,1.0,0.0);
         }
 
         private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
