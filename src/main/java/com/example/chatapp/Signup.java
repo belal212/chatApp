@@ -1,10 +1,6 @@
 package com.example.chatapp;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
-import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,20 +14,27 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.json.JSONObject;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class Signup implements Initializable {
-        ObservableList<String> c;
+
 
         @FXML
         private Label Gender;
 
         @FXML
         private Label Nationality;
+
+        private String Nationality1="";
 
         @FXML
         private AnchorPane SignInPane;
@@ -40,7 +43,7 @@ public class Signup implements Initializable {
         private Label adLabel;
 
         @FXML
-        private ComboBox<Image> comboBox = new ComboBox<>();
+        private ComboBox<File> comboBox = new ComboBox<>();
 
         @FXML
         private TextField cpassword;
@@ -56,6 +59,8 @@ public class Signup implements Initializable {
 
         @FXML
         private RadioButton female;
+
+        private ToggleGroup toggleGroup = new ToggleGroup();
 
         @FXML
         private ImageView image1;
@@ -103,36 +108,53 @@ public class Signup implements Initializable {
         private Label welcomeLabel;
         @Override
         public void initialize(URL location, ResourceBundle resources) {
-                File folder = new File("src/main/resources/png100px");
+                male.setToggleGroup(toggleGroup);
+                female.setToggleGroup(toggleGroup);
+
+                // Read the JSON file as a String
+                String content = null;
+                try {
+                        content = new String(Files.readAllBytes(Paths.get("src/main/resources/countries.json")));
+                } catch (IOException e) {
+                        throw new RuntimeException(e);
+                }
+
+                // Parse the string content into a JSONObject
+                JSONObject jsonObject = new JSONObject(content);
+
+                // Specify the folder path as a String variable
+                String folderPath = "src/main/resources/png100px"; // Change this to your folder path
+
+                File folder = new File(folderPath);
                 if (folder.isDirectory()) {
                         // Load images from the specified folder
                         File[] imageFiles = folder.listFiles((dir, name) -> name.endsWith(".png") || name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".gif"));
                         if (imageFiles != null) {
                                 for (File imageFile : imageFiles) {
-                                        try {
-                                                Image image = new Image(imageFile.toURI().toString());
-                                                comboBox.getItems().add(image);
-                                        } catch (Exception e) {
-                                                e.printStackTrace();
-                                        }
+                                        comboBox.getItems().add(imageFile);
                                 }
                         }
+                } else {
+                        System.out.println("The specified path is not a directory.");
                 }
+
                 // Set a custom cell factory to display images
-                comboBox.setCellFactory(param -> new ListCell<Image>() {
+                comboBox.setCellFactory(param -> new ListCell<File>() {
                         private final ImageView imageView = new ImageView();
+
                         {
                                 imageView.setFitWidth(40);
-                                imageView.setFitHeight(25);
+                                imageView.setFitHeight(18);
                                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                         }
 
                         @Override
-                        protected void updateItem(Image image, boolean empty) {
-                                super.updateItem(image, empty);
-                                if (empty || image == null) {
+                        protected void updateItem(File file, boolean empty) {
+                                super.updateItem(file, empty);
+                                if (empty || file == null) {
                                         setGraphic(null);
                                 } else {
+                                        Image image = new Image(file.toURI().toString());
                                         imageView.setImage(image);
                                         setGraphic(imageView);
                                 }
@@ -140,52 +162,145 @@ public class Signup implements Initializable {
                 });
 
                 // Set a custom graphic display for the selected item
-                comboBox.setButtonCell(new ListCell<Image>() {
+                comboBox.setButtonCell(new ListCell<File>() {
                         private final ImageView imageView = new ImageView();
 
                         {
-                                imageView.setFitWidth(30);
-                                imageView.setFitHeight(15);
+                                imageView.setFitWidth(40);
+                                imageView.setFitHeight(18);
                                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                         }
 
                         @Override
-                        protected void updateItem(Image image, boolean empty) {
-                                super.updateItem(image, empty);
-                                if (empty || image == null) {
+                        protected void updateItem(File file, boolean empty) {
+                                super.updateItem(file, empty);
+                                if (empty || file == null) {
                                         setGraphic(null);
                                 } else {
+                                        Image image = new Image(file.toURI().toString());
                                         imageView.setImage(image);
                                         setGraphic(imageView);
                                 }
                         }
                 });
 
-                //Sign in Pane component
-                applyFadeTransition(email1, 3500, 0.0, 1.0);
-                applyFadeTransition(user1, 3500, 0.0, 1.0);
-                applyFadeTransition(password1, 3500, 0.0, 1.0);
-                applyFadeTransition(cpassword, 3500, 0.0, 1.0);
-                applyFadeTransition(Gender, 3500, 0.0, 1.0);
-                applyFadeTransition(Nationality, 3500, 0.0, 1.0);
-                applyFadeTransition(comboBox, 3500, 0.0, 1.0);
-                applyFadeTransition(male, 3500, 0.0, 1.0);
-                applyFadeTransition(female, 3500, 0.0, 1.0);
-                applyFadeTransition(signInButton, 3500, 0.0, 1.0);
-                applyFadeTransition(emailLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(passwordLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(cpasswordLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(userLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(welcomeLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(instructionLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(pcIcon, 3500, 0.0, 1.0);
-                // login Pane component
-                applyFadeTransition(signupButton, 4000, 0.0, 1.0);
-                applyFadeTransition(adLabel, 4000, 0.0, 1.0);
+                // Listen for selection changes and print the selected file name
+                comboBox.setOnAction(event -> {
+                        File selectedFile = comboBox.getValue();
+                        if (selectedFile != null) {
+                                // Get the file name without the extension
+                                String fileName = selectedFile.getName();
+                                int dotIndex = fileName.lastIndexOf('.');
+                                if (dotIndex > 0 && dotIndex <= fileName.length() - 2) {
+                                        fileName = fileName.substring(0, dotIndex);
+                                }
+                                // Capitalize the file name
+                                String key = fileName.toUpperCase();
+                                if (jsonObject.has(key)) {
+                                        Nationality1 = jsonObject.getString(key);
+                                }
+                        }
+                });
+
+                applyFadeTransition(subRoot, 3500, 0.0, 1.0);
                 slideAnchorPaneToLeft(loginPage,2000,-300,0);
                 signupButton.setOnAction(this::SignUpButtonEvent);
+                signInButton.setOnAction(this::SignInButtonAction);
 
 
+        }
+
+        private void SignUpButtonEvent(ActionEvent e) {
+                emptyRed();
+                //SignupDB();
+        }
+
+        private void emptyRed() {
+                boolean passwordErrors = false;
+                boolean emailErrors = false;
+
+                if (user1.getText().isEmpty()) {
+                        user1.setStyle("-fx-border-color: red;");
+                        emailErrors = true;
+                }
+
+                if (Nationality1.isEmpty()) {
+                        comboBox.setStyle("-fx-border-color: red;");
+                        emailErrors = true;
+                }
+
+                if (email1.getText().isEmpty()) {
+                        email1.setStyle("-fx-border-color: red;");
+                        emailErrors = true;
+                }
+
+                if (!password1.getText().equals(cpassword.getText())) {
+                        password1.setStyle("-fx-border-color: red;");
+                        cpassword.setStyle("-fx-border-color: red;");
+                        passwordErrors = true;
+                }
+                if (password1.getText().isEmpty()) {
+                        password1.setStyle("-fx-border-color: red;");
+                        passwordErrors = true;
+                }
+                if (cpassword.getText().isEmpty()) {
+                        cpassword.setStyle("-fx-border-color: red;");
+                        passwordErrors = true;
+                }
+
+                if (passwordErrors || emailErrors) {
+                        Timeline timeline = new Timeline(new KeyFrame(
+                                Duration.seconds(2),
+                                ae -> resetStyles()
+                        ));
+                        timeline.play();
+                }
+        }
+
+        private void resetStyles() {
+                comboBox.setStyle("");
+                user1.setStyle("");
+                email1.setStyle("");
+                emailLabel.setStyle("");
+                password1.setStyle("");
+                cpassword.setStyle("");
+                passwordLabel.setStyle("");
+        }
+
+        private void SignupDB() {
+                DataBaseConnection connection = new DataBaseConnection();
+                Connection connectDB = connection.getConnection();
+
+                String checkQuery = "SELECT COUNT(*) FROM user WHERE username = ? OR email = ?";
+                String insertQuery = "INSERT INTO user (username, email, password, nationality) VALUES (?, ?, ?, ?)";
+
+                try {
+                        // Step 1: Check if the username or email already exists
+                        PreparedStatement checkStatement = connectDB.prepareStatement(checkQuery);
+                        checkStatement.setString(1, this.user1.getText());
+                        checkStatement.setString(2, this.email1.getText());
+                        ResultSet checkResult = checkStatement.executeQuery();
+
+                        if (checkResult.next() && checkResult.getInt(1) > 0) {
+                                System.out.println("Username or Email already exists. Please choose a different one.");
+                        } else {
+                                // Step 2: If they are unique, insert the new user
+                                PreparedStatement insertStatement = connectDB.prepareStatement(insertQuery);
+                                insertStatement.setString(1, this.user1.getText());
+                                insertStatement.setString(2, this.email1.getText());
+                                insertStatement.setString(3, this.password1.getText());
+                                insertStatement.setString(4, this.Nationality1);
+
+                                int result = insertStatement.executeUpdate();
+                                if (result > 0) {
+                                        System.out.println("Welcome");
+                                } else {
+                                        System.out.println("Signup failed. Please try again.");
+                                }
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
         }
 
         private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
@@ -200,26 +315,10 @@ public class Signup implements Initializable {
                 translateTransition.setToX(to);
                 translateTransition.play();
         }
-        private void SignUpButtonEvent(ActionEvent e) {
+        private void SignInButtonAction(ActionEvent e) {
                 PauseTransition pause = new PauseTransition(Duration.millis(1000));
 
-                applyFadeTransition(email1, 1000, 1.0, 0.0);
-                applyFadeTransition(user1, 1000, 1.0, 0.0);
-                applyFadeTransition(password1, 1000, 1.0, 0.0);
-                applyFadeTransition(cpassword, 1000, 1.0, 0.0);
-                applyFadeTransition(Gender, 1000, 1.0, 0.0);
-                applyFadeTransition(Nationality, 1000, 1.0, 0.0);
-                applyFadeTransition(comboBox, 1000, 1.0, 0.0);
-                applyFadeTransition(male, 1000, 1.0, 0.0);
-                applyFadeTransition(female, 1000, 1.0, 0.0);
-                applyFadeTransition(signInButton, 1000, 1.0, 0.0);
-                applyFadeTransition(emailLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(passwordLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(cpasswordLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(userLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(welcomeLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(instructionLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(pcIcon, 1000, 1.0, 0.0);
+                applyFadeTransition(subRoot, 1000, 1.0, 0.0);
 
                 pause.setOnFinished(event -> {
                         try {
