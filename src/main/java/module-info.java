@@ -8,4 +8,5 @@ module com.example.chatapp {
 
     opens com.example.chatapp to javafx.fxml;
     exports com.example.chatapp;
+
 }

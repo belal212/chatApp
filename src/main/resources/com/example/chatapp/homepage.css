@@ -1,0 +1,9 @@
+.pagination .pagination-control {
+    -fx-opacity: 0;
+    -fx-disable: true;
+}
+
+.pagination .pagination-control .button {
+    -fx-opacity: 0;
+    -fx-disable: true;
+}
