@@ -50,10 +50,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version> <!-- Replace with the latest version -->
         </dependency>
-
-
-
-
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20230618</version> <!-- Check for the latest version -->
+        </dependency>
     </dependencies>
 
     <build>
