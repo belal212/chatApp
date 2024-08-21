@@ -217,31 +217,31 @@ public class Signup implements Initializable {
 
         private void openingFade() {
                 //Sign in Pane component
-                applyFadeTransition(subRoot, 2000, 0.0, 1.0);
-                slideAnchorPaneTo(pcIcon,2000,-350,0);
-                slideAnchorPaneTo(welcomeLabel,2000,-400,0);
-                slideAnchorPaneTo(instructionLabel,2000,-400,0);
-                slideAnchorPaneTo(email1,2000,-400,0);
-                slideAnchorPaneTo(emailLabel,2000,-400,0);
-                slideAnchorPaneTo(password1,2000,-650,0);
-                slideAnchorPaneTo(passwordLabel,2000,-650,0);
-                slideAnchorPaneTo(user1,2000,-450,0);
-                slideAnchorPaneTo(userLabel,2000,-450,0);
-                slideAnchorPaneTo(cpassword,2000,-550,0);
-                slideAnchorPaneTo(signupButton,2000,-600,0);
-                slideAnchorPaneTo(cpasswordLabel,2000,-550,0);
-                slideAnchorPaneTo(comboBox,2000,-450,0);
-                slideAnchorPaneTo(male,2000,-500,0);
-                slideAnchorPaneTo(female,2000,-500,0);
-                slideAnchorPaneTo(Gender,2000,-500,0);
+                applyFadeTransition(subRoot, 1500, 0.0, 1.0);
+                slideAnchorPaneTo(pcIcon,1500,-350,0);
+                slideAnchorPaneTo(welcomeLabel,1500,-400,0);
+                slideAnchorPaneTo(instructionLabel,1500,-400,0);
+                slideAnchorPaneTo(email1,1500,-400,0);
+                slideAnchorPaneTo(emailLabel,1500,-400,0);
+                slideAnchorPaneTo(password1,1500,-650,0);
+                slideAnchorPaneTo(passwordLabel,1500,-650,0);
+                slideAnchorPaneTo(user1,1500,-450,0);
+                slideAnchorPaneTo(userLabel,1500,-450,0);
+                slideAnchorPaneTo(cpassword,1500,-550,0);
+                slideAnchorPaneTo(signupButton,1500,-600,0);
+                slideAnchorPaneTo(cpasswordLabel,1500,-550,0);
+                slideAnchorPaneTo(comboBox,1500,-450,0);
+                slideAnchorPaneTo(male,1500,-500,0);
+                slideAnchorPaneTo(female,1500,-500,0);
+                slideAnchorPaneTo(Gender,1500,-500,0);
 
                 signInButton.setOpacity(0);
                 adLabel.setOpacity(0);
-                slideAnchorPaneTo(loginPage, 2000, -301, 0);
-                PauseTransition pause = new PauseTransition(Duration.millis(900));
+                slideAnchorPaneTo(loginPage, 1000, -301, 0);
+                PauseTransition pause = new PauseTransition(Duration.millis(500));
                 pause.setOnFinished(event ->{
-                        applyFadeTransition(signInButton, 3500, 0.0, 1.0);
-                        applyFadeTransition(adLabel, 3500, 0.0, 1.0);
+                        applyFadeTransition(signInButton, 1000, 0.0, 1.0);
+                        applyFadeTransition(adLabel, 1000, 0.0, 1.0);
                         slideAnchorPaneTo(signInButton,1000,300,0);
                         slideAnchorPaneTo(adLabel,1000,500,0); }
                 );
@@ -256,31 +256,31 @@ public class Signup implements Initializable {
                 //Sign in Pane component
                 applyFadeTransition(subRoot, 900, 1.0, 0.0);
 
-                slideAnchorPaneTo(pcIcon,2000,0,-350);
-                slideAnchorPaneTo(welcomeLabel,2000,0,-400);
-                slideAnchorPaneTo(instructionLabel,2000,0,-400);
+                slideAnchorPaneTo(pcIcon,1500,0,-350);
+                slideAnchorPaneTo(welcomeLabel,1500,0,-400);
+                slideAnchorPaneTo(instructionLabel,1500,0,-400);
 
-                slideAnchorPaneTo(email1,2000,0,-650);
-                slideAnchorPaneTo(emailLabel,2000,0,-650);
+                slideAnchorPaneTo(email1,1500,0,-650);
+                slideAnchorPaneTo(emailLabel,1500,0,-650);
 
-                slideAnchorPaneTo(password1,2000,0,-450);
-                slideAnchorPaneTo(passwordLabel,2000,0,-450);
+                slideAnchorPaneTo(password1,1500,0,-450);
+                slideAnchorPaneTo(passwordLabel,1500,0,-450);
 
-                slideAnchorPaneTo(user1,2000,0,-550);
-                slideAnchorPaneTo(userLabel,2000,0,-550);
-                slideAnchorPaneTo(comboBox,2000,0,-550);
+                slideAnchorPaneTo(user1,1500,0,-550);
+                slideAnchorPaneTo(userLabel,1500,0,-550);
+                slideAnchorPaneTo(comboBox,1500,0,-550);
 
-                slideAnchorPaneTo(cpasswordLabel,2000,0,-600);
-                slideAnchorPaneTo(cpassword,2000,0,-600);
+                slideAnchorPaneTo(cpasswordLabel,1500,0,-600);
+                slideAnchorPaneTo(cpassword,1500,0,-600);
 
-                slideAnchorPaneTo(signupButton,2000,0,-600);
+                slideAnchorPaneTo(signupButton,1500,0,-600);
 
-                slideAnchorPaneTo(signInButton,2000,0,600);
-                slideAnchorPaneTo(adLabel,2000,0,600);
+                slideAnchorPaneTo(signInButton,1500,0,600);
+                slideAnchorPaneTo(adLabel,1500,0,600);
 
-                slideAnchorPaneTo(male,2000,0,-500);
-                slideAnchorPaneTo(female,2000,0,-500);
-                slideAnchorPaneTo(Gender,2000,0,-500);
+                slideAnchorPaneTo(male,1500,0,-500);
+                slideAnchorPaneTo(female,1500,0,-500);
+                slideAnchorPaneTo(Gender,1500,0,-500);
 
 
         }
@@ -350,7 +350,7 @@ public class Signup implements Initializable {
 
                 String checkQueryU = "SELECT COUNT(*) FROM users WHERE username = ?";
                 String checkQueryE = "SELECT COUNT(*) FROM users WHERE email = ?";
-                String insertQuery = "INSERT INTO users (username, email, passworder, nationality) VALUES (?, ?, ?, ?)";
+                String insertQuery ="INSERT INTO users (username, email, passworder, nationality) VALUES (?, ?, ?, ?)";
 
                 try {
                         // Step 1: Check if the username or email already exists
