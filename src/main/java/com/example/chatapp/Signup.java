@@ -286,44 +286,43 @@ public class Signup implements Initializable {
         }
 
         private void SignUpButtonEvent(ActionEvent e) {
-                emptyRed();
-                SignupDB();
+                boolean Errors = false;
+                emptyRed(Errors);
+                SignupDB(Errors);
         }
 
-        private void emptyRed() {
-                boolean passwordErrors = false;
-                boolean emailErrors = false;
+        private void emptyRed(boolean Errors) {
 
                 if (user1.getText().isEmpty()) {
                         user1.setStyle("-fx-border-color: red;");
-                        emailErrors = true;
+                        Errors = true;
                 }
 
                 if (Nationality1.isEmpty()) {
                         comboBox.setStyle("-fx-border-color: red;");
-                        emailErrors = true;
+                        Errors = true;
                 }
 
                 if (email1.getText().isEmpty()) {
                         email1.setStyle("-fx-border-color: red;");
-                        emailErrors = true;
+                        Errors = true;
                 }
 
                 if (!password1.getText().equals(cpassword.getText())) {
                         password1.setStyle("-fx-border-color: red;");
                         cpassword.setStyle("-fx-border-color: red;");
-                        passwordErrors = true;
+                        Errors = true;
                 }
                 if (password1.getText().isEmpty()) {
                         password1.setStyle("-fx-border-color: red;");
-                        passwordErrors = true;
+                        Errors = true;
                 }
                 if (cpassword.getText().isEmpty()) {
                         cpassword.setStyle("-fx-border-color: red;");
-                        passwordErrors = true;
+                        Errors = true;
                 }
 
-                if (passwordErrors || emailErrors) {
+                if (Errors) {
                         Timeline timeline = new Timeline(new KeyFrame(
                                 Duration.seconds(2),
                                 ae -> resetStyles()
@@ -342,7 +341,8 @@ public class Signup implements Initializable {
                 passwordLabel.setStyle("");
         }
 
-        private void SignupDB() {
+        private void SignupDB(boolean Errors) {
+                if(!Errors){
                 DataBaseConnection connection = new DataBaseConnection();
                 Connection connectDB = connection.getConnection();
                 Security security = new Security();
@@ -393,6 +393,7 @@ public class Signup implements Initializable {
                 } catch (Exception e) {
                         e.printStackTrace();
                 }
+        }
         }
 
         private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
