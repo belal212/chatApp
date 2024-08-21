@@ -212,7 +212,7 @@ public class Signup implements Initializable {
 
         private void SignUpButtonEvent(ActionEvent e) {
                 emptyRed();
-                //SignupDB();
+                SignupDB();
         }
 
         private void emptyRed() {
@@ -270,9 +270,10 @@ public class Signup implements Initializable {
         private void SignupDB() {
                 DataBaseConnection connection = new DataBaseConnection();
                 Connection connectDB = connection.getConnection();
+                Security security = new Security();
 
-                String checkQuery = "SELECT COUNT(*) FROM user WHERE username = ? OR email = ?";
-                String insertQuery = "INSERT INTO user (username, email, password, nationality) VALUES (?, ?, ?, ?)";
+                String checkQuery = "SELECT COUNT(*) FROM users WHERE username = ? OR email = ?";
+                String insertQuery = "INSERT INTO users (username, email, passworder, nationality) VALUES (?, ?, ?, ?)";
 
                 try {
                         // Step 1: Check if the username or email already exists
@@ -288,7 +289,7 @@ public class Signup implements Initializable {
                                 PreparedStatement insertStatement = connectDB.prepareStatement(insertQuery);
                                 insertStatement.setString(1, this.user1.getText());
                                 insertStatement.setString(2, this.email1.getText());
-                                insertStatement.setString(3, this.password1.getText());
+                                insertStatement.setString(3, security.encrypt(this.password1.getText()));
                                 insertStatement.setString(4, this.Nationality1);
 
                                 int result = insertStatement.executeUpdate();

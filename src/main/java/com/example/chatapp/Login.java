@@ -12,7 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
@@ -151,40 +150,61 @@ public class Login implements Initializable {
 
         private void openingFade() {
                 //Sign in Pane component
-                applyFadeTransition(email, 3500, 0.0, 1.0);
-                applyFadeTransition(password, 3500, 0.0, 1.0);
-                applyFadeTransition(signInButton, 3500, 0.0, 1.0);
-                applyFadeTransition(emailLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(passwordLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(welcomeLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(instructionLabel, 3500, 0.0, 1.0);
-                applyFadeTransition(pcIcon, 3500, 0.0, 1.0);
-                applyFadeTransition(forget, 3500, 0.0, 1.0);
-                applyFadeTransition(hiddenPasswordField,3500,0.0,1.0);
-                applyFadeTransition(eyeImage,3500,0.0,1.0);
-                applyFadeTransition(hideImage,3500,0.0,1.0);
-                // login Pane component
-                applyFadeTransition(signupButton, 4000, 0.0, 1.0);
-                applyFadeTransition(adLabel, 4000, 0.0, 1.0);
-                slideAnchorPaneToLeft(loginPage, 2000, 301, 0);
+                applyFadeTransition(SignInPane, 2000, 0.0, 1.0);
+                slideAnchorPaneTo(pcIcon,2000,350,0);
+                slideAnchorPaneTo(welcomeLabel,2000,400,0);
+                slideAnchorPaneTo(instructionLabel,2000,400,0);
+                slideAnchorPaneTo(email,2000,400,0);
+                slideAnchorPaneTo(emailLabel,2000,400,0);
+                slideAnchorPaneTo(password,2000,600,0);
+                slideAnchorPaneTo(passwordLabel,2000,600,0);
+                slideAnchorPaneTo(hiddenPasswordField,2000,600,0);
+                slideAnchorPaneTo(passwordForgetField,2000,600,0);
+                slideAnchorPaneTo(forget,2000,600,0);
+                slideAnchorPaneTo(signInButton,2000,600,0);
+                slideAnchorPaneTo(hideImage,2000,600,0);
+                slideAnchorPaneTo(eyeImage,2000,600,0);
+
+                signupButton.setOpacity(0);
+                adLabel.setOpacity(0);
+                slideAnchorPaneTo(loginPage, 2000, 301, 0);
+                PauseTransition pause = new PauseTransition(Duration.millis(900));
+                pause.setOnFinished(event ->{
+                        applyFadeTransition(signupButton, 3500, 0.0, 1.0);
+                        applyFadeTransition(adLabel, 3500, 0.0, 1.0);
+                        slideAnchorPaneTo(signupButton,1000,-300,0);
+                        slideAnchorPaneTo(adLabel,1000,-500,0); }
+                );
+                pause.play();
+
+
 
 
         }
 
         private void closingFade() {
 
-                applyFadeTransition(email, 1000, 1.0, 0.0);
-                applyFadeTransition(password, 1000, 1.0, 0.0);
-                applyFadeTransition(signInButton, 1000, 1.0, 0.0);
-                applyFadeTransition(emailLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(passwordLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(welcomeLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(instructionLabel, 1000, 1.0, 0.0);
-                applyFadeTransition(pcIcon, 1000, 1.0, 0.0);
-                applyFadeTransition(forget, 1000, 1.0, 0.0);
-                applyFadeTransition(hiddenPasswordField,1000,1.0,0.0);
-                applyFadeTransition(eyeImage,1000,1.0,0.0);
-                applyFadeTransition(hideImage,1000,1.0,0.0);
+                applyFadeTransition(SignInPane, 1000, 1.0, 0.0);
+                applyFadeTransition(signupButton, 1000, 1.0, 0.0);
+                applyFadeTransition(adLabel, 1000, 1.0, 0.0);
+                slideAnchorPaneTo(signupButton,1000,0,-300);
+                slideAnchorPaneTo(adLabel,1000,0,-300);
+
+                slideAnchorPaneTo(pcIcon,2000,0,350);
+                slideAnchorPaneTo(welcomeLabel,2000,0,400);
+                slideAnchorPaneTo(instructionLabel,2000,0,400);
+                slideAnchorPaneTo(email,2000,0,400);
+                slideAnchorPaneTo(emailLabel,2000,0,400);
+                slideAnchorPaneTo(password,2000,0,600);
+                slideAnchorPaneTo(passwordLabel,2000,0,600);
+                slideAnchorPaneTo(hiddenPasswordField,2000,600,0);
+                slideAnchorPaneTo(passwordForgetField,2000,0,600);
+                slideAnchorPaneTo(forget,2000,0,600);
+                slideAnchorPaneTo(signInButton,2000,0,600);
+                slideAnchorPaneTo(hideImage,2000,0,600);
+                slideAnchorPaneTo(eyeImage,2000,0,600);
+
+
         }
 
         private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
@@ -194,8 +214,8 @@ public class Login implements Initializable {
                 fadeTransition.play();
         }
 
-        private void slideAnchorPaneToLeft(AnchorPane anchorPane, int durationInMillis, double from, double to) {
-                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(durationInMillis), anchorPane);
+        private void slideAnchorPaneTo(javafx.scene.Node node, int durationInMillis, double from, double to) {
+                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(durationInMillis), node);
                 translateTransition.setFromX(from);
                 translateTransition.setToX(to);
                 translateTransition.play();
@@ -288,14 +308,17 @@ public class Login implements Initializable {
         }
 
         private void LoginDB() {
+                String pass= hiddenPasswordField.getText();
                 DataBaseConnection connection = new DataBaseConnection();
                 Connection connectDB = connection.getConnection();
+                Security security = new Security();
 
-                String verify = "SELECT count(1) FROM users WHERE email = '" + this.email.getText() + "'AND passworder = '" + this.hiddenPasswordField.getText() + "'";
+                String verify = "SELECT count(1) FROM users WHERE email = '" + this.email.getText() + "'AND passworder = '" + security.encrypt(pass) +"'";
                 try {
 
                         Statement statement = connectDB.createStatement();
                         ResultSet result = statement.executeQuery(verify);
+
                         while (result.next()) {
                                 if (result.getInt(1) == 1)
                                         System.out.println("welcome");
@@ -311,6 +334,8 @@ public class Login implements Initializable {
                 applyFadeTransition(subRoot, 2000, 1.0, 0.2);
                 forgetPasswordPane.setVisible(true);
                 applyFadeTransition(forgetPasswordPane, 2000, 0.0, 1.0);
+                forgetPasswordPane.toFront();
+                ChangePasswordPane.toFront();
         }
 
         private void closeForgetPane(ActionEvent e) {
@@ -319,14 +344,15 @@ public class Login implements Initializable {
                 applyFadeTransition(subRoot, 2000, 0.2, 1);
                 pause.setOnFinished(event -> forgetPasswordPane.setVisible(false));
                 pause.play();
+                forgetPasswordPane.toBack();
         }
 
         private void sendButtonAction(ActionEvent e) {
-                EmailSender sender = new EmailSender();
+                Security sender = new Security();
                 String checkEmail = emailForgetField.getText();
                 verificationCode = sender.generateVerificationCode();
                 if (!(emailForgetField.getText().isEmpty()))
-                        EmailSender.sendVerificationEmail(checkEmail, verificationCode);
+                        Security.sendVerificationEmail(checkEmail, verificationCode);
         }
 
         private void VerifyButtonAction(ActionEvent e) {
@@ -347,6 +373,7 @@ public class Login implements Initializable {
                 applyFadeTransition(subRoot, 2000, 0.2, 1);
                 pause.setOnFinished(event -> forgetPasswordPane.setVisible(false));
                 pause.play();
+                ChangePasswordPane.toBack();
         }
 
         private void ConfirmButtonAction(ActionEvent event) {
@@ -361,7 +388,6 @@ public class Login implements Initializable {
                         return;
                 }
 
-                // Check if the new password matches the confirm password
                 if (newPassword.equals(confirmPassword)) {
                         DataBaseConnection connection = new DataBaseConnection();
                         Connection connectDB = connection.getConnection();
