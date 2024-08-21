@@ -42,7 +42,7 @@ public class Security {
             System.out.println("Verification email sent successfully to " + toEmail);
 
         } catch (MessagingException e) {
-            e.printStackTrace();
+            System.out.println("error in sending Verification Code");
         }
     }
     private static String[] readCredentialsFromFile() {
@@ -52,7 +52,7 @@ public class Security {
             credentials[1] = br.readLine();
             credentials[2] = br.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("error in reading private file");
         }
         return credentials;
     }
@@ -69,13 +69,13 @@ public class Security {
         }
         return encrypted.toString();
     }
-    public  String decrypt(String input) {
-        String shift = readCredentialsFromFile()[2];
-        StringBuilder decrypted = new StringBuilder();
-        for (char c : input.toCharArray()) {
-            decrypted.append((char) (c / Integer.parseInt(shift))+95);
-        }
-        return decrypted.toString();
-    }
+//    public  String decrypt(String input) {
+//        String shift = readCredentialsFromFile()[2];
+//        StringBuilder decrypted = new StringBuilder();
+//        for (char c : input.toCharArray()) {
+//            decrypted.append((char) (c / Integer.parseInt(shift))+95);
+//        }
+//        return decrypted.toString();
+//    }
 
 }

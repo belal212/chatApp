@@ -164,14 +164,16 @@ public class Login implements Initializable {
                 slideAnchorPaneTo(signInButton,2000,600,0);
                 slideAnchorPaneTo(hideImage,2000,600,0);
                 slideAnchorPaneTo(eyeImage,2000,600,0);
+                image1.setOpacity(1);
+                rootPane.setOpacity(1);
 
                 signupButton.setOpacity(0);
                 adLabel.setOpacity(0);
                 slideAnchorPaneTo(loginPage, 2000, 301, 0);
                 PauseTransition pause = new PauseTransition(Duration.millis(900));
                 pause.setOnFinished(event ->{
-                        applyFadeTransition(signupButton, 3500, 0.0, 1.0);
-                        applyFadeTransition(adLabel, 3500, 0.0, 1.0);
+                        applyFadeTransition(signupButton, 2000, 0.0, 1.0);
+                        applyFadeTransition(adLabel, 2000, 0.0, 1.0);
                         slideAnchorPaneTo(signupButton,1000,-300,0);
                         slideAnchorPaneTo(adLabel,1000,-500,0); }
                 );
@@ -236,8 +238,7 @@ public class Login implements Initializable {
                                 stage.setScene(scene);
                                 stage.show();
                         } catch (IOException ex) {
-                                ex.printStackTrace();
-                        }
+                                System.out.println("error in signup button");                        }
                 });
 
                 pause.play();
@@ -326,7 +327,7 @@ public class Login implements Initializable {
                                         System.out.println("try again");
                         }
                 } catch (Exception E) {
-                        E.printStackTrace();
+                        System.out.println("error in login");
                 }
         }
 
@@ -380,6 +381,7 @@ public class Login implements Initializable {
                 String newPassword = newPasswordField.getText();
                 String confirmPassword = confirmPasswordField.getText();
                 String checkEmail = emailForgetField.getText();
+                Security security = new Security();
 
                 // Check if the new password and confirm password fields are not empty
                 if (newPassword.isEmpty() || confirmPassword.isEmpty()) {
@@ -395,7 +397,7 @@ public class Login implements Initializable {
                         String sql = "UPDATE users SET passworder = ? WHERE email = ?";
                         try {
                                 PreparedStatement statement = connectDB.prepareStatement(sql);
-                                statement.setString(1, newPassword);
+                                statement.setString(1, security.encrypt(newPassword));
                                 statement.setString(2, checkEmail);
 
                                 int rowsAffected = statement.executeUpdate();
@@ -406,7 +408,7 @@ public class Login implements Initializable {
                                 }
 
                         } catch (SQLException e) {
-                                e.printStackTrace();
+                                System.out.println("error in change password");
                         }
 
                 } else {
@@ -414,5 +416,6 @@ public class Login implements Initializable {
                         confirmPasswordField.setStyle("-fx-border-color: red");
                         System.out.println("Passwords do not match.");
                 }
+
         }
 }
