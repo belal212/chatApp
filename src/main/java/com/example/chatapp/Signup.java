@@ -286,49 +286,50 @@ public class Signup implements Initializable {
         }
 
         private void SignUpButtonEvent(ActionEvent e) {
-                boolean Errors = false;
-                emptyRed(Errors);
+                int Errors = 0;
+                Errors=emptyRed(Errors);
                 SignupDB(Errors);
         }
 
-        private void emptyRed(boolean Errors) {
+        private int emptyRed(int Errors) {
 
                 if (user1.getText().isEmpty()) {
                         user1.setStyle("-fx-border-color: red;");
-                        Errors = true;
+                        Errors ++;
                 }
 
                 if (Nationality1.isEmpty()) {
                         comboBox.setStyle("-fx-border-color: red;");
-                        Errors = true;
+                        Errors ++;
                 }
 
                 if (email1.getText().isEmpty()) {
                         email1.setStyle("-fx-border-color: red;");
-                        Errors = true;
+                        Errors ++;
                 }
 
                 if (!password1.getText().equals(cpassword.getText())) {
                         password1.setStyle("-fx-border-color: red;");
                         cpassword.setStyle("-fx-border-color: red;");
-                        Errors = true;
+                        Errors ++;
                 }
                 if (password1.getText().isEmpty()) {
                         password1.setStyle("-fx-border-color: red;");
-                        Errors = true;
+                        Errors ++;
                 }
                 if (cpassword.getText().isEmpty()) {
                         cpassword.setStyle("-fx-border-color: red;");
-                        Errors = true;
+                        Errors ++;
                 }
 
-                if (Errors) {
+                if (Errors != 0) {
                         Timeline timeline = new Timeline(new KeyFrame(
                                 Duration.seconds(2),
                                 ae -> resetStyles()
                         ));
                         timeline.play();
                 }
+                return Errors;
         }
 
         private void resetStyles() {
@@ -341,8 +342,8 @@ public class Signup implements Initializable {
                 passwordLabel.setStyle("");
         }
 
-        private void SignupDB(boolean Errors) {
-                if(!Errors){
+        private void SignupDB(int Errors) {
+                if(Errors == 0){
                 DataBaseConnection connection = new DataBaseConnection();
                 Connection connectDB = connection.getConnection();
                 Security security = new Security();
