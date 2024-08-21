@@ -150,30 +150,30 @@ public class Login implements Initializable {
 
         private void openingFade() {
                 //Sign in Pane component
-                applyFadeTransition(SignInPane, 2000, 0.0, 1.0);
-                slideAnchorPaneTo(pcIcon,2000,350,0);
-                slideAnchorPaneTo(welcomeLabel,2000,400,0);
-                slideAnchorPaneTo(instructionLabel,2000,400,0);
-                slideAnchorPaneTo(email,2000,400,0);
-                slideAnchorPaneTo(emailLabel,2000,400,0);
-                slideAnchorPaneTo(password,2000,600,0);
-                slideAnchorPaneTo(passwordLabel,2000,600,0);
-                slideAnchorPaneTo(hiddenPasswordField,2000,600,0);
-                slideAnchorPaneTo(passwordForgetField,2000,600,0);
-                slideAnchorPaneTo(forget,2000,600,0);
-                slideAnchorPaneTo(signInButton,2000,600,0);
-                slideAnchorPaneTo(hideImage,2000,600,0);
-                slideAnchorPaneTo(eyeImage,2000,600,0);
+                applyFadeTransition(SignInPane, 1500, 0.0, 1.0);
+                slideAnchorPaneTo(pcIcon,1500,350,0);
+                slideAnchorPaneTo(welcomeLabel,1500,400,0);
+                slideAnchorPaneTo(instructionLabel,1500,400,0);
+                slideAnchorPaneTo(email,1500,400,0);
+                slideAnchorPaneTo(emailLabel,1500,400,0);
+                slideAnchorPaneTo(password,1500,600,0);
+                slideAnchorPaneTo(passwordLabel,1500,600,0);
+                slideAnchorPaneTo(hiddenPasswordField,1500,600,0);
+                slideAnchorPaneTo(passwordForgetField,1500,600,0);
+                slideAnchorPaneTo(forget,1500,600,0);
+                slideAnchorPaneTo(signInButton,1500,600,0);
+                slideAnchorPaneTo(hideImage,1500,600,0);
+                slideAnchorPaneTo(eyeImage,1500,600,0);
                 image1.setOpacity(1);
                 rootPane.setOpacity(1);
 
                 signupButton.setOpacity(0);
                 adLabel.setOpacity(0);
-                slideAnchorPaneTo(loginPage, 2000, 301, 0);
-                PauseTransition pause = new PauseTransition(Duration.millis(900));
+                slideAnchorPaneTo(loginPage, 1000, 301, 0);
+                PauseTransition pause = new PauseTransition(Duration.millis(500));
                 pause.setOnFinished(event ->{
-                        applyFadeTransition(signupButton, 2000, 0.0, 1.0);
-                        applyFadeTransition(adLabel, 2000, 0.0, 1.0);
+                        applyFadeTransition(signupButton, 1000, 0.0, 1.0);
+                        applyFadeTransition(adLabel, 1000, 0.0, 1.0);
                         slideAnchorPaneTo(signupButton,1000,-300,0);
                         slideAnchorPaneTo(adLabel,1000,-500,0); }
                 );
@@ -192,19 +192,19 @@ public class Login implements Initializable {
                 slideAnchorPaneTo(signupButton,1000,0,-300);
                 slideAnchorPaneTo(adLabel,1000,0,-300);
 
-                slideAnchorPaneTo(pcIcon,2000,0,350);
-                slideAnchorPaneTo(welcomeLabel,2000,0,400);
-                slideAnchorPaneTo(instructionLabel,2000,0,400);
-                slideAnchorPaneTo(email,2000,0,400);
-                slideAnchorPaneTo(emailLabel,2000,0,400);
-                slideAnchorPaneTo(password,2000,0,600);
-                slideAnchorPaneTo(passwordLabel,2000,0,600);
-                slideAnchorPaneTo(hiddenPasswordField,2000,600,0);
-                slideAnchorPaneTo(passwordForgetField,2000,0,600);
-                slideAnchorPaneTo(forget,2000,0,600);
-                slideAnchorPaneTo(signInButton,2000,0,600);
-                slideAnchorPaneTo(hideImage,2000,0,600);
-                slideAnchorPaneTo(eyeImage,2000,0,600);
+                slideAnchorPaneTo(pcIcon,1500,0,350);
+                slideAnchorPaneTo(welcomeLabel,1500,0,400);
+                slideAnchorPaneTo(instructionLabel,1500,0,400);
+                slideAnchorPaneTo(email,1500,0,400);
+                slideAnchorPaneTo(emailLabel,1500,0,400);
+                slideAnchorPaneTo(password,1500,0,600);
+                slideAnchorPaneTo(passwordLabel,1500,0,600);
+                slideAnchorPaneTo(hiddenPasswordField,1500,600,0);
+                slideAnchorPaneTo(passwordForgetField,1500,0,600);
+                slideAnchorPaneTo(forget,1500,0,600);
+                slideAnchorPaneTo(signInButton,1500,0,600);
+                slideAnchorPaneTo(hideImage,1500,0,600);
+                slideAnchorPaneTo(eyeImage,1500,0,600);
 
 
         }
