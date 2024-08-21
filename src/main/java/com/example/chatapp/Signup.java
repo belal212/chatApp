@@ -93,9 +93,6 @@ public class Signup implements Initializable {
         private Button signupButton;
 
         @FXML
-        private StackPane stackPane;
-
-        @FXML
         private AnchorPane subRoot;
 
         @FXML
@@ -202,10 +199,88 @@ public class Signup implements Initializable {
                         }
                 });
 
-                applyFadeTransition(subRoot, 3500, 0.0, 1.0);
-                slideAnchorPaneToLeft(loginPage,2000,-300,0);
+                openingFade();
+
                 signupButton.setOnAction(this::SignUpButtonEvent);
                 signInButton.setOnAction(this::SignInButtonAction);
+
+
+        }
+
+        private void slideAnchorPaneTo(javafx.scene.Node node, int durationInMillis, double from, double to) {
+                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(durationInMillis), node);
+                translateTransition.setFromX(from);
+                translateTransition.setToX(to);
+                translateTransition.play();
+        }
+
+
+        private void openingFade() {
+                //Sign in Pane component
+                applyFadeTransition(subRoot, 2000, 0.0, 1.0);
+                slideAnchorPaneTo(pcIcon,2000,-350,0);
+                slideAnchorPaneTo(welcomeLabel,2000,-400,0);
+                slideAnchorPaneTo(instructionLabel,2000,-400,0);
+                slideAnchorPaneTo(email1,2000,-400,0);
+                slideAnchorPaneTo(emailLabel,2000,-400,0);
+                slideAnchorPaneTo(password1,2000,-650,0);
+                slideAnchorPaneTo(passwordLabel,2000,-650,0);
+                slideAnchorPaneTo(user1,2000,-450,0);
+                slideAnchorPaneTo(userLabel,2000,-450,0);
+                slideAnchorPaneTo(cpassword,2000,-550,0);
+                slideAnchorPaneTo(signupButton,2000,-600,0);
+                slideAnchorPaneTo(cpasswordLabel,2000,-550,0);
+                slideAnchorPaneTo(comboBox,2000,-450,0);
+                slideAnchorPaneTo(male,2000,-500,0);
+                slideAnchorPaneTo(female,2000,-500,0);
+                slideAnchorPaneTo(Gender,2000,-500,0);
+
+                signInButton.setOpacity(0);
+                adLabel.setOpacity(0);
+                slideAnchorPaneTo(loginPage, 2000, -301, 0);
+                PauseTransition pause = new PauseTransition(Duration.millis(900));
+                pause.setOnFinished(event ->{
+                        applyFadeTransition(signInButton, 3500, 0.0, 1.0);
+                        applyFadeTransition(adLabel, 3500, 0.0, 1.0);
+                        slideAnchorPaneTo(signInButton,1000,300,0);
+                        slideAnchorPaneTo(adLabel,1000,500,0); }
+                );
+                pause.play();
+
+
+
+
+        }
+
+        private void closingFade() {
+                //Sign in Pane component
+                applyFadeTransition(subRoot, 900, 1.0, 0.0);
+
+                slideAnchorPaneTo(pcIcon,2000,0,-350);
+                slideAnchorPaneTo(welcomeLabel,2000,0,-400);
+                slideAnchorPaneTo(instructionLabel,2000,0,-400);
+
+                slideAnchorPaneTo(email1,2000,0,-650);
+                slideAnchorPaneTo(emailLabel,2000,0,-650);
+
+                slideAnchorPaneTo(password1,2000,0,-450);
+                slideAnchorPaneTo(passwordLabel,2000,0,-450);
+
+                slideAnchorPaneTo(user1,2000,0,-550);
+                slideAnchorPaneTo(userLabel,2000,0,-550);
+                slideAnchorPaneTo(comboBox,2000,0,-550);
+
+                slideAnchorPaneTo(cpasswordLabel,2000,0,-600);
+                slideAnchorPaneTo(cpassword,2000,0,-600);
+
+                slideAnchorPaneTo(signupButton,2000,0,-600);
+
+                slideAnchorPaneTo(signInButton,2000,0,600);
+                slideAnchorPaneTo(adLabel,2000,0,600);
+
+                slideAnchorPaneTo(male,2000,0,-500);
+                slideAnchorPaneTo(female,2000,0,-500);
+                slideAnchorPaneTo(Gender,2000,0,-500);
 
 
         }
@@ -272,18 +347,34 @@ public class Signup implements Initializable {
                 Connection connectDB = connection.getConnection();
                 Security security = new Security();
 
-                String checkQuery = "SELECT COUNT(*) FROM users WHERE username = ? OR email = ?";
+                String checkQueryU = "SELECT COUNT(*) FROM users WHERE username = ?";
+                String checkQueryE = "SELECT COUNT(*) FROM users WHERE email = ?";
                 String insertQuery = "INSERT INTO users (username, email, passworder, nationality) VALUES (?, ?, ?, ?)";
 
                 try {
                         // Step 1: Check if the username or email already exists
-                        PreparedStatement checkStatement = connectDB.prepareStatement(checkQuery);
-                        checkStatement.setString(1, this.user1.getText());
-                        checkStatement.setString(2, this.email1.getText());
-                        ResultSet checkResult = checkStatement.executeQuery();
+                        PreparedStatement checkStatementU = connectDB.prepareStatement(checkQueryU);
+                        checkStatementU.setString(1, this.user1.getText());
+                        ResultSet checkResultU = checkStatementU.executeQuery();
 
-                        if (checkResult.next() && checkResult.getInt(1) > 0) {
-                                System.out.println("Username or Email already exists. Please choose a different one.");
+                        PreparedStatement checkStatementE = connectDB.prepareStatement(checkQueryE);
+                        checkStatementE.setString(1, this.email1.getText());
+                        ResultSet checkResultE = checkStatementE.executeQuery();
+
+                        if ((checkResultE.next() && checkResultE.getInt(1) > 0) || (checkResultU.next() && checkResultU.getInt(1) > 0)) {
+                                if (checkResultE.next() && checkResultE.getInt(1) > 0) {
+                                        System.out.println("Email already exists. Please choose a different one.");
+                                        email1.setStyle("-fx-border-color: red;");
+                                }
+                                if (checkResultU.next() && checkResultU.getInt(1) > 0) {
+                                        System.out.println("Username already exists. Please choose a different one.");
+                                        user1.setStyle("-fx-border-color: red;");
+                                }
+                                Timeline timeline = new Timeline(new KeyFrame(
+                                        Duration.seconds(2),
+                                        ae -> resetStyles()
+                                ));
+                                timeline.play();
                         } else {
                                 // Step 2: If they are unique, insert the new user
                                 PreparedStatement insertStatement = connectDB.prepareStatement(insertQuery);
@@ -310,17 +401,11 @@ public class Signup implements Initializable {
                 fadeTransition.setToValue(toValue);
                 fadeTransition.play();
         }
-        private void slideAnchorPaneToLeft(AnchorPane anchorPane, int durationInMillis, double from,double to) {
-                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(durationInMillis), anchorPane);
-                translateTransition.setFromX(from);
-                translateTransition.setToX(to);
-                translateTransition.play();
-        }
+
         private void SignInButtonAction(ActionEvent e) {
                 PauseTransition pause = new PauseTransition(Duration.millis(1000));
 
-                applyFadeTransition(subRoot, 1000, 1.0, 0.0);
-
+                closingFade();
                 pause.setOnFinished(event -> {
                         try {
                                 // Load the login page FXML
