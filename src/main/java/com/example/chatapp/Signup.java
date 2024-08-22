@@ -373,7 +373,8 @@ public class Signup implements Initializable {
                         cpassword.setStyle("-fx-border-color: red;");
                         Errors ++;
                 }
-                if (!hiddencpassword.getText().equals(hiddenpassword1.getText())) {
+
+                if (!hiddenpassword1.getText().equals(hiddencpassword.getText())) {
                         hiddencpassword.setStyle("-fx-border-color: red;");
                         hiddenpassword1.setStyle("-fx-border-color: red;");
                         Errors ++;
@@ -384,11 +385,9 @@ public class Signup implements Initializable {
                         Errors ++;
                 } else if (cpassword.getText().isEmpty()) {
                         cpassword.setStyle("-fx-border-color: red;");
-                        hiddencpassword.setStyle("");
                         Errors ++;
                 } else if (hiddencpassword.getText().isEmpty()) {
                         hiddencpassword.setStyle("-fx-border-color: red;");
-                        cpassword.setStyle("");
                         Errors ++;
                 }
                 if (password1.getText().isEmpty() && hiddenpassword1.getText().isEmpty()) {
@@ -397,11 +396,9 @@ public class Signup implements Initializable {
                         Errors ++;
                 } else if (password1.getText().isEmpty()) {
                         password1.setStyle("-fx-border-color: red;");
-                        hiddenpassword1.setStyle("");
                         Errors ++;
                 } else if (hiddenpassword1.getText().isEmpty()) {
                         hiddenpassword1.setStyle("-fx-border-color: red;");
-                        password1.setStyle("");
                         Errors ++;
                 }
 
@@ -416,6 +413,8 @@ public class Signup implements Initializable {
         }
 
         private void resetStyles() {
+                hiddenpassword1.setStyle("");
+                hiddencpassword.setStyle("");
                 comboBox.setStyle("");
                 user1.setStyle("");
                 email1.setStyle("");
