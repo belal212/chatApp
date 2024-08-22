@@ -45,6 +45,8 @@ public class Signup implements Initializable {
         @FXML
         private ComboBox<File> comboBox = new ComboBox<>();
 
+        private String selectedGender = "";
+
         @FXML
         private TextField cpassword;
 
@@ -199,6 +201,13 @@ public class Signup implements Initializable {
                         }
                 });
 
+                toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue != null) {
+                                selectedGender = ((RadioButton) newValue).getText();
+                        }
+                });
+
+
                 openingFade();
 
                 signupButton.setOnAction(this::SignUpButtonEvent);
@@ -298,6 +307,12 @@ public class Signup implements Initializable {
                         Errors ++;
                 }
 
+                if (selectedGender.isEmpty()) {
+                        male.setStyle("-fx-border-color: red;");
+                        female.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                }
+
                 if (Nationality1.isEmpty()) {
                         comboBox.setStyle("-fx-border-color: red;");
                         Errors ++;
@@ -340,6 +355,8 @@ public class Signup implements Initializable {
                 password1.setStyle("");
                 cpassword.setStyle("");
                 passwordLabel.setStyle("");
+                male.setStyle("");
+                female.setStyle("");
         }
 
         private void SignupDB(int Errors) {
@@ -350,7 +367,7 @@ public class Signup implements Initializable {
 
                 String checkQueryU = "SELECT COUNT(*) FROM users WHERE username = ?";
                 String checkQueryE = "SELECT COUNT(*) FROM users WHERE email = ?";
-                String insertQuery ="INSERT INTO users (username, email, passworder, nationality) VALUES (?, ?, ?, ?)";
+                String insertQuery ="INSERT INTO users (username, email, passworder, nationality, gender) VALUES (?, ?, ?, ?, ?)";
 
                 try {
                         // Step 1: Check if the username or email already exists
@@ -383,6 +400,7 @@ public class Signup implements Initializable {
                                 insertStatement.setString(2, this.email1.getText());
                                 insertStatement.setString(3, security.encrypt(this.password1.getText()));
                                 insertStatement.setString(4, this.Nationality1);
+                                insertStatement.setString(5, this.selectedGender);
 
                                 int result = insertStatement.executeUpdate();
                                 if (result > 0) {
