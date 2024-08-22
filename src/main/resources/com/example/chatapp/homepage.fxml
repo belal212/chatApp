@@ -1,98 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.paginationPanelControl">
-    <tabs>
-        <Tab text="Home">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1366.0">
-                    <children>
-                        <ScrollPane blendMode="SRC_ATOP" layoutY="-1.0" prefHeight="768.0" prefWidth="1366.0">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="1366.0">
-                                    <children>
-                                        <Pagination fx:id="pagination" layoutY="142.0" maxHeight="1.7976931348623157E308" maxWidth="1364" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" pageCount="4" prefHeight="384.0" prefWidth="1364.0" stylesheets="@homepage.css">
-                                            <style>
-                                                .pagination-control {
-                                                -fx-visible: false;
-                                                }
-                                            </style>
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                        </Pagination>
-                                        <Label layoutX="94.0" layoutY="541.0" prefHeight="27.0" prefWidth="610.0" text="We look forward to welcoming you at the Grand Egyptian Museum">
-                                            <font>
-                                                <Font name="Arial Rounded MT Bold" size="18.0" />
-                                            </font>
-                                        </Label>
-                                        <ImageView fitHeight="150.0" fitWidth="127.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@logo.png" />
-                                            </image>
-                                        </ImageView>
-                                        <Label layoutX="120.0" layoutY="584.0" lineSpacing="10.0" prefHeight="146.0" prefWidth="570.0" style="-fx-font-weight: 100;" text="The GEM Complex is now offering limited tours to test site readiness and the&#10; visitor experience ahead of the official opening. Access is currently limited to the &#10;Grand Hall, Grand Staircase, commercial area, and exterior gardens. All other &#10;interior spaces, including access to the galleries and collections, are restricted &#10;until the official opening.">
-                                            <font>
-                                                <Font name="Arial Rounded MT Bold" size="14.0" />
-                                            </font>
-                                        </Label>
-                                        <ImageView fitHeight="234.0" fitWidth="553.0" layoutX="740.0" layoutY="555.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@home 1.jpg" />
-                                            </image>
-                                        </ImageView>
-                                        <Label layoutX="94.0" layoutY="745.0" text=" Opening Hours" textFill="#fd7e14">
-                                            <font>
-                                                <Font name="Arial Rounded MT Bold" size="18.0" />
-                                            </font>
-                                        </Label>
-                                        <Label ellipsisString="" layoutX="120.0" layoutY="779.0" lineSpacing="12.0" prefHeight="142.0" prefWidth="267.0" text="Sunday to Thursday: 9 AM - 6 PM      &#10;Last ticket purchase: 4 PM&#10;Friday and Saturday: 9 AM - 10 PM&#10;Last ticket purchase: 7:30 PM">
-                                            <font>
-                                                <Font name="Arial Rounded MT Bold" size="16.0" />
-                                            </font>
-                                        </Label>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </ScrollPane>
-                    </children>
-                </AnchorPane>
-            </content>
-        </Tab>
-        <Tab text="News">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-        </Tab>
-        <Tab text="About">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-        </Tab>
-        <Tab text="Contact">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-        </Tab>
-        <Tab text="Booking">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-        </Tab>
-        <Tab text="Chat Room">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-        </Tab>
-        <Tab text="Chatbot">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-        </Tab>
-    </tabs>
+<TabPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-border-radius: 50;" tabClosingPolicy="UNAVAILABLE" tabMinHeight="30.0" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.paginationPanelControl">
+  <tabs>
+    <Tab id="homeTab" fx:id="homeTab" style="-fx-border-radius: 50;" text="Home">
+         <content>
+        <AnchorPane maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1366.0">
+               <children>
+                  <ScrollPane blendMode="SRC_ATOP" layoutY="-1.0" prefHeight="768.0" prefWidth="1366.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1962.0" prefWidth="1366.0">
+                           <children>
+                              <Pagination stylesheets="homepage.css" fx:id="cover" layoutY="142.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" pageCount="4" prefHeight="374.0" prefWidth="1357.0" styleClass="homepage.css">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Pagination>
+                              <Label layoutX="94.0" layoutY="541.0" prefHeight="27.0" prefWidth="610.0" text="We look forward to welcoming you at the Grand Egyptian Museum">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="150.0" fitWidth="127.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@logo.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="120.0" layoutY="584.0" lineSpacing="10.0" prefHeight="146.0" prefWidth="559.0" text="The GEM Complex is now offering limited tours to test site readiness and the&#10; visitor experience ahead of the official opening. Access is currently limited to the &#10;Grand Hall, Grand Staircase, commercial area, and exterior gardens. All other &#10;interior spaces, including access to the galleries and collections, are restricted &#10;until the official opening.">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="276.0" fitWidth="582.0" layoutX="741.0" layoutY="609.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@home 1.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="94.0" layoutY="745.0" text=" Opening Hours" textFill="#fd7e14">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label ellipsisString="" layoutX="120.0" layoutY="779.0" lineSpacing="12.0" prefHeight="142.0" prefWidth="267.0" text="Sunday to Thursday: 9 AM - 6 PM      &#10;Last ticket purchase: 4 PM&#10;Friday and Saturday: 9 AM - 10 PM&#10;Last ticket purchase: 7:30 PM">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="113.0" layoutY="950.0" text="Activities" textFill="#fd7e14">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Pagination id="tour" fx:id="tour" layoutX="80.0" layoutY="1022.0" minHeight="400.0" minWidth="400.0" prefHeight="400.0" prefWidth="400.0" />
+                              <Pagination id="kids" fx:id="kids" layoutX="485.0" layoutY="1022.0" minHeight="400.0" minWidth="400.0" prefHeight="400.0" prefWidth="400.0" />
+                              <Pagination id="gem" fx:id="gem" layoutX="890.0" layoutY="1022.0" minHeight="400.0" minWidth="400.0" prefHeight="400.0" prefWidth="400.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </content>
+    </Tab>
+    <Tab text="News">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+    </Tab>
+      <Tab text="About">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Contact">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Booking">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Chat Room">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Chatbot">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+  </tabs>
 </TabPane>

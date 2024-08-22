@@ -1,9 +1,8 @@
-.pagination .pagination-control {
-    -fx-opacity: 0;
-    -fx-disable: true;
+
+.pagination .control-box {
+   visibility: hidden;
 }
 
-.pagination .pagination-control .button {
-    -fx-opacity: 0;
-    -fx-disable: true;
+.hide-index-controls .control-box {
+   visibility: hidden;
 }
