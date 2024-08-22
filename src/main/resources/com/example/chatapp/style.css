@@ -215,6 +215,9 @@
 #adLabel{
     -fx-font-family: "Arial Rounded MT Bold";
 }
+#signInTestLabel{
+    -fx-font-family: "Arial Rounded MT Bold";
+}
 #instructionLabel{
     -fx-font-family: "Arial Rounded MT Bold";
 }

@@ -39,7 +39,7 @@ public class Login implements Initializable {
         private Label adLabel;
 
         @FXML
-        private TextField confirmPasswordField;
+        private PasswordField confirmPasswordField;
 
         @FXML
         private TextField email;
@@ -75,7 +75,7 @@ public class Login implements Initializable {
         private AnchorPane loginPage;
 
         @FXML
-        private TextField newPasswordField;
+        private PasswordField newPasswordField;
 
         @FXML
         private TextField password;
@@ -97,6 +97,9 @@ public class Login implements Initializable {
 
         @FXML
         private Button signInButton;
+
+        @FXML
+        private Label signInTestLabel;
 
         @FXML
         private Button signupButton;
@@ -321,10 +324,18 @@ public class Login implements Initializable {
                         ResultSet result = statement.executeQuery(verify);
 
                         while (result.next()) {
-                                if (result.getInt(1) == 1)
+                                if (result.getInt(1) == 1) {
                                         System.out.println("welcome");
-                                else
+                                        signInTestLabel.setStyle("-fx-text-fill: green");
+                                        signInTestLabel.setText("Logging On...");
+                                        applyFadeTransition(signInTestLabel,1000,0.0,1.0);
+                                }
+                                else{
                                         System.out.println("try again");
+                                        signInTestLabel.setStyle("-fx-text-fill: red");
+                                        signInTestLabel.setText("Try Again");
+                                        applyFadeTransition(signInTestLabel,1000,0.0,1.0);
+                                }
                         }
                 } catch (Exception E) {
                         System.out.println("error in login");
@@ -403,6 +414,10 @@ public class Login implements Initializable {
                                 int rowsAffected = statement.executeUpdate();
                                 if (rowsAffected > 0) {
                                         System.out.println("Password updated successfully.");
+                                        newPasswordField.setStyle("-fx-border-color: green");
+                                        confirmPasswordField.setStyle("-fx-border-color: green");
+                                        CloseChangePasswordButton(event);
+
                                 } else {
                                         System.out.println("No matching email found.");
                                 }

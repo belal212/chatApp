@@ -42,6 +42,7 @@
             </font>
          </Button>
          <Button fx:id="hideImage" layoutX="207.0" layoutY="342.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="35.0" stylesheets="@style.css" visible="false" />
+         <Label fx:id="signInTestLabel" alignment="CENTER" layoutX="13.0" layoutY="413.0" prefHeight="22.0" prefWidth="240.0" stylesheets="@style.css" />
       </AnchorPane>
       <AnchorPane fx:id="loginPage" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: white;" stylesheets="@style.css">
          <ImageView fx:id="image1" fitHeight="353.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
@@ -55,31 +56,37 @@
          </Button>
       </AnchorPane>
    </AnchorPane>
-   <AnchorPane fx:id="forgetPasswordPane" layoutX="82.0" layoutY="39.0" prefHeight="194.0" prefWidth="410.0" stylesheets="@style.css" visible="false">
-      <children>
-         <Button fx:id="CLOSEButton" alignment="TOP_LEFT" layoutX="383.0" layoutY="5.0" mnemonicParsing="false" text="X" />
-         <TextField fx:id="emailForgetField" layoutX="12.0" layoutY="61.0" prefHeight="40.0" prefWidth="258.0" promptText="Enter Email" />
-         <TextField fx:id="passwordForgetField" layoutX="12.0" layoutY="115.0" prefHeight="40.0" prefWidth="257.0" promptText="Enter the verification code" />
-         <Label layoutX="18.0" layoutY="15.0" text="Forget Password">
-            <font>
-               <Font name="Arial Rounded MT Bold" size="25.0" />
-            </font>
-         </Label>
-         <Button fx:id="sendButton" layoutX="305.0" layoutY="66.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Send" />
-         <Button fx:id="verifyButton" layoutX="303.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" text="verify" />
-      </children>
+   <AnchorPane fx:id="forgetPasswordPane" layoutX="82.0" layoutY="39.0" prefHeight="194.0" prefWidth="410.0"
+               stylesheets="@style.css" visible="false">
+      <Button fx:id="CLOSEButton" alignment="TOP_LEFT" layoutX="383.0" layoutY="5.0" mnemonicParsing="false" text="X"/>
+      <TextField fx:id="emailForgetField" layoutX="12.0" layoutY="61.0" prefHeight="40.0" prefWidth="258.0"
+                 promptText="Enter Email"/>
+      <TextField fx:id="passwordForgetField" layoutX="12.0" layoutY="115.0" prefHeight="40.0" prefWidth="257.0"
+                 promptText="Enter the verification code"/>
+      <Label layoutX="18.0" layoutY="15.0" text="Forget Password">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="25.0"/>
+         </font>
+      </Label>
+      <Button fx:id="sendButton" layoutX="305.0" layoutY="66.0" mnemonicParsing="false" prefHeight="30.0"
+              prefWidth="50.0" text="Send"/>
+      <Button fx:id="verifyButton" layoutX="303.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0"
+              text="verify"/>
    </AnchorPane>
-   <AnchorPane fx:id="ChangePasswordPane" layoutX="82.0" layoutY="39.0" prefHeight="194.0" prefWidth="410.0" stylesheets="@style.css" visible="false">
-      <children>
-         <Button fx:id="CLOSEChangeButton" alignment="TOP_LEFT" layoutX="383.0" layoutY="5.0" mnemonicParsing="false" text="X" />
-         <TextField fx:id="newPasswordField" layoutX="76.0" layoutY="57.0" prefHeight="40.0" prefWidth="258.0" promptText="New Password" />
-         <TextField fx:id="confirmPasswordField" layoutX="76.0" layoutY="115.0" prefHeight="40.0" prefWidth="257.0" promptText="Confirm Password" />
-         <Label layoutX="18.0" layoutY="15.0" text="Change Password">
-            <font>
-               <Font name="Arial Rounded MT Bold" size="25.0" />
-            </font>
-         </Label>
-         <Button fx:id="ConfirmButton" layoutX="183.0" layoutY="163.0" mnemonicParsing="false" prefHeight="30.0" text="verify" />
-      </children>
+   <AnchorPane fx:id="ChangePasswordPane" layoutX="82.0" layoutY="39.0" prefHeight="194.0" prefWidth="410.0"
+               stylesheets="@style.css" visible="false">
+      <Button fx:id="CLOSEChangeButton" alignment="TOP_LEFT" layoutX="383.0" layoutY="5.0" mnemonicParsing="false"
+              text="X"/>
+      <Label layoutX="18.0" layoutY="15.0" text="Change Password">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="25.0"/>
+         </font>
+      </Label>
+      <Button fx:id="ConfirmButton" layoutX="183.0" layoutY="163.0" mnemonicParsing="false" prefHeight="30.0"
+              text="verify"/>
+      <PasswordField fx:id="newPasswordField" layoutX="75.0" layoutY="61.0" prefHeight="40.0" prefWidth="258.0"
+                     promptText="New Password" stylesheets="@style.css"/>
+      <PasswordField fx:id="confirmPasswordField" layoutX="75.0" layoutY="115.0" prefHeight="40.0" prefWidth="258.0"
+                     promptText="Confirm Password" stylesheets="@style.css"/>
    </AnchorPane>
 </AnchorPane>
