@@ -5,12 +5,17 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+import java.nio.file.Path;
+
 public class paginationPanelControl {
+    public Tab homeTab;
     @FXML
     private Pagination cover;
     @FXML
@@ -27,7 +32,10 @@ public class paginationPanelControl {
 
     @FXML
     public void initialize() {
-        cover.getStyleClass().add("hide-index-controls");
+        cover.getStyleClass().add("no-controls");
+        cover.setStyle(".no-controls .control-box {-fx-opacity: 0;}");
+
+
         tour.getStyleClass().add("hide-index-controls");
         kids.getStyleClass().add("hide-index-controls");
         gem.getStyleClass().add("hide-index-controls");
