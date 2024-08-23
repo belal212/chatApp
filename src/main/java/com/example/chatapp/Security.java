@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-public class EmailSender {
+public class Security {
 
     public static void sendVerificationEmail(String toEmail, String verificationCode) {
         String[] credentials = readCredentialsFromFile();
@@ -42,16 +42,17 @@ public class EmailSender {
             System.out.println("Verification email sent successfully to " + toEmail);
 
         } catch (MessagingException e) {
-            e.printStackTrace();
+            System.out.println("error in sending Verification Code");
         }
     }
     private static String[] readCredentialsFromFile() {
-        String[] credentials = new String[2];
+        String[] credentials = new String[3];
         try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Lenovo\\IdeaProjects\\chatApp\\email"))) {
             credentials[0] = br.readLine();
             credentials[1] = br.readLine();
+            credentials[2] = br.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("error in reading private file");
         }
         return credentials;
     }
@@ -59,5 +60,22 @@ public class EmailSender {
         int code = (int) (Math.random() * 900000) + 100000; // Generate a 6-digit code
         return String.valueOf(code);
     }
+
+    public  String encrypt(String input) {
+        String shift = readCredentialsFromFile()[2];
+        StringBuilder encrypted = new StringBuilder();
+        for (char c : input.toCharArray()) {
+            encrypted.append((char) (c * Integer.parseInt(shift))-95);
+        }
+        return encrypted.toString();
+    }
+//    public  String decrypt(String input) {
+//        String shift = readCredentialsFromFile()[2];
+//        StringBuilder decrypted = new StringBuilder();
+//        for (char c : input.toCharArray()) {
+//            decrypted.append((char) (c / Integer.parseInt(shift))+95);
+//        }
+//        return decrypted.toString();
+//    }
 
 }

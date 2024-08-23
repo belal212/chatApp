@@ -45,8 +45,14 @@ public class Signup implements Initializable {
         @FXML
         private ComboBox<File> comboBox = new ComboBox<>();
 
+        private String selectedGender = "";
+
         @FXML
         private TextField cpassword;
+
+        @FXML
+        private PasswordField hiddencpassword;
+
 
         @FXML
         private Label cpasswordLabel;
@@ -63,9 +69,6 @@ public class Signup implements Initializable {
         private ToggleGroup toggleGroup = new ToggleGroup();
 
         @FXML
-        private ImageView image1;
-
-        @FXML
         private Label instructionLabel;
 
         @FXML
@@ -76,6 +79,10 @@ public class Signup implements Initializable {
 
         @FXML
         private TextField password1;
+
+        @FXML
+        private PasswordField hiddenpassword1;
+
 
         @FXML
         private Label passwordLabel;
@@ -93,9 +100,6 @@ public class Signup implements Initializable {
         private Button signupButton;
 
         @FXML
-        private StackPane stackPane;
-
-        @FXML
         private AnchorPane subRoot;
 
         @FXML
@@ -106,6 +110,13 @@ public class Signup implements Initializable {
 
         @FXML
         private Label welcomeLabel;
+
+        @FXML
+        private Button eyeImage1;
+
+        @FXML
+        private Button hideImage1;
+
         @Override
         public void initialize(URL location, ResourceBundle resources) {
                 male.setToggleGroup(toggleGroup);
@@ -202,62 +213,208 @@ public class Signup implements Initializable {
                         }
                 });
 
-                applyFadeTransition(subRoot, 3500, 0.0, 1.0);
-                slideAnchorPaneToLeft(loginPage,2000,-300,0);
+                toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue != null) {
+                                selectedGender = ((RadioButton) newValue).getText();
+                        }
+                });
+
+
+                openingFade();
+
+                eyeImage1.setOnAction(this::showPassword);
+                hideImage1.setOnAction(this::hidePassword);
                 signupButton.setOnAction(this::SignUpButtonEvent);
                 signInButton.setOnAction(this::SignInButtonAction);
 
 
         }
 
-        private void SignUpButtonEvent(ActionEvent e) {
-                emptyRed();
-                //SignupDB();
+        private void showPassword(ActionEvent e) {
+                hiddenpassword1.setVisible(false);
+                password1.setVisible(true);
+                password1.setText(hiddenpassword1.getText());
+                hiddencpassword.setVisible(false);
+                cpassword.setVisible(true);
+                cpassword.setText(hiddencpassword.getText());
+                eyeImage1.setVisible(false);
+                hideImage1.setVisible(true);
+
         }
 
-        private void emptyRed() {
-                boolean passwordErrors = false;
-                boolean emailErrors = false;
+        private void hidePassword(ActionEvent e) {
+                hiddenpassword1.setVisible(true);
+                password1.setVisible(false);
+                hiddenpassword1.setText(password1.getText());
+                hiddencpassword.setVisible(true);
+                cpassword.setVisible(false);
+                hiddencpassword.setText(cpassword.getText());
+                eyeImage1.setVisible(true);
+                hideImage1.setVisible(false);
+
+        }
+
+        private void slideAnchorPaneTo(javafx.scene.Node node, int durationInMillis, double from, double to) {
+                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(durationInMillis), node);
+                translateTransition.setFromX(from);
+                translateTransition.setToX(to);
+                translateTransition.play();
+        }
+
+
+        private void openingFade() {
+                //Sign in Pane component
+                applyFadeTransition(subRoot, 1500, 0.0, 1.0);
+                slideAnchorPaneTo(pcIcon,1500,-350,0);
+                slideAnchorPaneTo(welcomeLabel,1500,-400,0);
+                slideAnchorPaneTo(instructionLabel,1500,-400,0);
+                slideAnchorPaneTo(email1,1500,-400,0);
+                slideAnchorPaneTo(emailLabel,1500,-400,0);
+                slideAnchorPaneTo(password1,1500,-650,0);
+                slideAnchorPaneTo(passwordLabel,1500,-650,0);
+                slideAnchorPaneTo(hiddenpassword1,1500,-650,0);
+                slideAnchorPaneTo(eyeImage1,1500,-650,0);
+                slideAnchorPaneTo(user1,1500,-450,0);
+                slideAnchorPaneTo(userLabel,1500,-450,0);
+                slideAnchorPaneTo(cpassword,1500,-550,0);
+                slideAnchorPaneTo(signupButton,1500,-600,0);
+                slideAnchorPaneTo(cpasswordLabel,1500,-550,0);
+                slideAnchorPaneTo(hiddencpassword,1500,-550,0);
+
+                slideAnchorPaneTo(comboBox,1500,-450,0);
+                slideAnchorPaneTo(male,1500,-500,0);
+                slideAnchorPaneTo(female,1500,-500,0);
+                slideAnchorPaneTo(Gender,1500,-500,0);
+
+                signInButton.setOpacity(0);
+                adLabel.setOpacity(0);
+                slideAnchorPaneTo(loginPage, 1000, -301, 0);
+                PauseTransition pause = new PauseTransition(Duration.millis(500));
+                pause.setOnFinished(event ->{
+                        applyFadeTransition(signInButton, 1000, 0.0, 1.0);
+                        applyFadeTransition(adLabel, 1000, 0.0, 1.0);
+                        slideAnchorPaneTo(signInButton,1000,300,0);
+                        slideAnchorPaneTo(adLabel,1000,500,0); }
+                );
+                pause.play();
+
+
+
+
+        }
+
+        private void closingFade() {
+                //Sign in Pane component
+                applyFadeTransition(subRoot, 900, 1.0, 0.0);
+
+                slideAnchorPaneTo(pcIcon,1500,0,-350);
+                slideAnchorPaneTo(welcomeLabel,1500,0,-400);
+                slideAnchorPaneTo(instructionLabel,1500,0,-400);
+
+                slideAnchorPaneTo(email1,1500,0,-650);
+                slideAnchorPaneTo(emailLabel,1500,0,-650);
+
+                slideAnchorPaneTo(password1,1500,0,-450);
+                slideAnchorPaneTo(passwordLabel,1500,0,-450);
+                slideAnchorPaneTo(hiddenpassword1,1500,0,-450);
+                slideAnchorPaneTo(eyeImage1,1500,0,-450);
+
+                slideAnchorPaneTo(user1,1500,0,-550);
+                slideAnchorPaneTo(userLabel,1500,0,-550);
+                slideAnchorPaneTo(comboBox,1500,0,-550);
+
+                slideAnchorPaneTo(cpasswordLabel,1500,0,-600);
+                slideAnchorPaneTo(cpassword,1500,0,-600);
+                slideAnchorPaneTo(hiddencpassword,1500,0,-600);
+
+                slideAnchorPaneTo(signupButton,1500,0,-600);
+
+                slideAnchorPaneTo(signInButton,1500,0,600);
+                slideAnchorPaneTo(adLabel,1500,0,600);
+
+                slideAnchorPaneTo(male,1500,0,-500);
+                slideAnchorPaneTo(female,1500,0,-500);
+                slideAnchorPaneTo(Gender,1500,0,-500);
+
+
+        }
+
+        private void SignUpButtonEvent(ActionEvent e) {
+                int Errors = 0;
+                Errors=emptyRed(Errors);
+                SignupDB(Errors);
+        }
+
+        private int emptyRed(int Errors) {
 
                 if (user1.getText().isEmpty()) {
                         user1.setStyle("-fx-border-color: red;");
-                        emailErrors = true;
+                        Errors ++;
+                }
+
+                if (selectedGender.isEmpty()) {
+                        male.setStyle("-fx-border-color: red;");
+                        female.setStyle("-fx-border-color: red;");
+                        Errors ++;
                 }
 
                 if (Nationality1.isEmpty()) {
                         comboBox.setStyle("-fx-border-color: red;");
-                        emailErrors = true;
+                        Errors ++;
                 }
 
                 if (email1.getText().isEmpty()) {
                         email1.setStyle("-fx-border-color: red;");
-                        emailErrors = true;
+                        Errors ++;
                 }
 
                 if (!password1.getText().equals(cpassword.getText())) {
                         password1.setStyle("-fx-border-color: red;");
                         cpassword.setStyle("-fx-border-color: red;");
-                        passwordErrors = true;
-                }
-                if (password1.getText().isEmpty()) {
-                        password1.setStyle("-fx-border-color: red;");
-                        passwordErrors = true;
-                }
-                if (cpassword.getText().isEmpty()) {
-                        cpassword.setStyle("-fx-border-color: red;");
-                        passwordErrors = true;
+                        Errors ++;
                 }
 
-                if (passwordErrors || emailErrors) {
+                if (!hiddenpassword1.getText().equals(hiddencpassword.getText())) {
+                        hiddencpassword.setStyle("-fx-border-color: red;");
+                        hiddenpassword1.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                }
+                if (cpassword.getText().isEmpty() && hiddencpassword.getText().isEmpty()) {
+                        cpassword.setStyle("-fx-border-color: red;");
+                        hiddencpassword.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                } else if (cpassword.getText().isEmpty()) {
+                        cpassword.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                } else if (hiddencpassword.getText().isEmpty()) {
+                        hiddencpassword.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                }
+                if (password1.getText().isEmpty() && hiddenpassword1.getText().isEmpty()) {
+                        password1.setStyle("-fx-border-color: red;");
+                        hiddenpassword1.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                } else if (password1.getText().isEmpty()) {
+                        password1.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                } else if (hiddenpassword1.getText().isEmpty()) {
+                        hiddenpassword1.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                }
+
+                if (Errors != 0) {
                         Timeline timeline = new Timeline(new KeyFrame(
                                 Duration.seconds(2),
                                 ae -> resetStyles()
                         ));
                         timeline.play();
                 }
+                return Errors;
         }
 
         private void resetStyles() {
+                hiddenpassword1.setStyle("");
+                hiddencpassword.setStyle("");
                 comboBox.setStyle("");
                 user1.setStyle("");
                 email1.setStyle("");
@@ -265,31 +422,52 @@ public class Signup implements Initializable {
                 password1.setStyle("");
                 cpassword.setStyle("");
                 passwordLabel.setStyle("");
+                male.setStyle("");
+                female.setStyle("");
         }
 
-        private void SignupDB() {
+        private void SignupDB(int Errors) {
+                if(Errors == 0){
                 DataBaseConnection connection = new DataBaseConnection();
                 Connection connectDB = connection.getConnection();
+                Security security = new Security();
 
-                String checkQuery = "SELECT COUNT(*) FROM user WHERE username = ? OR email = ?";
-                String insertQuery = "INSERT INTO user (username, email, password, nationality) VALUES (?, ?, ?, ?)";
+                String checkQueryU = "SELECT COUNT(*) FROM users WHERE username = ?";
+                String checkQueryE = "SELECT COUNT(*) FROM users WHERE email = ?";
+                String insertQuery ="INSERT INTO users (username, email, passworder, nationality, gender) VALUES (?, ?, ?, ?, ?)";
 
                 try {
                         // Step 1: Check if the username or email already exists
-                        PreparedStatement checkStatement = connectDB.prepareStatement(checkQuery);
-                        checkStatement.setString(1, this.user1.getText());
-                        checkStatement.setString(2, this.email1.getText());
-                        ResultSet checkResult = checkStatement.executeQuery();
+                        PreparedStatement checkStatementU = connectDB.prepareStatement(checkQueryU);
+                        checkStatementU.setString(1, this.user1.getText());
+                        ResultSet checkResultU = checkStatementU.executeQuery();
 
-                        if (checkResult.next() && checkResult.getInt(1) > 0) {
-                                System.out.println("Username or Email already exists. Please choose a different one.");
+                        PreparedStatement checkStatementE = connectDB.prepareStatement(checkQueryE);
+                        checkStatementE.setString(1, this.email1.getText());
+                        ResultSet checkResultE = checkStatementE.executeQuery();
+
+                        if ((checkResultE.next() && checkResultE.getInt(1) > 0) || (checkResultU.next() && checkResultU.getInt(1) > 0)) {
+                                if (checkResultE.next() && checkResultE.getInt(1) > 0) {
+                                        System.out.println("Email already exists. Please choose a different one.");
+                                        email1.setStyle("-fx-border-color: red;");
+                                }
+                                if (checkResultU.next() && checkResultU.getInt(1) > 0) {
+                                        System.out.println("Username already exists. Please choose a different one.");
+                                        user1.setStyle("-fx-border-color: red;");
+                                }
+                                Timeline timeline = new Timeline(new KeyFrame(
+                                        Duration.seconds(2),
+                                        ae -> resetStyles()
+                                ));
+                                timeline.play();
                         } else {
                                 // Step 2: If they are unique, insert the new user
                                 PreparedStatement insertStatement = connectDB.prepareStatement(insertQuery);
                                 insertStatement.setString(1, this.user1.getText());
                                 insertStatement.setString(2, this.email1.getText());
-                                insertStatement.setString(3, this.password1.getText());
+                                insertStatement.setString(3, security.encrypt(this.hiddenpassword1.getText()));
                                 insertStatement.setString(4, this.Nationality1);
+                                insertStatement.setString(5, this.selectedGender);
 
                                 int result = insertStatement.executeUpdate();
                                 if (result > 0) {
@@ -302,6 +480,7 @@ public class Signup implements Initializable {
                         e.printStackTrace();
                 }
         }
+        }
 
         private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
                 FadeTransition fadeTransition = new FadeTransition(Duration.millis(durationInMillis), node);
@@ -309,17 +488,11 @@ public class Signup implements Initializable {
                 fadeTransition.setToValue(toValue);
                 fadeTransition.play();
         }
-        private void slideAnchorPaneToLeft(AnchorPane anchorPane, int durationInMillis, double from,double to) {
-                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(durationInMillis), anchorPane);
-                translateTransition.setFromX(from);
-                translateTransition.setToX(to);
-                translateTransition.play();
-        }
+
         private void SignInButtonAction(ActionEvent e) {
                 PauseTransition pause = new PauseTransition(Duration.millis(1000));
 
-                applyFadeTransition(subRoot, 1000, 1.0, 0.0);
-
+                closingFade();
                 pause.setOnFinished(event -> {
                         try {
                                 // Load the login page FXML
