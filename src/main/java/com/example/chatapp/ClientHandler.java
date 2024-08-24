@@ -68,7 +68,7 @@ public class ClientHandler extends Thread {
             if (conn != null) {
                 Security security = new Security();
                 String encryptedPassword = security.encrypt(password);
-                String sql = "SELECT count(1) FROM users WHERE email = ? AND password = ?";
+                String sql = "SELECT count(1) FROM users WHERE username = ? AND password = ?";
                 PreparedStatement statement = conn.prepareStatement(sql);
                 statement.setString(1, email);
                 statement.setString(2, encryptedPassword);

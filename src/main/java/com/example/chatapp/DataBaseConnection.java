@@ -19,7 +19,7 @@ public class DataBaseConnection {
             System.out.println("Connected to the database successfully!");
         } catch (Exception e) {
             System.out.println("Cannot connect to database.");
-            e.printStackTrace();
+
         }
         return connection;
     }
@@ -36,7 +36,6 @@ public class DataBaseConnection {
             }
         } catch (IOException ex) {
             System.out.println("Server exception: " + ex.getMessage());
-            ex.printStackTrace();
         }
     }
 }

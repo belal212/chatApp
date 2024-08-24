@@ -49,7 +49,7 @@
     -fx-font-size: 11;
     -fx-text-fill: #e96a00;
 }
-#email {
+#userNameTextfield {
     -fx-padding: 8px; /* Adjust padding for better text alignment */
     -fx-border-color: #000000; /* Black border */
     -fx-border-width: 2; /* Border thickness */
@@ -60,11 +60,11 @@
     -fx-font-size: 13px; /* Larger text size for better visibility */
 }
 
-#email:focused {
+#userNameTextfield:focused {
     -fx-border-color: #e96a00; /* Change border color when focused */
 }
 
-#email:hover {
+#userNameTextfield:hover {
     -fx-border-color: #fd7e14; /* Change border color when focused */
 }
 
@@ -192,7 +192,7 @@
 #password1:hover {
     -fx-border-color: #fd7e14; /* Change border color when focused */
 }
-#emailLabel{
+#userNameLabel{
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-background-color:  #F5F4EF;
 }

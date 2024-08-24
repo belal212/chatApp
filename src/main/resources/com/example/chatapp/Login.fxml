@@ -21,8 +21,8 @@
             <Image url="@logo.png" />
          </ImageView>
          <Label fx:id="instructionLabel" alignment="CENTER" layoutX="12.0" layoutY="197.0" prefHeight="38.0" prefWidth="200.0" style="-fx-font-family: Arial Rounded MT Bold;" stylesheets="@style.css" text="Please enter login details below" />
-         <TextField fx:id="email" layoutX="13.0" layoutY="267.0" prefHeight="40.0" prefWidth="240.0" promptText="Enter the email" stylesheets="@style.css" />
-         <Label fx:id="emailLabel" alignment="BOTTOM_LEFT" layoutX="28.0" layoutY="236.0" prefHeight="36.0" prefWidth="35.0" stylesheets="@style.css" text=" Email">
+         <TextField fx:id="userNameTextfield" layoutX="13.0" layoutY="267.0" prefHeight="40.0" prefWidth="240.0" promptText="Enter your user name" stylesheets="@style.css" />
+         <Label fx:id="userNameLabel" alignment="BOTTOM_LEFT" layoutX="28.0" layoutY="236.0" prefHeight="36.0" prefWidth="60.0" stylesheets="@style.css" text=" user name">
             <font>
                <Font name="Segoe Print Bold" size="11.0" />
             </font>
