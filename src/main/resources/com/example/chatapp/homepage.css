@@ -1,0 +1,134 @@
+
+
+.pagination .pagination-control {
+   -fx-opacity: 0;
+   -fx-disable: true;
+}
+
+.pagination .pagination-control .button {
+   -fx-opacity: 0;
+   -fx-disable: true;
+
+}
+
+.tour-pag{
+   -fx-clip: true;
+   -fx-background-radius: 25px;
+   -fx-border-radius: 25px;
+}
+
+.tab{
+   -fx-text-base-color: white;
+   -fx-background-color: #fd7e14;
+}
+
+.tab:hover{
+   -fx-text-base-color:#fd7e14;
+   -fx-background-color: white;
+}
+
+.pag-pane{
+   -fx-background-radius: 25;
+}
+.pag-pane:hover{
+   -fx-background-color: rgba(255, 183, 54, 0.68);
+}
+.pag-pane:hover .pag-pane-text{
+   -fx-tick-label-fill: white;
+   -fx-text-fill: white;
+   -fx-font-weight: 800;
+   -fx-font-scale: 1.5;
+}
+
+.image-view {
+   -fx-background-radius: 20px; /* Set the background radius */
+   -fx-border-radius: 20px; /* Set the border radius */
+   -fx-background-color: transparent; /* Ensure the background is transparent */
+   -fx-border-color: transparent; /* Ensure no visible border */
+   -fx-clip: true; /* Clip the image to the rounded border */
+}
+
+.image-view > image {
+   -fx-border-radius: 20px; /* Ensure image follows the rounded border */
+}
+
+.contact-chatbot-banner{
+   -fx-background-color:#fd7e14 ;
+}
+
+.banner-title{
+   -fx-text-fill: white;
+-fx-font-family:"Arial Rounded MT Bold";
+-fx-font-size: 30;
+   -fx-font-weight: 900;
+}
+.contact-banner-label{
+   -fx-text-fill: #ffd8b0;
+   -fx-font-size: 20;
+}
+
+.banner-button{
+   -fx-background-radius: 15px;
+   -fx-border-width: 0;
+   -fx-font-weight: 800;
+}
+
+.contact-button{
+   -fx-font-size: 20;
+ -fx-pref-height: 40px;
+   -fx-background-color: white;
+   -fx-text-fill: #fd7e14;
+   -fx-padding:0 20 0 20;
+}
+
+.contact-button:hover{
+   -fx-font-size: 20;
+   -fx-border-width: 2;
+   -fx-border-color: white;
+   -fx-background-color: #fd7e14;;
+   -fx-text-fill: white;
+   -fx-border-radius: 15px;
+}
+
+.events-banner-title{
+   -fx-text-fill: #fd7e14;
+}
+
+.events-button{
+   -fx-font-size: 20;
+   -fx-pref-width: 120;
+   -fx-background-color: #fd7e14;
+   -fx-text-fill: white;
+}
+.events-button:hover{
+   -fx-border-width: 2;
+   -fx-border-color: #fd7e14;
+   -fx-background-color: white;
+   -fx-text-fill: #fd7e14;
+   -fx-border-radius: 15px;
+   -fx-font-weight: 900;
+}
+
+.booking-banner:hover{
+   -fx-scale-x: 1.1;
+   -fx-scale-y: 1.1;
+   -fx-background-color: #fd7e14;
+}
+
+.banner{
+   -fx-background-color: #fd7e14;
+}
+
+.news-label{
+   -fx-text-fill: white;
+   -fx-font-family: "Arial Rounded MT Bold";
+   -fx-background-color: #fd7e14;
+   -fx-background-radius: 10px;
+   -fx-padding: 10px;
+}
+
+.news-label:hover{
+   -fx-background-color: white;
+   -fx-text-fill: #fd7e14;
+}
+
