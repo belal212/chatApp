@@ -17,6 +17,8 @@ import javafx.util.Duration;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -29,10 +31,16 @@ public class Signup implements Initializable {
 
 
         @FXML
+        private Label usernameused;
+
+        @FXML
+        private Label emailused;
+
+        @FXML
         private Label Gender;
 
         @FXML
-        private Label Nationality;
+        private Label Signuptest;
 
         private String Nationality1="";
 
@@ -119,6 +127,7 @@ public class Signup implements Initializable {
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
+                // set
                 male.setToggleGroup(toggleGroup);
                 female.setToggleGroup(toggleGroup);
 
@@ -383,21 +392,9 @@ public class Signup implements Initializable {
                         cpassword.setStyle("-fx-border-color: red;");
                         hiddencpassword.setStyle("-fx-border-color: red;");
                         Errors ++;
-                } else if (cpassword.getText().isEmpty()) {
-                        cpassword.setStyle("-fx-border-color: red;");
-                        Errors ++;
-                } else if (hiddencpassword.getText().isEmpty()) {
-                        hiddencpassword.setStyle("-fx-border-color: red;");
-                        Errors ++;
                 }
                 if (password1.getText().isEmpty() && hiddenpassword1.getText().isEmpty()) {
                         password1.setStyle("-fx-border-color: red;");
-                        hiddenpassword1.setStyle("-fx-border-color: red;");
-                        Errors ++;
-                } else if (password1.getText().isEmpty()) {
-                        password1.setStyle("-fx-border-color: red;");
-                        Errors ++;
-                } else if (hiddenpassword1.getText().isEmpty()) {
                         hiddenpassword1.setStyle("-fx-border-color: red;");
                         Errors ++;
                 }
@@ -427,60 +424,45 @@ public class Signup implements Initializable {
         }
 
         private void SignupDB(int Errors) {
-                if(Errors == 0){
-                DataBaseConnection connection = new DataBaseConnection();
-                Connection connectDB = connection.getConnection();
-                Security security = new Security();
+                        if (Errors == 0) {
+                                try (Socket socket = new Socket("localhost", 12345);
+                                     ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+                                     ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
 
-                String checkQueryU = "SELECT COUNT(*) FROM users WHERE username = ?";
-                String checkQueryE = "SELECT COUNT(*) FROM users WHERE email = ?";
-                String insertQuery ="INSERT INTO users (username, email, passworder, nationality, gender) VALUES (?, ?, ?, ?, ?)";
+                                        // Send the request type to the server
+                                        output.writeObject("SIGNUP");
+                                        output.flush();
 
-                try {
-                        // Step 1: Check if the username or email already exists
-                        PreparedStatement checkStatementU = connectDB.prepareStatement(checkQueryU);
-                        checkStatementU.setString(1, this.user1.getText());
-                        ResultSet checkResultU = checkStatementU.executeQuery();
+                                        String p=this.hiddenpassword1.getText();
+                                        // Send the signup data to the server
+                                        output.writeObject(this.user1.getText());
+                                        output.writeObject(this.email1.getText());
+                                        output.writeObject(p);
+                                        output.writeObject(this.Nationality1);
+                                        output.writeObject(this.selectedGender);
+                                        output.flush();
 
-                        PreparedStatement checkStatementE = connectDB.prepareStatement(checkQueryE);
-                        checkStatementE.setString(1, this.email1.getText());
-                        ResultSet checkResultE = checkStatementE.executeQuery();
+                                        // Receive the signup result from the server
+                                        usernameused.setVisible(input.readBoolean());
+                                        emailused.setVisible(input.readBoolean());
+                                        boolean signupSuccess = input.readBoolean();
 
-                        if ((checkResultE.next() && checkResultE.getInt(1) > 0) || (checkResultU.next() && checkResultU.getInt(1) > 0)) {
-                                if (checkResultE.next() && checkResultE.getInt(1) > 0) {
-                                        System.out.println("Email already exists. Please choose a different one.");
-                                        email1.setStyle("-fx-border-color: red;");
-                                }
-                                if (checkResultU.next() && checkResultU.getInt(1) > 0) {
-                                        System.out.println("Username already exists. Please choose a different one.");
-                                        user1.setStyle("-fx-border-color: red;");
-                                }
-                                Timeline timeline = new Timeline(new KeyFrame(
-                                        Duration.seconds(2),
-                                        ae -> resetStyles()
-                                ));
-                                timeline.play();
-                        } else {
-                                // Step 2: If they are unique, insert the new user
-                                PreparedStatement insertStatement = connectDB.prepareStatement(insertQuery);
-                                insertStatement.setString(1, this.user1.getText());
-                                insertStatement.setString(2, this.email1.getText());
-                                insertStatement.setString(3, security.encrypt(this.hiddenpassword1.getText()));
-                                insertStatement.setString(4, this.Nationality1);
-                                insertStatement.setString(5, this.selectedGender);
-
-                                int result = insertStatement.executeUpdate();
-                                if (result > 0) {
-                                        System.out.println("Welcome");
-                                } else {
-                                        System.out.println("Signup failed. Please try again.");
+                                        // Handle the result in the client application
+                                        if (signupSuccess) {
+                                                Signuptest.setText("Signed up!");
+                                                Signuptest.setStyle("-fx-text-fill: green;");
+                                                System.out.println("Welcome");
+                                        } else {
+                                                System.out.println("Signup failed. Please try again.");
+                                                Signuptest.setText("Try again");
+                                                Signuptest.setStyle("-fx-text-fill: red;");
+                                        }
+                                } catch (IOException ex) {
+                                        System.out.println("Client exception: " + ex.getMessage());
                                 }
                         }
-                } catch (Exception e) {
-                        e.printStackTrace();
-                }
         }
-        }
+
 
         private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
                 FadeTransition fadeTransition = new FadeTransition(Duration.millis(durationInMillis), node);
