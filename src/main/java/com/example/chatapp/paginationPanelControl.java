@@ -95,9 +95,11 @@ public class paginationPanelControl {
     @FXML
     public void initialize() {
         try{
-            AnchorPane about = FXMLLoader.load(HelloApplication.class.getResource("EGMF code"));
+            ScrollPane about = FXMLLoader.load(HelloApplication.class.getResource("EGMF code.fxml"));
             aboutTab.setContent(about);
 
+            AnchorPane contact = FXMLLoader.load(HelloApplication.class.getResource("contact.fxml"));
+            contactTab.setContent(contact);
         }catch (Exception E){
             E.printStackTrace();
         }
