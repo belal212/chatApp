@@ -19,6 +19,9 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+import com.example.chatapp.chatroom.CharRoomController;
+import com.example.chatapp.chatroom.blueprints.User;
+
 public class Login implements Initializable {
         @FXML
         private Button CLOSEButton;
@@ -329,6 +332,15 @@ public class Login implements Initializable {
                                         signInTestLabel.setStyle("-fx-text-fill: green");
                                         signInTestLabel.setText("Logging On...");
                                         applyFadeTransition(signInTestLabel,1000,0.0,1.0);
+                                        User temp = new User();
+                                        temp.setId(result.getInt("userID"));
+                                        temp.setUsername(result.getString("username"));
+                                        temp.setEmail(result.getString("email"));
+                                        temp.setPassword(result.getString("password"));
+                                        temp.setNationality(result.getString("nationality"));
+                                        temp.setGender(result.getString("gender"));
+                                        temp.setState(result.getBoolean("state"));
+                                        new CharRoomController(temp);
                                 }
                                 else{
                                         System.out.println("try again");
