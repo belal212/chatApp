@@ -5,8 +5,6 @@ module com.example.chatapp {
     requires org.json;
     requires java.sql;
     requires java.desktop;
-
-
     opens com.example.chatapp to javafx.fxml;
     exports com.example.chatapp;
 

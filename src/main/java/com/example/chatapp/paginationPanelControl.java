@@ -150,7 +150,6 @@ public class paginationPanelControl {
                 clip.setArcWidth(30);  // Set the arc width for rounded corners
                 clip.setArcHeight(30); // Set the arc height for rounded corners
                 image.setClip(clip);
-
                 image.setFitWidth(220);
                 image.setFitHeight(220);
             }
