@@ -51,6 +51,10 @@ public class Signup implements Initializable {
         private TextField cpassword;
 
         @FXML
+        private PasswordField hiddencpassword;
+
+
+        @FXML
         private Label cpasswordLabel;
 
         @FXML
@@ -65,9 +69,6 @@ public class Signup implements Initializable {
         private ToggleGroup toggleGroup = new ToggleGroup();
 
         @FXML
-        private ImageView image1;
-
-        @FXML
         private Label instructionLabel;
 
         @FXML
@@ -78,6 +79,10 @@ public class Signup implements Initializable {
 
         @FXML
         private TextField password1;
+
+        @FXML
+        private PasswordField hiddenpassword1;
+
 
         @FXML
         private Label passwordLabel;
@@ -105,6 +110,13 @@ public class Signup implements Initializable {
 
         @FXML
         private Label welcomeLabel;
+
+        @FXML
+        private Button eyeImage1;
+
+        @FXML
+        private Button hideImage1;
+
         @Override
         public void initialize(URL location, ResourceBundle resources) {
                 male.setToggleGroup(toggleGroup);
@@ -210,9 +222,35 @@ public class Signup implements Initializable {
 
                 openingFade();
 
+                eyeImage1.setOnAction(this::showPassword);
+                hideImage1.setOnAction(this::hidePassword);
                 signupButton.setOnAction(this::SignUpButtonEvent);
                 signInButton.setOnAction(this::SignInButtonAction);
 
+
+        }
+
+        private void showPassword(ActionEvent e) {
+                hiddenpassword1.setVisible(false);
+                password1.setVisible(true);
+                password1.setText(hiddenpassword1.getText());
+                hiddencpassword.setVisible(false);
+                cpassword.setVisible(true);
+                cpassword.setText(hiddencpassword.getText());
+                eyeImage1.setVisible(false);
+                hideImage1.setVisible(true);
+
+        }
+
+        private void hidePassword(ActionEvent e) {
+                hiddenpassword1.setVisible(true);
+                password1.setVisible(false);
+                hiddenpassword1.setText(password1.getText());
+                hiddencpassword.setVisible(true);
+                cpassword.setVisible(false);
+                hiddencpassword.setText(cpassword.getText());
+                eyeImage1.setVisible(true);
+                hideImage1.setVisible(false);
 
         }
 
@@ -234,11 +272,15 @@ public class Signup implements Initializable {
                 slideAnchorPaneTo(emailLabel,1500,-400,0);
                 slideAnchorPaneTo(password1,1500,-650,0);
                 slideAnchorPaneTo(passwordLabel,1500,-650,0);
+                slideAnchorPaneTo(hiddenpassword1,1500,-650,0);
+                slideAnchorPaneTo(eyeImage1,1500,-650,0);
                 slideAnchorPaneTo(user1,1500,-450,0);
                 slideAnchorPaneTo(userLabel,1500,-450,0);
                 slideAnchorPaneTo(cpassword,1500,-550,0);
                 slideAnchorPaneTo(signupButton,1500,-600,0);
                 slideAnchorPaneTo(cpasswordLabel,1500,-550,0);
+                slideAnchorPaneTo(hiddencpassword,1500,-550,0);
+
                 slideAnchorPaneTo(comboBox,1500,-450,0);
                 slideAnchorPaneTo(male,1500,-500,0);
                 slideAnchorPaneTo(female,1500,-500,0);
@@ -274,6 +316,8 @@ public class Signup implements Initializable {
 
                 slideAnchorPaneTo(password1,1500,0,-450);
                 slideAnchorPaneTo(passwordLabel,1500,0,-450);
+                slideAnchorPaneTo(hiddenpassword1,1500,0,-450);
+                slideAnchorPaneTo(eyeImage1,1500,0,-450);
 
                 slideAnchorPaneTo(user1,1500,0,-550);
                 slideAnchorPaneTo(userLabel,1500,0,-550);
@@ -281,6 +325,7 @@ public class Signup implements Initializable {
 
                 slideAnchorPaneTo(cpasswordLabel,1500,0,-600);
                 slideAnchorPaneTo(cpassword,1500,0,-600);
+                slideAnchorPaneTo(hiddencpassword,1500,0,-600);
 
                 slideAnchorPaneTo(signupButton,1500,0,-600);
 
@@ -328,12 +373,32 @@ public class Signup implements Initializable {
                         cpassword.setStyle("-fx-border-color: red;");
                         Errors ++;
                 }
-                if (password1.getText().isEmpty()) {
-                        password1.setStyle("-fx-border-color: red;");
+
+                if (!hiddenpassword1.getText().equals(hiddencpassword.getText())) {
+                        hiddencpassword.setStyle("-fx-border-color: red;");
+                        hiddenpassword1.setStyle("-fx-border-color: red;");
                         Errors ++;
                 }
-                if (cpassword.getText().isEmpty()) {
+                if (cpassword.getText().isEmpty() && hiddencpassword.getText().isEmpty()) {
                         cpassword.setStyle("-fx-border-color: red;");
+                        hiddencpassword.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                } else if (cpassword.getText().isEmpty()) {
+                        cpassword.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                } else if (hiddencpassword.getText().isEmpty()) {
+                        hiddencpassword.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                }
+                if (password1.getText().isEmpty() && hiddenpassword1.getText().isEmpty()) {
+                        password1.setStyle("-fx-border-color: red;");
+                        hiddenpassword1.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                } else if (password1.getText().isEmpty()) {
+                        password1.setStyle("-fx-border-color: red;");
+                        Errors ++;
+                } else if (hiddenpassword1.getText().isEmpty()) {
+                        hiddenpassword1.setStyle("-fx-border-color: red;");
                         Errors ++;
                 }
 
@@ -348,6 +413,8 @@ public class Signup implements Initializable {
         }
 
         private void resetStyles() {
+                hiddenpassword1.setStyle("");
+                hiddencpassword.setStyle("");
                 comboBox.setStyle("");
                 user1.setStyle("");
                 email1.setStyle("");
@@ -398,7 +465,7 @@ public class Signup implements Initializable {
                                 PreparedStatement insertStatement = connectDB.prepareStatement(insertQuery);
                                 insertStatement.setString(1, this.user1.getText());
                                 insertStatement.setString(2, this.email1.getText());
-                                insertStatement.setString(3, security.encrypt(this.password1.getText()));
+                                insertStatement.setString(3, security.encrypt(this.hiddenpassword1.getText()));
                                 insertStatement.setString(4, this.Nationality1);
                                 insertStatement.setString(5, this.selectedGender);
 
