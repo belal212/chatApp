@@ -9,6 +9,7 @@ module com.example.chatapp {
     requires java.naming;
     requires java.sql.rowset;
     requires com.google.gson;
+    requires java.desktop;
 
 
     opens com.example.chatapp to javafx.fxml;
