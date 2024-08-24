@@ -387,7 +387,7 @@ public class Signup implements Initializable {
 
         private int emptyRed(int Errors) {
 
-                if (!validateString(hiddenpassword1.getText())){
+                if (validateString(hiddenpassword1.getText())){
                         InvalidPassword.setVisible(true);
                         Errors++;
                 }else{
