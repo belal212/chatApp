@@ -7,18 +7,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-//test
-
-public class HelloApplication extends Application {
+public class ChatRoomApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 500);
+        FXMLLoader fxmlLoader = new FXMLLoader(ChatRoomApplication.class.getResource("chatRoom-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
-        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
 
-    public static void main(String[] args) {launch();}
+    public static void main(String[] args) {
+        launch();
+    }
 }

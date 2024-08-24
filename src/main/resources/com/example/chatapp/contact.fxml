@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.Contact2Controller">
+    <Circle fx:id="circle" centerX="155.0" centerY="250.0" fill="DARKORANGE" radius="400.0" />
+    <Circle fx:id="circle2" centerX="1555.0" centerY="850.0" fill="DARKORANGE" layoutX="-289.0" layoutY="-209.0" radius="300.0" />
+    <Circle fx:id="circle4" centerX="785.0" centerY="630.0" fill="DARKORANGE" layoutX="-83.0" layoutY="-40.0" radius="80.0" />
+   <Text fill="WHITE" layoutX="647.0" layoutY="606.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contact us&#10;" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="112.49999999999994">
+      <font>
+         <Font name="Arial Rounded MT Bold" size="24.0" />
+      </font>
+   </Text>
+
+    <TextFlow fx:id="textFlow" layoutX="579.0" layoutY="204.0" prefHeight="170.0" prefWidth="251.0" textAlignment="JUSTIFY">
+      <children>
+           <Text fill="#fd7e14" text="PLEASE READ THIS BEFORE SUBMITTING A QUESTION OR REQUEST&#10;As we make clear on every page of this site, this is NOT the official site of the GEM but rather a third-party informational site about the new museum’s progress with news related to its construction. We are NOT affiliated with either the government of Egypt or the GEM itself, so we cannot answer questions about specific opening dates, contracting, etc.&#10;If you would like to contact this site’s administrator about ANYTHING ELSE, please feel free to use the contact and click the circle below &#10;" textAlignment="JUSTIFY" wrappingWidth="539.326171875">
+            <font>
+               <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+         </Text>
+      </children>
+    </TextFlow>
+   <ImageView blendMode="SCREEN" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@logo.png" />
+      </image>
+   </ImageView>
+</AnchorPane>

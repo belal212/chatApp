@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="stackR" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/20.0.1"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.CharRoomController">
+   <HBox fx:id="mainPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+         minWidth="-Infinity" prefHeight="598.0" prefWidth="866.0" style="-fx-background-color: transparent;">
+      <Pane minWidth="663.0" prefHeight="598.0" prefWidth="663.0" style="-fx-background-color: #212121;">
+         <ScrollPane hbarPolicy="NEVER" layoutY="60.0" prefHeight="481.0" prefWidth="663.0"
+                     style="-fx-background-color: transparent; -fx-background: #F0F0F0;">
+            <VBox fx:id="chatBox" minWidth="662.0" prefHeight="477.0" prefWidth="662.0" spacing="2.0">
+               <padding>
+                  <Insets bottom="5.0" left="3.0" right="3.0" top="12.0"/>
+               </padding>
+            </VBox>
+         </ScrollPane>
+         <HBox alignment="CENTER" layoutY="542.0" prefHeight="58.0" prefWidth="663.0" spacing="8.0"
+               style="-fx-background-color: #212121;">
+            <TextField fx:id="textField" prefHeight="34.0" prefWidth="589.0" promptText="Type a message"
+                       style="-fx-background-color: #121212; -fx-background-radius: 80; -fx-text-fill: white;"/>
+            <Button fx:id="send" mnemonicParsing="false" onAction="#send" prefHeight="26.0" prefWidth="54.0"
+                    style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <Image url="@send-message.png"/>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+            </Button>
+         </HBox>
+         <Button fx:id="state" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" onAction="#state"
+                 prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: green; -fx-background-radius: 8;"
+                 text="Online  " textAlignment="CENTER" textFill="WHITE">
+            <graphic>
+               <Circle fill="GREEN" radius="12.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND"/>
+            </graphic>
+            <padding>
+               <Insets bottom="-5.0" left="-7.0" right="-7.0" top="-5.0"/>
+            </padding>
+            <cursor>
+               <Cursor fx:constant="HAND"/>
+            </cursor>
+         </Button>
+         <Label layoutX="8.0" layoutY="9.0" prefHeight="29.0" prefWidth="120.0" text="Tour-203" textFill="WHITE">
+            <font>
+               <Font name="Dubai Medium" size="16.0"/>
+            </font>
+         </Label>
+         <Button fx:id="clear" layoutX="555.0" layoutY="14.0" mnemonicParsing="false" onAction="#clear"
+                 prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: transparent;">
+            <graphic>
+               <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@bin.png"/>
+               </ImageView>
+            </graphic>
+            <tooltip>
+               <Tooltip text="clear chat"/>
+            </tooltip>
+            <cursor>
+               <Cursor fx:constant="HAND"/>
+            </cursor>
+         </Button>
+         <Button fx:id="memberListButton" layoutX="609.0" layoutY="14.0" mnemonicParsing="false"
+                 onAction="#showAndHideMembersPane" prefHeight="26.0" prefWidth="54.0" rotate="180.0"
+                 style="-fx-background-color: transparent;">
+            <graphic>
+               <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@right-arrow.png"/>
+               </ImageView>
+            </graphic>
+            <cursor>
+               <Cursor fx:constant="HAND"/>
+            </cursor>
+         </Button>
+         <Button fx:id="export" layoutX="512.0" layoutY="15.0" mnemonicParsing="false" onAction="#exportChat"
+                 prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: transparent;">
+            <graphic>
+               <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@file.png"/>
+               </ImageView>
+            </graphic>
+            <tooltip>
+               <Tooltip text="export chat"/>
+            </tooltip>
+            <cursor>
+               <Cursor fx:constant="HAND"/>
+            </cursor>
+         </Button>
+      </Pane>
+      <ScrollPane fx:id="memberListScrollPane" hbarPolicy="NEVER" prefHeight="598.0" prefWidth="203.0"
+                  style="-fx-background: #212121; -fx-background-color: transparent;">
+         <VBox fx:id="membersBox" prefHeight="398.0" prefWidth="198.0">
+            <padding>
+               <Insets right="12.0"/>
+            </padding>
+            <Pane minHeight="50.0" prefHeight="52.0" prefWidth="198.0">
+               <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="200.0">
+                  <padding>
+                     <Insets right="5.0"/>
+                  </padding>
+                  <Label fx:id="noMembers" alignment="CENTER" prefHeight="46.0" prefWidth="127.0"
+                         text="1 members" textAlignment="CENTER">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0"/>
+                     </font>
+                  </Label>
+                  <MenuButton fx:id="sort" mnemonicParsing="false"
+                              style="-fx-background-color: transparent;">
+                     <items>
+                        <MenuItem disable="true" mnemonicParsing="false" text="Filter members by"/>
+                        <MenuItem mnemonicParsing="false" onAction="#sort" text="State"/>
+                        <MenuItem mnemonicParsing="false" onAction="#sort" text="Name"/>
+                     </items>
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="59.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                           <Image url="@sort.png"/>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="filter members"/>
+                     </tooltip>
+                     <cursor>
+                        <Cursor fx:constant="HAND"/>
+                     </cursor>
+                  </MenuButton>
+               </HBox>
+            </Pane>
+
+         </VBox>
+      </ScrollPane>
+   </HBox>
+</StackPane>

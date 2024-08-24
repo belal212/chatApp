@@ -1,5 +1,6 @@
 package com.example.chatapp;
 import javax.mail.*;
+import javax.mail.Message;
 import javax.mail.internet.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,7 +28,7 @@ public class Security {
         });
 
         try {
-            Message message = new MimeMessage(session);
+            javax.mail.Message message = new MimeMessage(session);
 
             message.setFrom(new InternetAddress(fromEmail));
 
@@ -47,7 +48,7 @@ public class Security {
     }
     private static String[] readCredentialsFromFile() {
         String[] credentials = new String[3];
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Lenovo\\IdeaProjects\\chatApp\\email"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Ramoz\\OneDrive - Al Alamein University\\Uni stuff\\summer 23-24\\Field training 1\\labs\\chatApp\\email"))) {
             credentials[0] = br.readLine();
             credentials[1] = br.readLine();
             credentials[2] = br.readLine();
