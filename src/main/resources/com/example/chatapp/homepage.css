@@ -56,10 +56,13 @@
    -fx-background-color:#fd7e14 ;
 }
 
-.contact-chatbot-banner .banner-title{
+.banner-title{
    -fx-text-fill: white;
+-fx-font-family:"Arial Rounded MT Bold";
+-fx-font-size: 30;
+   -fx-font-weight: 900;
 }
-.contact-chatbot-banner .contact-banner-label{
+.contact-banner-label{
    -fx-text-fill: #ffd8b0;
    -fx-font-size: 20;
 }
@@ -110,5 +113,22 @@
    -fx-scale-x: 1.1;
    -fx-scale-y: 1.1;
    -fx-background-color: #fd7e14;
+}
+
+.banner{
+   -fx-background-color: #fd7e14;
+}
+
+.news-label{
+   -fx-text-fill: white;
+   -fx-font-family: "Arial Rounded MT Bold";
+   -fx-background-color: #fd7e14;
+   -fx-background-radius: 10px;
+   -fx-padding: 10px;
+}
+
+.news-label:hover{
+   -fx-background-color: white;
+   -fx-text-fill: #fd7e14;
 }
 

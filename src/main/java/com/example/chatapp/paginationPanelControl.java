@@ -6,21 +6,44 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.awt.Desktop;
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Vector;
 
 public class paginationPanelControl {
+    @FXML
+    private Hyperlink link1;
+    @FXML
+    private Hyperlink link2;
+    @FXML
+    private Hyperlink link3;
+    @FXML
+    private Hyperlink link4;
+    @FXML
+    private Hyperlink link5;
+    @FXML
+    private Hyperlink link6;
+    @FXML
+    private Hyperlink link7;
+    @FXML
+    private Hyperlink link8;
+    @FXML
+    private Hyperlink link9;
+    @FXML
+    private Hyperlink link10;
     @FXML
     private ImageView bookingImg1;
     @FXML
@@ -69,6 +92,8 @@ public class paginationPanelControl {
 
     @FXML
     public void initialize() {
+        setLinksFunctional();
+
         bookingImg1.setOnMouseClicked(mouseEvent -> {
             openWebpage("https://visit-gem.com/en/tours");
         });
@@ -304,5 +329,65 @@ public class paginationPanelControl {
                 break;
             }
         }
+    }
+
+    private void loadTabContent(String tabId, String fxmlFile) throws IOException {
+        // Find the tab by ID from the tabPane's tabs list
+        Tab targetTab = tabPane.getTabs().stream()
+                .filter(tab -> tabId.equals(tab.getId()))
+                .findFirst()
+                .orElse(null);
+
+        if (targetTab != null) {
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            AnchorPane content = loader.load(); // Load the FXML content
+
+            // Set the loaded content as the tab's content
+            targetTab.setContent(content);
+        } else {
+            System.err.println("Tab with id " + tabId + " not found.");
+        }
+    }
+
+    private void openLink(String url) {
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setLinksFunctional(){
+        link1.setOnAction(actionEvent -> {
+            openLink("https://www.youtube.com/watch?v=0nwZkVldpvI");
+        });
+        link2.setOnAction(actionEvent -> {
+            openLink("https://globaldesignnews.com/heneghan-peng-architects-complete-worlds-largest-museum-building-encompassing-90000-square-meters-the-grand-egyptian-museum/");
+        });
+        link3.setOnAction(actionEvent -> {
+            openLink("https://www.dailynewsegypt.com/2024/04/01/tourism-minister-inspects-grand-egyptian-museum-giza-pyramids/");
+        });
+        link4.setOnAction(actionEvent -> {
+            openLink("https://egyptianstreets.com/2021/08/08/in-photos-pharaoh-khufus-boat-transported-to-the-grand-egyptian-museum/#google_vignette");
+        });
+        link5.setOnAction(actionEvent -> {
+            openLink("https://www.egypttoday.com/Article/1/130124/Photos-Grand-Egyptian-Museum-project-nears-completion-as-Prime-Minister");
+        });
+        link6.setOnAction(actionEvent -> {
+            openLink("https://www.architecturaldigest.com/story/everything-we-know-about-the-billion-dollar-grand-egyptian-museum");
+        });
+        link7.setOnAction(actionEvent -> {
+            openLink("https://www.globalconstructionreview.com/nearly-there-previewing-the-grand-egyptian-museum/");
+        });
+        link8.setOnAction(actionEvent -> {
+            openLink("https://egyptindependent.com/the-grand-egyptian-museum-receives-13-huge-artifacts/");
+        });
+        link9.setOnAction(actionEvent -> {
+            openLink("https://egyptianstreets.com/2021/08/08/in-photos-pharaoh-khufus-boat-transported-to-the-grand-egyptian-museum/#google_vignette");
+        });
+        link10.setOnAction(actionEvent -> {
+            openLink("https://egyptindependent.com/preparations-for-grand-egyptian-museums-opening-ceremony-90-complete-official/");
+        });
     }
 }
