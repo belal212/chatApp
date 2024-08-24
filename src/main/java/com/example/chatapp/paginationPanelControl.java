@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -100,6 +101,9 @@ public class paginationPanelControl {
 
             AnchorPane contact = FXMLLoader.load(HelloApplication.class.getResource("contact.fxml"));
             contactTab.setContent(contact);
+
+            StackPane chatroom = FXMLLoader.load(HelloApplication.class.getResource("chatRoom-view.fxml"));
+            chatroomTab.setContent(chatroom);
         }catch (Exception E){
             E.printStackTrace();
         }

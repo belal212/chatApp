@@ -3,6 +3,7 @@ package com.example.chatapp;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
@@ -17,8 +18,13 @@ import javafx.scene.layout.VBox;
 
 import javafx.util.Duration;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -60,18 +66,18 @@ public class CharRoomController implements Initializable {
     @FXML
     private StackPane stackR;
     @FXML
-    private Label noMembers;
+    private Label noMembers,usernameL;
 
 
 
     public void showAndHideMembersPane(){
         boolean visible = mainPane.getChildren().get(1).isVisible();
         if (visible){
-            mainPane.setPrefWidth(663);
+            mainPane.setPrefWidth(895);
             mainPane.getChildren().get(1).setVisible(false);
             memberListButton.setRotate(memberListButton.getRotate() + 180);
         }else {
-            mainPane.setPrefWidth(866);
+            mainPane.setPrefWidth(1095);
             mainPane.getChildren().get(1).setVisible(true);
             memberListButton.setRotate(memberListButton.getRotate() - 180);
         }
@@ -81,38 +87,31 @@ public class CharRoomController implements Initializable {
     public void clear(){
         DataBase db = new DataBase();
         db.deleteChat();
-        Label l = (Label) chatBox.getChildren().get(0);
         chatBox.getChildren().clear();
-        chatBox.getChildren().add(l);
     }
-
-
-
-//    public void dateMessage(String date, VBox v){
-//        Label dateLabel = new GUIComponents().generateLabel(date, 20, 20 , 76, 14);
-//        dateLabel.setAlignment(Pos.CENTER);
-//        dateLabel.setContentDisplay(ContentDisplay.CENTER);
-//        dateLabel.setTextFill(Color.WHITE);
-//        dateLabel.setStyle("-fx-background-color: GRAY; -fx-background-radius: 4;");
-//        v.getChildren().add(dateLabel);
-//        new DataBase().insertMessage(0,"LocalDate", date);
-//    }
 
     public void state(){
         //online
         if (state.getContentDisplay() == ContentDisplay.LEFT){
-            state.setContentDisplay(ContentDisplay.RIGHT);
-            state.setText("Offline");
-            state.getChildrenUnmodifiable().get(0).setStyle("-fx-fill: red");
-            state.setStyle("-fx-background-color: red;-fx-background-radius: 8");
-            this.user.setState(false);
-        }else {
-            state.setContentDisplay(ContentDisplay.LEFT);
-            state.setText("Online");
-            state.getChildrenUnmodifiable().get(0).setStyle("-fx-fill: green");
-            state.setStyle("-fx-background-color: green;-fx-background-radius: 8");
-            this.user.setState(true);
-        }
+            setOffline();
+        }else
+            setOnline();
+    }
+    public void setOnline(){
+        state.setContentDisplay(ContentDisplay.LEFT);
+        state.setText("Online");
+        state.getChildrenUnmodifiable().get(0).setStyle("-fx-fill: green");
+        state.setStyle("-fx-background-color: green;-fx-background-radius: 8");
+        this.user.setState(true);
+        new DataBase().updateUser(this.user);
+        updateMembersBox();
+    }
+    public void setOffline(){
+        state.setContentDisplay(ContentDisplay.RIGHT);
+        state.setText("Offline");
+        state.getChildrenUnmodifiable().get(0).setStyle("-fx-fill: red");
+        state.setStyle("-fx-background-color: red;-fx-background-radius: 8");
+        this.user.setState(false);
         new DataBase().updateUser(this.user);
         updateMembersBox();
     }
@@ -128,14 +127,17 @@ public class CharRoomController implements Initializable {
             client.sendMessage(textField.getText());
             new GUIComponents().myMessages(textField.getText(), this.chatBox);
             new DataBase().insertMessage(this.user.getUsername(), getTime() , textField.getText());
-            textField.setText("");
         }
+        if (!this.user.isState()){
+            textField.setText("you must be online to send message :)");
+        }
+        textField.setText("");
 
     }
     public String getTime(){
-        LocalTime time = LocalTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
-        return time.format(formatter);
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mma dd/MM/yyyy");
+        return new String(currentDateTime.format(formatter).getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
     }
 
     public void exportChat(){
@@ -169,7 +171,7 @@ public class CharRoomController implements Initializable {
         }else{
             //name
             if (event.getSource() == sort.getItems().get(2)){
-                new GUIComponents().fillMembersBox(new UsersHandler().SortByState(), membersBox, noMembers);
+                new GUIComponents().fillMembersBox(new UsersHandler().SortByName(), membersBox, noMembers);
             }
         }
 
@@ -177,11 +179,18 @@ public class CharRoomController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.user = new DataBase().readUsers().get(1);
+        ArrayList<User> users = new DataBase().readUsers();
+        setUser(users);
+        Platform.runLater(() ->{
+            setOnline();
+            fillChatBox();
+            usernameL.setText(this.user.getUsername());
+        });
+
         client  = new Client(this.user);
 //        new DBConnection().ListenFrUserT(this.membersBox, this.noMembers);
 
-        new GUIComponents().fillMembersBox(new DataBase().readUsers(), membersBox, noMembers);
+        new GUIComponents().fillMembersBox(users, membersBox, noMembers);
 
         client.handleIncomingMessages(chatBox);
             textField.setOnKeyReleased(event -> {
@@ -190,7 +199,9 @@ public class CharRoomController implements Initializable {
                 }
             });
 
-//        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event ->
+//        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5
+//
+//        ), event ->
 //                updateMembersBox()
 //        ));
 //        timeline.setCycleCount(Timeline.INDEFINITE);
@@ -198,13 +209,32 @@ public class CharRoomController implements Initializable {
 
 
     }
-//    public CharRoomController(User user){
-//        this.user = user;
-//    }
 
-//    public static String getCurrentDate() {
-//        LocalDate date = LocalDate.now();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        return date.format(formatter);
-//    }
+    public void setUser(ArrayList<User> users){
+        try {
+            Properties properties = new Properties();
+            FileInputStream fis = null;
+            fis = new FileInputStream("src/main/java/com/example/chatapp/userdata.properties");
+            properties.load(fis);
+            String username = properties.getProperty("USERNAME");
+            for (User u : users){
+                if (u.getUsername().equals(username))
+                    this.user = u;
+            }
+        }catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void fillChatBox(){
+        ArrayList<Message> messages = new DataBase().readMessages();
+        for (Message m : messages){
+            if (m.getUsername().equals(this.user.getUsername())){
+                new GUIComponents().myMessages(m.getMessageText(), chatBox);
+            }else {
+                new GUIComponents().dataMessage(m.getUsername(), m.getDate(), chatBox);
+                new GUIComponents().otherMessages(m.getMessageText(), chatBox);
+            }
+        }
+    }
 }

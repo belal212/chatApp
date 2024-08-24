@@ -5,6 +5,8 @@ import javafx.scene.layout.VBox;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -103,9 +105,9 @@ public class Client  {
         }
     }
     public String getTime(){
-        LocalTime time = LocalTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
-        return time.format(formatter);
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mma dd/MM/yyyy");
+        return new String(currentDateTime.format(formatter).getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
     }
 
 }

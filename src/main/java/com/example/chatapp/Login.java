@@ -14,11 +14,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import java.io.*;
 import java.net.Socket;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
@@ -268,6 +268,8 @@ public class Login implements Initializable {
                 emptyRed();
                 LoginDB();
 
+
+
         }
 
         private void emptyRed() {
@@ -336,7 +338,33 @@ public class Login implements Initializable {
                                 signInTestLabel.setStyle("-fx-text-fill: green");
                                 signInTestLabel.setText("Logging On...");
                                 applyFadeTransition(signInTestLabel, 1000, 0.0, 1.0);
+                                try {
+                                        Properties properties = new Properties();
+                                        FileInputStream fis = null;
+                                        fis = new FileInputStream("src/main/java/com/example/chatapp/userdata.properties");
+                                        properties.load(fis);
+                                        properties.setProperty("USERNAME",username);
+                                        FileOutputStream fos = new FileOutputStream("src/main/java/com/example/chatapp/userdata.properties");
+                                        properties.store(fos, null);
+                                        fis.close();
+                                        fos.close();
+                                }catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                }
+                                try {
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+                                        Parent homePageRoot = loader.load();
 
+                                        Stage stage = new Stage();
+                                        stage.setWidth(1366);
+                                        stage.setHeight(785);
+
+                                        Scene scene = new Scene(homePageRoot);
+                                        stage.setScene(scene);
+                                        stage.show();
+
+                                } catch (IOException ex) {
+                                        System.out.println("error in signup button");                        }
 
                         } else {
                                 System.out.println("Try again");
