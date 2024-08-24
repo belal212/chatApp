@@ -47,7 +47,7 @@ public class Security {
     }
     private static String[] readCredentialsFromFile() {
         String[] credentials = new String[3];
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\NewTech\\Documents\\GitHub\\chatApp\\email"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Lenovo\\IdeaProjects\\chatApp\\email"))) {
             credentials[0] = br.readLine();
             credentials[1] = br.readLine();
             credentials[2] = br.readLine();

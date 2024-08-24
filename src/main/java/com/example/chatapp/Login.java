@@ -19,14 +19,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
-
-import com.example.chatapp.chatroom.CharRoomController;
-import com.example.chatapp.chatroom.blueprints.User;
 
 public class Login implements Initializable {
         @FXML
@@ -352,7 +345,6 @@ public class Login implements Initializable {
                         System.out.println("Client exception: " + ex.getMessage());
                 }
         }
-
         private void forgetPasswordAction(ActionEvent e) {
                 applyFadeTransition(subRoot, 2000, 1.0, 0.2);
                 forgetPasswordPane.setVisible(true);
