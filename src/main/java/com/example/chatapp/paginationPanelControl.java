@@ -12,9 +12,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-
-import java.util.ArrayList;
+import java.net.URI;
 import java.util.Vector;
+import static java.awt.Desktop.getDesktop;
 
 public class paginationPanelControl {
     public Tab homeTab;
@@ -113,6 +113,9 @@ public class paginationPanelControl {
             ImageView kids2 = new ImageView(new Image(getClass().getResource("kids-2.png").toExternalForm()));
             ImageView kids3 = new ImageView(new Image(getClass().getResource("kids-3.png").toExternalForm()));
 
+            ImageView booking1 = new ImageView(new Image(getClass().getResource("booking-1.png").toExternalForm()));
+            ImageView booking2 = new ImageView(new Image(getClass().getResource("booking-2.png").toExternalForm()));
+
             Vector<ImageView> Images = new Vector<>();
             Images.add(tour1);
             Images.add(tour2);
@@ -124,13 +127,14 @@ public class paginationPanelControl {
             Images.add(kids1);
             Images.add(kids2);
             Images.add(kids3);
+            Images.add(booking1);
+            Images.add(booking2);
 
             for (ImageView image : Images) {
                 Rectangle clip = new Rectangle(220, 220);
                 clip.setArcWidth(30);  // Set the arc width for rounded corners
                 clip.setArcHeight(30); // Set the arc height for rounded corners
                 image.setClip(clip);
-
                 image.setFitWidth(220);
                 image.setFitHeight(220);
             }
@@ -250,5 +254,14 @@ public class paginationPanelControl {
 
         // Update the currently pressed button
         currentTab = pressedTab;
+    }
+
+    private void openWebpage(String url) {
+        try {
+            // Use Desktop.getDesktop().browse() to open the webpage in the default browser
+            getDesktop().browse(new URI(url));
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle exceptions, like when the desktop or browser is unavailable
+        }
     }
 }

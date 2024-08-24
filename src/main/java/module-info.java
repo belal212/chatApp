@@ -4,6 +4,7 @@ module com.example.chatapp {
     requires java.mail;
     requires org.json;
     requires java.sql;
+    requires java.desktop;
 
 
     opens com.example.chatapp to javafx.fxml;
