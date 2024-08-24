@@ -1,8 +1,5 @@
 package com.example.chatapp;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.ScaleTransition;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -95,6 +92,7 @@ public class paginationPanelControl {
 
     @FXML
     public void initialize() {
+        applyFadeTransition(tabPane,2000,0.0,1.0);
         try{
             ScrollPane about = FXMLLoader.load(ddHelloApplication.class.getResource("EGMF code.fxml"));
             aboutTab.setContent(about);
@@ -314,6 +312,12 @@ public class paginationPanelControl {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
+    }
+    private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(durationInMillis), node);
+        fadeTransition.setFromValue(fromValue);
+        fadeTransition.setToValue(toValue);
+        fadeTransition.play();
     }
     private void handleButtonPress(Tab pressedTab, String pressedStyle, String defaultStyle) {
         // Remove the pressed style from the previously pressed button
