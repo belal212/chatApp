@@ -96,13 +96,13 @@ public class paginationPanelControl {
     @FXML
     public void initialize() {
         try{
-            ScrollPane about = FXMLLoader.load(HelloApplication.class.getResource("EGMF code.fxml"));
+            ScrollPane about = FXMLLoader.load(ddHelloApplication.class.getResource("EGMF code.fxml"));
             aboutTab.setContent(about);
 
-            AnchorPane contact = FXMLLoader.load(HelloApplication.class.getResource("contact.fxml"));
+            AnchorPane contact = FXMLLoader.load(ddHelloApplication.class.getResource("contact.fxml"));
             contactTab.setContent(contact);
 
-            StackPane chatroom = FXMLLoader.load(HelloApplication.class.getResource("chatRoom-view.fxml"));
+            StackPane chatroom = FXMLLoader.load(ddHelloApplication.class.getResource("chatRoom-view.fxml"));
             chatroomTab.setContent(chatroom);
         }catch (Exception E){
             E.printStackTrace();
