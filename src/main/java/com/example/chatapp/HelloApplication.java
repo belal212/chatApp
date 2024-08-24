@@ -12,6 +12,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        new ChatServer();
+        new DataBaseConnection();
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 500);
         stage.setTitle("Hello!");

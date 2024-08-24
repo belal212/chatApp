@@ -1,5 +1,14 @@
 package com.example.chatapp;
 
+import com.example.chatapp.CharRoomController;
+import com.example.chatapp.ChatRoomApplication;
+import com.example.chatapp.DataBase;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

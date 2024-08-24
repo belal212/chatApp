@@ -67,7 +67,7 @@ public class GUIComponents {
         label.setPadding(new Insets(0 ,0 ,0 , 5));
 
         v.getChildren().add(label);
-        v.setMargin(label , new Insets(0, 0 , 0,662 - label.getPrefWidth() -10));
+        v.setMargin(label , new Insets(0, 0 , 0,880 - label.getPrefWidth() -10));
 
 
 
