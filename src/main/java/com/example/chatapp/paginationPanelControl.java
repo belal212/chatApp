@@ -26,9 +26,15 @@ public class paginationPanelControl {
     @FXML
     private ImageView bookingImg2;
     @FXML
+    private Button bookingBtn;
+    @FXML
+    private Button newsBtn;
+    @FXML
     private Button chatbotBtn;
     @FXML
     private Button contactBtn;
+    @FXML
+    private TabPane tabPane;
     @FXML
     public Tab homeTab;
     @FXML
@@ -66,9 +72,20 @@ public class paginationPanelControl {
         bookingImg1.setOnMouseClicked(mouseEvent -> {
             openWebpage("https://visit-gem.com/en/tours");
         });
-
         bookingImg2.setOnMouseClicked(mouseEvent -> {
             openWebpage("https://visit-gem.com/en/children");
+        });
+        contactBtn.setOnAction(e ->{
+            switchToTab("contactTab");
+        });
+        bookingBtn.setOnAction(e->{
+            switchToTab("bookingTab");
+        });
+        newsBtn.setOnAction(e->{
+            switchToTab("newsTab");
+        });
+        chatbotBtn.setOnAction(e->{
+            switchToTab("chatbotTab");
         });
         tabs.add(homeTab);
         tabs.add(newsTab);
@@ -277,6 +294,15 @@ public class paginationPanelControl {
             Desktop.getDesktop().browse(new URI(url));
         } catch (Exception e) {
             e.printStackTrace(); // Handle exceptions, like when the desktop or browser is unavailable
+        }
+    }
+
+    private void switchToTab(String tabId) {
+        for (Tab tab : tabPane.getTabs()) {
+            if (tab.getId().equals(tabId)) {
+                tabPane.getSelectionModel().select(tab);
+                break;
+            }
         }
     }
 }
