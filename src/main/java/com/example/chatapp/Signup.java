@@ -11,20 +11,15 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.json.JSONObject;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class Signup implements Initializable {
@@ -351,7 +346,7 @@ public class Signup implements Initializable {
         private void SignUpButtonEvent(ActionEvent e) {
                 int Errors = 0;
                 Errors=emptyRed(Errors);
-                SignupDB(Errors);
+                SignupDB(Errors,e);
         }
 
         private int emptyRed(int Errors) {
@@ -423,7 +418,7 @@ public class Signup implements Initializable {
                 female.setStyle("");
         }
 
-        private void SignupDB(int Errors) {
+        private void SignupDB(int Errors, ActionEvent e) {
                         if (Errors == 0) {
                                 try (Socket socket = new Socket("localhost", 12345);
                                      ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
@@ -452,6 +447,13 @@ public class Signup implements Initializable {
                                                 Signuptest.setText("Signed up!");
                                                 Signuptest.setStyle("-fx-text-fill: green;");
                                                 System.out.println("Welcome");
+                                                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+                                                        SignInButtonAction(e);
+                                                }));
+                                                // Set it to run once
+                                                timeline.setCycleCount(1);
+                                                // Start the timeline
+                                                timeline.play();
                                         } else {
                                                 System.out.println("Signup failed. Please try again.");
                                                 Signuptest.setText("Try again");
@@ -462,6 +464,7 @@ public class Signup implements Initializable {
                                 }
                         }
         }
+
 
 
         private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
