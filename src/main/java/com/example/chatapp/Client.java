@@ -1,7 +1,5 @@
-package com.example.chatapp.chatroom.server;
+package com.example.chatapp;
 
-import com.example.chatapp.chatroom.GUIComponents;
-import com.example.chatapp.chatroom.blueprints.User;
 import javafx.application.Platform;
 import javafx.scene.layout.VBox;
 
@@ -39,7 +37,7 @@ public class Client  {
         FileInputStream fis = null;
 
         try {
-            fis = new FileInputStream("src/main/java/com/example/chatapp/chatroom/server/server.properties");
+            fis = new FileInputStream("src/main/java/com/example/chatapp/server.properties");
             properties.load(fis);
             SERVER_ADDRESS =  properties.getProperty("SERVER_ADDRESS");
             SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT"));

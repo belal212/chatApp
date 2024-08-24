@@ -1,4 +1,4 @@
-package com.example.chatapp.chatroom.blueprints;
+package com.example.chatapp;
 
 public class Message {
     String messageText, username, date;

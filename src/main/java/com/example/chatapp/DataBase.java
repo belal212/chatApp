@@ -1,8 +1,6 @@
-package com.example.chatapp.chatroom.ServerDB;
+package com.example.chatapp;
 
-// import com.example.chatapp.chatroom.GUIComponents;
-import com.example.chatapp.chatroom.blueprints.Message;
-import com.example.chatapp.chatroom.blueprints.User;
+// import com.example.chatapp.GUIComponents;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 // import javafx.application.Platform;
@@ -27,7 +25,7 @@ public class DataBase {
         MysqlDataSource mysqlDataSource = new MysqlDataSource();
 
         try{
-            fis = new FileInputStream("src/main/java/com/example/chatapp/chatroom/ServerDB/database.properties");
+            fis = new FileInputStream("src/main/java/com/example/chatapp/database.properties");
             properties.load(fis);
             Class.forName(properties.getProperty("DRIVER"));
             mysqlDataSource.setURL(properties.getProperty("MYSQL_DB_URL"));
@@ -42,7 +40,7 @@ public class DataBase {
         return connection;
     }
     public void insertMessage(String message_sender, String message_time, String message_text) {
-        String sql = "INSERT INTO messages (message_sender, message_time, message_text) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO chats (message_sender, message_time, message_text) VALUES (?, ?, ?)";
 
         try (Connection c = getConnection();
              PreparedStatement ps = c.prepareStatement(sql)) {
@@ -163,12 +161,12 @@ public class DataBase {
         try {
             ps = c.prepareStatement(sql);
             ps.setInt(1, user.getId());
-            ps.setString(2, user.getUsername());
-            ps.setString(3, user.getEmail());
-            ps.setString(4, user.getPassword());
-            ps.setString(5, user.getNationality());
-            ps.setString(6, user.getGender());
-            ps.setBoolean(7,user.isState());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
+            ps.setString(4, user.getNationality());
+            ps.setString(5, user.getGender());
+            ps.setBoolean(6,user.isState());
+            ps.setString(7, user.getUsername());
 
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;

@@ -1,6 +1,5 @@
-package com.example.chatapp.chatroom;
+package com.example.chatapp;
 
-import com.example.chatapp.chatroom.blueprints.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

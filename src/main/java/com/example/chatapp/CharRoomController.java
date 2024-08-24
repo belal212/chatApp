@@ -1,8 +1,5 @@
-package com.example.chatapp.chatroom;
+package com.example.chatapp;
 
-import com.example.chatapp.chatroom.ServerDB.DataBase;
-import com.example.chatapp.chatroom.blueprints.User;
-import com.example.chatapp.chatroom.server.Client;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
@@ -180,6 +177,7 @@ public class CharRoomController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.user = new DataBase().readUsers().get(1);
         client  = new Client(this.user);
 //        new DBConnection().ListenFrUserT(this.membersBox, this.noMembers);
 
@@ -192,17 +190,17 @@ public class CharRoomController implements Initializable {
                 }
             });
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event ->
-                updateMembersBox()
-        ));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+//        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event ->
+//                updateMembersBox()
+//        ));
+//        timeline.setCycleCount(Timeline.INDEFINITE);
+//        timeline.play();
 
 
     }
-    public CharRoomController(User user){
-        this.user = user;
-    }
+//    public CharRoomController(User user){
+//        this.user = user;
+//    }
 
 //    public static String getCurrentDate() {
 //        LocalDate date = LocalDate.now();

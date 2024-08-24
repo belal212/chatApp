@@ -1,7 +1,5 @@
-package com.example.chatapp.chatroom;
+package com.example.chatapp;
 
-import com.example.chatapp.chatroom.ServerDB.DataBase;
-import com.example.chatapp.chatroom.blueprints.Message;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 

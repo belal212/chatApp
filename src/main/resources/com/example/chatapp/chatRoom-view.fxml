@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="stackR" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/20.0.1"
-           xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatroom.CharRoomController">
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.CharRoomController">
    <HBox fx:id="mainPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
          minWidth="-Infinity" prefHeight="598.0" prefWidth="866.0" style="-fx-background-color: transparent;">
       <Pane minWidth="663.0" prefHeight="598.0" prefWidth="663.0" style="-fx-background-color: #212121;">
@@ -39,7 +39,7 @@
                     style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@images/send-message.png"/>
+                     <Image url="@send-message.png"/>
                   </ImageView>
                </graphic>
                <cursor>
@@ -69,7 +69,7 @@
                  prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: transparent;">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@images/bin.png"/>
+                  <Image url="@bin.png"/>
                </ImageView>
             </graphic>
             <tooltip>
@@ -84,7 +84,7 @@
                  style="-fx-background-color: transparent;">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@images/right-arrow.png"/>
+                  <Image url="@right-arrow.png"/>
                </ImageView>
             </graphic>
             <cursor>
@@ -95,7 +95,7 @@
                  prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: transparent;">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@images/file.png"/>
+                  <Image url="@file.png"/>
                </ImageView>
             </graphic>
             <tooltip>
@@ -133,7 +133,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="59.0" pickOnBounds="true"
                                    preserveRatio="true">
-                           <Image url="@images/sort.png"/>
+                           <Image url="@sort.png"/>
                         </ImageView>
                      </graphic>
                      <tooltip>

@@ -1,5 +1,6 @@
 package com.example.chatapp;
 import javax.mail.*;
+import javax.mail.Message;
 import javax.mail.internet.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,7 +28,7 @@ public class Security {
         });
 
         try {
-            Message message = new MimeMessage(session);
+            javax.mail.Message message = new MimeMessage(session);
 
             message.setFrom(new InternetAddress(fromEmail));
 

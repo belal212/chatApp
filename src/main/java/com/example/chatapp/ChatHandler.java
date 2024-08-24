@@ -1,7 +1,6 @@
-package com.example.chatapp.chatroom.server;
+package com.example.chatapp;
 
 // import com.example.chatapp.chatroom.ServerDB.DBConnection;
-import com.example.chatapp.chatroom.blueprints.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;
