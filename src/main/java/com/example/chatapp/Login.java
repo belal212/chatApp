@@ -14,11 +14,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.URL;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
@@ -338,34 +338,27 @@ public class Login implements Initializable {
                                 signInTestLabel.setStyle("-fx-text-fill: green");
                                 signInTestLabel.setText("Logging On...");
                                 applyFadeTransition(signInTestLabel, 1000, 0.0, 1.0);
-                                try {
-                                        Properties properties = new Properties();
-                                        FileInputStream fis = null;
-                                        fis = new FileInputStream("src/main/java/com/example/chatapp/userdata.properties");
-                                        properties.load(fis);
-                                        properties.setProperty("USERNAME",username);
-                                        FileOutputStream fos = new FileOutputStream("src/main/java/com/example/chatapp/userdata.properties");
-                                        properties.store(fos, null);
-                                        fis.close();
-                                        fos.close();
-                                }catch (IOException e) {
-                                        throw new RuntimeException(e);
-                                }
-                                try {
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-                                        Parent homePageRoot = loader.load();
+                                PauseTransition pause = new PauseTransition(Duration.millis(500));
+                                applyFadeTransition(rootPane,500,1.0,0.0);
 
-                                        Stage stage = new Stage();
-                                        stage.setWidth(1366);
-                                        stage.setHeight(785);
+                                pause.setOnFinished(event -> {
+                                        try {
+                                                FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+                                                Parent homePageRoot = loader.load();
+                                                Stage s = (Stage) subRoot.getScene().getWindow();
+                                                s.close();
 
-                                        Scene scene = new Scene(homePageRoot);
-                                        stage.setScene(scene);
-                                        stage.show();
-
-                                } catch (IOException ex) {
-                                        System.out.println("error in signup button");                        }
-
+                                                Stage stage = new Stage();
+                                                stage.setWidth(1366);
+                                                stage.setHeight(785);
+                                                Scene scene = new Scene(homePageRoot);
+                                                stage.setScene(scene);
+                                                stage.show();
+                                        } catch (IOException ex) {
+                                                System.out.println("error in signup button");
+                                        }
+                                });
+                                pause.play();
                         } else {
                                 System.out.println("Try again");
                                 signInTestLabel.setStyle("-fx-text-fill: red");
