@@ -34,9 +34,6 @@ public class Signup implements Initializable {
         private Label usernameused;
 
         @FXML
-        private Label InvalidPassword;
-
-        @FXML
         private Label emailused;
 
         @FXML
@@ -357,42 +354,7 @@ public class Signup implements Initializable {
                 SignupDB(Errors);
         }
 
-        public boolean validateString(String input) {
-                // Check if the string length is between 8 and 16 characters
-                if (input.length() < 8 || input.length() > 16) {
-                        return false;
-                }
-
-                // Flags for validation
-                boolean hasUpperCase = false;
-                boolean hasNumber = false;
-
-                // Iterate through each character in the string
-                for (char c : input.toCharArray()) {
-                        if (Character.isUpperCase(c)) {
-                                hasUpperCase = true;
-                        }
-                        if (Character.isDigit(c)) {
-                                hasNumber = true;
-                        }
-                        // If both conditions are met, no need to check further
-                        if (hasUpperCase && hasNumber) {
-                                return true;
-                        }
-                }
-
-                // Return true only if all conditions are met
-                return hasUpperCase && hasNumber;
-        }
-
         private int emptyRed(int Errors) {
-
-                if (validateString(hiddenpassword1.getText())){
-                        InvalidPassword.setVisible(true);
-                        Errors++;
-                }else{
-                        InvalidPassword.setVisible(false);
-                }
 
                 if (user1.getText().isEmpty()) {
                         user1.setStyle("-fx-border-color: red;");
