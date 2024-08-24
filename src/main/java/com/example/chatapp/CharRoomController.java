@@ -177,7 +177,7 @@ public class CharRoomController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.user = new DataBase().readUsers().get(0);
+        this.user = new DataBase().readUsers().get(1);
         client  = new Client(this.user);
 //        new DBConnection().ListenFrUserT(this.membersBox, this.noMembers);
 
