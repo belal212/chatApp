@@ -11,7 +11,13 @@ module com.example.chatapp {
     requires com.google.gson;
     requires java.desktop;
 
-
+    exports com.example.chatapp to javafx.graphics, javafx.fxml;
     opens com.example.chatapp to javafx.fxml;
-    exports com.example.chatapp;
+    exports com.example.chatapp.chatroom;
+    exports com.example.chatapp.chatroom.server;
+    exports com.example.chatapp.chatroom.ServerDB;
+    opens com.example.chatapp.chatroom to com.google.gson, javafx.fxml;
+    opens com.example.chatapp.chatroom.ServerDB to com.google.gson;
+    exports com.example.chatapp.chatroom.blueprints;
+    opens com.example.chatapp.chatroom.blueprints to com.google.gson, javafx.fxml;
 }
