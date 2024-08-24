@@ -338,20 +338,27 @@ public class Login implements Initializable {
                                 signInTestLabel.setStyle("-fx-text-fill: green");
                                 signInTestLabel.setText("Logging On...");
                                 applyFadeTransition(signInTestLabel, 1000, 0.0, 1.0);
-                                try {
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-                                        Parent homePageRoot = loader.load();
+                                PauseTransition pause = new PauseTransition(Duration.millis(500));
+                                applyFadeTransition(rootPane,500,1.0,0.0);
 
-                                        Stage stage = new Stage();
-                                        stage.setWidth(1366);
-                                        stage.setHeight(785);
+                                pause.setOnFinished(event -> {
+                                        try {
+                                                FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+                                                Parent homePageRoot = loader.load();
+                                                Stage s = (Stage) subRoot.getScene().getWindow();
+                                                s.close();
 
-                                        Scene scene = new Scene(homePageRoot);
-                                        stage.setScene(scene);
-                                        stage.show();
-                                } catch (IOException ex) {
-                                        System.out.println("error in signup button");                        }
-
+                                                Stage stage = new Stage();
+                                                stage.setWidth(1366);
+                                                stage.setHeight(785);
+                                                Scene scene = new Scene(homePageRoot);
+                                                stage.setScene(scene);
+                                                stage.show();
+                                        } catch (IOException ex) {
+                                                System.out.println("error in signup button");
+                                        }
+                                });
+                                pause.play();
                         } else {
                                 System.out.println("Try again");
                                 signInTestLabel.setStyle("-fx-text-fill: red");
