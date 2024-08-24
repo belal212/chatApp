@@ -32,9 +32,13 @@ public class ClientHandler extends Thread {
                 case "CHAT":
                     handleChat(input, output);
                     break;
+                case "CHANGE_PASSWORD":
+                    handleChangePassword(input, output);
+                    break;
                 default:
                     output.writeObject("Invalid request type");
             }
+
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println("Server exception: " + ex.getMessage());
         }
@@ -51,7 +55,6 @@ public class ClientHandler extends Thread {
 
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println("Server exception: " + ex.getMessage());
-            ex.printStackTrace();
         }
     }
 
@@ -62,6 +65,34 @@ public class ClientHandler extends Thread {
     private void handleChat(ObjectInputStream input, ObjectOutputStream output) {
         // Implement chat room logic, broadcasting messages to other clients
     }
+    private void handleChangePassword(ObjectInputStream input, ObjectOutputStream output) {
+        try {
+            String email = (String) input.readObject();
+            String newPassword = (String) input.readObject();
+            Security security = new Security();
+
+            Connection connectDB = DataBaseConnection.getConnection();
+            String sql = "UPDATE users SET password = ? WHERE email = ?";
+            PreparedStatement statement = connectDB.prepareStatement(sql);
+            statement.setString(1, security.encrypt(newPassword));
+            statement.setString(2, email);
+
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                output.writeObject("Password updated successfully.");
+            } else {
+                output.writeObject("No matching email found.");
+            }
+        } catch (IOException | SQLException | ClassNotFoundException e) {
+            System.out.println("Error in change password: " + e.getMessage());
+            try {
+                output.writeObject("Error in change password.");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
+    }
+
 
     private boolean checkCredentials(String email, String password) {
         try (Connection conn = DataBaseConnection.getConnection()) {
