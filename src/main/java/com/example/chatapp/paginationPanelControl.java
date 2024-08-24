@@ -6,17 +6,30 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.awt.Desktop;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Vector;
 
 public class paginationPanelControl {
+    @FXML
+    private ImageView bookingImg1;
+    @FXML
+    private ImageView bookingImg2;
+    @FXML
+    private Button chatbotBtn;
+    @FXML
+    private Button contactBtn;
+    @FXML
     public Tab homeTab;
     @FXML
     private Tab newsTab;
@@ -50,6 +63,13 @@ public class paginationPanelControl {
 
     @FXML
     public void initialize() {
+        bookingImg1.setOnMouseClicked(mouseEvent -> {
+            openWebpage("https://visit-gem.com/en/tours");
+        });
+
+        bookingImg2.setOnMouseClicked(mouseEvent -> {
+            openWebpage("https://visit-gem.com/en/children");
+        });
         tabs.add(homeTab);
         tabs.add(newsTab);
         tabs.add(aboutTab);
@@ -250,5 +270,14 @@ public class paginationPanelControl {
 
         // Update the currently pressed button
         currentTab = pressedTab;
+    }
+
+    private void openWebpage(String url) {
+        try {
+            // Use Desktop.getDesktop().browse() to open the webpage in the default browser
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle exceptions, like when the desktop or browser is unavailable
+        }
     }
 }
