@@ -267,6 +267,7 @@ public class Login implements Initializable {
         private void SignInButtonAction(ActionEvent e) {
                 emptyRed();
                 LoginDB();
+
         }
 
         private void emptyRed() {
@@ -335,6 +336,8 @@ public class Login implements Initializable {
                                 signInTestLabel.setStyle("-fx-text-fill: green");
                                 signInTestLabel.setText("Logging On...");
                                 applyFadeTransition(signInTestLabel, 1000, 0.0, 1.0);
+
+
                         } else {
                                 System.out.println("Try again");
                                 signInTestLabel.setStyle("-fx-text-fill: red");

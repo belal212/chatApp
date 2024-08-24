@@ -1,6 +1,4 @@
-package com.example.chatapp.chatroom;
-import com.example.chatapp.chatroom.ServerDB.DataBase;
-import com.example.chatapp.chatroom.blueprints.User;
+package com.example.chatapp;
 
 import java.util.ArrayList;
 import java.util.Collections;
