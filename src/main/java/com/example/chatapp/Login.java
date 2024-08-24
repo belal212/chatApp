@@ -19,6 +19,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import com.example.chatapp.chatroom.CharRoomController;
@@ -313,30 +317,36 @@ public class Login implements Initializable {
         }
 
         private void LoginDB() {
-                String pass= hiddenPasswordField.getText();
-                DataBaseConnection connection = new DataBaseConnection();
-                Connection connectDB = connection.getConnection();
-                Security security = new Security();
+                try (Socket socket = new Socket("localhost", 12345);
+                     ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+                     ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
 
-                String verify = "SELECT count(1) FROM users WHERE email = '" + this.email.getText() + "'AND passworder = '" + security.encrypt(pass) +"'";
-                try {
+                        String username = userNameTextfield.getText();
+                        String passText = hiddenPasswordField.getText();
 
-                        Statement statement = connectDB.createStatement();
-                        ResultSet result = statement.executeQuery(verify);
+                        // Send the request type to the server
+                        output.writeObject("LOGIN");
+                        output.flush();
 
-                        while (result.next()) {
-                                if (result.getInt(1) == 1) {
-                                        System.out.println("welcome");
-                                        signInTestLabel.setStyle("-fx-text-fill: green");
-                                        signInTestLabel.setText("Logging On...");
-                                        applyFadeTransition(signInTestLabel,1000,0.0,1.0);
-                                }
-                                else{
-                                        System.out.println("try again");
-                                        signInTestLabel.setStyle("-fx-text-fill: red");
-                                        signInTestLabel.setText("Try Again");
-                                        applyFadeTransition(signInTestLabel,1000,0.0,1.0);
-                                }
+                        // Send the email and password to the server
+                        output.writeObject(username);
+                        output.writeObject(passText);
+                        output.flush();
+
+                        // Receive the login result from the server
+                        boolean loginSuccess = input.readBoolean();
+
+                        // Handle the result in the client application
+                        if (loginSuccess) {
+                                System.out.println("Welcome");
+                                signInTestLabel.setStyle("-fx-text-fill: green");
+                                signInTestLabel.setText("Logging On...");
+                                applyFadeTransition(signInTestLabel, 1000, 0.0, 1.0);
+                        } else {
+                                System.out.println("Try again");
+                                signInTestLabel.setStyle("-fx-text-fill: red");
+                                signInTestLabel.setText("Try Again");
+                                applyFadeTransition(signInTestLabel, 1000, 0.0, 1.0);
                         }
                 } catch (IOException ex) {
                         System.out.println("Client exception: " + ex.getMessage());

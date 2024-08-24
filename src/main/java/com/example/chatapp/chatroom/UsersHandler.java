@@ -18,7 +18,7 @@ public class UsersHandler {
     }
     public ArrayList<User> SortByName(){
         ArrayList<User> tempUsers = this.users;
-        Collections.sort(tempUsers, Comparator.comparing(User::getNickname));
+        Collections.sort(tempUsers, Comparator.comparing(User::getUsername));
         return tempUsers;
     }
     public ArrayList<User> SortByState(){

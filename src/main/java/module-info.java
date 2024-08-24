@@ -8,6 +8,7 @@ module com.example.chatapp {
 
     requires java.naming;
     requires java.sql.rowset;
+    requires com.google.gson;
 
 
     opens com.example.chatapp to javafx.fxml;
