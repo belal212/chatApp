@@ -44,7 +44,7 @@ public class GUIComponents {
         membersBox.getChildren().remove(1 , membersBox.getChildren().size());
         for (User user : members){
             System.out.println(user.getUsername());
-            HBox temp = createMemberBox(user.getUsername(), user.isState(), membersBox, noMembers);
+            HBox temp = createMemberBox(user.getUsername() + "\t"+user.getNationality(), user.isState(), membersBox, noMembers);
             membersBox.getChildren().add(temp);
         }
 

@@ -15,7 +15,7 @@ public class HomePage extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ddHelloApplication.class.getResource("homepage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("homepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1366, 785);
         stage.setTitle("GEM");
         stage.setResizable(false);

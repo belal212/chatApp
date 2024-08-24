@@ -118,7 +118,7 @@ public class CharRoomController implements Initializable {
     public void updateMembersBox(){
         membersBox.getChildren().remove(1 , membersBox.getChildren().size());
         for (User user : new DataBase().readUsers()){
-            membersBox.getChildren().add(new GUIComponents().createMemberBox(user.getUsername(), user.isState(), membersBox, noMembers));
+            membersBox.getChildren().add(new GUIComponents().createMemberBox(user.getUsername()+"\t"+user.getNationality(), user.isState(), membersBox, noMembers));
         }
     }
     public void send(){
