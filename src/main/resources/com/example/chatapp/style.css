@@ -483,3 +483,154 @@
 #confirmPasswordField:hover {
     -fx-border-color: #fd7e14; /* Change border color when focused */
 }
+ #WMlableCB{
+     -fx-padding: 8px; /* Adjust padding for better text alignment */
+     -fx-background-radius: 15px;
+     -fx-background-color: darkGray;
+     -fx-background-radius: 10px;
+     -fx-font-size: 13;
+ }
+#chatBotlable{-fx-background-color: orange; -fx-font-family: "Arial Rounded MT Bold";-fx-text-fill: white; }
+#qButtonCB{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-text-fill: black;
+}
+#questionsPane{
+    -fx-background-color: white;
+}
+#qB1{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}#qB2{
+     -fx-background-color: #fd7e14;
+     -fx-background-radius: 22;
+     -fx-font-family: "Arial Rounded MT Bold";
+     -fx-font-weight: bold;
+     -fx-font-size: 13;
+     -fx-text-fill: white;
+ }
+
+#qB3{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB4{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB5{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB6{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB7{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB8{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB9{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB10{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB11{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB12{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB13{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB14{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}
+
+#qB15{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+}#mainSecen{-fx-background-color: white}
