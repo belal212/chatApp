@@ -212,6 +212,18 @@
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-background-color:  #F5F4EF;
 }
+#emailLabel{
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-color:  #F5F4EF;
+}
+#usernameused{
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-color:  #F5F4EF;
+}
+#emailused{
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-background-color:  #F5F4EF;
+}
 #adLabel{
     -fx-font-family: "Arial Rounded MT Bold";
 }
