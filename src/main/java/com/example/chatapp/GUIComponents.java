@@ -70,8 +70,6 @@ public class GUIComponents {
         v.getChildren().add(label);
         v.setMargin(label , new Insets(0, 0 , 0,880 - label.getPrefWidth() -10));
 
-
-
     }
     public Label generateLabel(String text, double prefH, double minH, double prefW, int fontS){
         Label tempLapel = new Label(text);

@@ -122,16 +122,16 @@ public class CharRoomController implements Initializable {
         }
     }
     public void send(){
-        if (!textField.getText().isEmpty()) {
+        if (!textField.getText().isEmpty() && this.user.isState()) {
             client.sendMessage(textField.getText());
             client.sendMessage(textField.getText());
             new GUIComponents().myMessages(textField.getText(), this.chatBox);
             new DataBase().insertMessage(this.user.getUsername(), getTime() , textField.getText());
+            textField.setText("");
         }
         if (!this.user.isState()){
             textField.setText("you must be online to send message :)");
         }
-        textField.setText("");
 
     }
     public String getTime(){
@@ -182,7 +182,6 @@ public class CharRoomController implements Initializable {
         ArrayList<User> users = new DataBase().readUsers();
         setUser(users);
         Platform.runLater(() ->{
-            setOnline();
             fillChatBox();
             usernameL.setText(this.user.getUsername());
         });
@@ -199,13 +198,12 @@ public class CharRoomController implements Initializable {
                 }
             });
 
-//        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5
-//
-//        ), event ->
-//                updateMembersBox()
-//        ));
-//        timeline.setCycleCount(Timeline.INDEFINITE);
-//        timeline.play();
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2
+        ), event ->
+                updateMembersBox()
+        ));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
 
     }

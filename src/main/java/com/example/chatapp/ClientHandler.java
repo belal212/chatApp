@@ -170,13 +170,14 @@ public class ClientHandler extends Thread {
                 if (!result.isBeforeFirst()) {
                     Security security = new Security();
                     String encryptedPassword = security.encrypt(password);
-                    String sqlInsert = "INSERT INTO users (username, email, password, nationality, gender) VALUES (?, ?, ?, ?, ?)";
+                    String sqlInsert = "INSERT INTO users (username, email, password, nationality, gender, state) VALUES (?, ?, ?, ?, ?, ?)";
                     PreparedStatement statementInsert = conn.prepareStatement(sqlInsert);
                     statementInsert.setString(1, username);
                     statementInsert.setString(2, email);
                     statementInsert.setString(3, encryptedPassword);
                     statementInsert.setString(4, nationality);
                     statementInsert.setString(5, gender);
+                    statementInsert.setBoolean(6, false);
                     int resultInt = statementInsert.executeUpdate();
                     return resultInt>0;
                 }

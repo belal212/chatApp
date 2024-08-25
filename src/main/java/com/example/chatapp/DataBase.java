@@ -98,6 +98,7 @@ public class DataBase {
             throw new RuntimeException(e);
         }
 
+
         return messages;
 
     }
@@ -120,6 +121,7 @@ public class DataBase {
                 temp.setState(rs.getBoolean("state"));
                 users.add(temp);
             }
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -167,6 +169,22 @@ public class DataBase {
             ps.setString(5, user.getGender());
             ps.setBoolean(6,user.isState());
             ps.setString(7, user.getUsername());
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+
+        }
+    }
+    public boolean updateState(String username) {
+        Connection c = getConnection();
+        PreparedStatement ps = null;
+        String sql = "UPDATE users SET state =? WHERE username = ?";
+        try {
+            ps = c.prepareStatement(sql);
+            ps.setBoolean(1, false);
+            ps.setString(2, username);
 
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
