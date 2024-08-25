@@ -267,9 +267,6 @@ public class Login implements Initializable {
         private void SignInButtonAction(ActionEvent e) {
                 emptyRed();
                 LoginDB();
-
-
-
         }
 
         private void emptyRed() {
@@ -387,6 +384,7 @@ public class Login implements Initializable {
         }
 
         private void sendButtonAction(ActionEvent e) {
+                //java mail API
                 Security sender = new Security();
                 String checkEmail = emailForgetField.getText();
                 verificationCode = sender.generateVerificationCode();

@@ -18,6 +18,7 @@ public class GUIComponents {
     public HBox createMemberBox(String nickname, boolean state, VBox membersBox, Label noMembers){
         HBox hBox = new HBox();
         Button button = new Button(nickname);
+        button.setWrapText(true);
         button.setStyle("-fx-background-color: transparent");
         button.setPrefWidth(158);
         button.setPrefHeight(42);
