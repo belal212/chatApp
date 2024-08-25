@@ -10,9 +10,9 @@ public class DataBaseConnection {
     public static Connection connection;
 
     public static Connection getConnection() {
-        String databaseUser = "sql7727547";
-        String databasePassword = "G6LtFb12fY";
-        String url = "jdbc:mysql://sql7.freesqldatabase.com:3306/sql7727547";
+        String databaseUser = "root";
+        String databasePassword = "root";
+        String url = "jdbc:mysql://localhost:3306/chatapp";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, databaseUser, databasePassword);

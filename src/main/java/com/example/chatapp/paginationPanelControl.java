@@ -99,11 +99,12 @@ public class paginationPanelControl {
 
             AnchorPane contact = FXMLLoader.load(HelloApplication.class.getResource("contact.fxml"));
             contactTab.setContent(contact);
-            AnchorPane chatbot = FXMLLoader.load(HelloApplication.class.getResource("ChatBotSB.fxml"));
-            chatbotTab.setContent(chatbot);
 
             StackPane chatroom = FXMLLoader.load(HelloApplication.class.getResource("chatRoom-view.fxml"));
             chatroomTab.setContent(chatroom);
+
+            StackPane chatbot = FXMLLoader.load(HelloApplication.class.getResource("ChatBotSB.fxml"));
+            chatbotTab.setContent(chatbot);
         }catch (Exception E){
             E.printStackTrace();
         }
