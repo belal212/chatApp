@@ -10,9 +10,9 @@ public class DataBaseConnection {
     public static Connection connection;
 
     public static Connection getConnection() {
-        String databaseUser = "root";
-        String databasePassword = "root";
-        String url = "jdbc:mysql://localhost:3306/chatapp";
+        String databaseUser = "gemp";
+        String databasePassword = "Root123@e123";
+        String url = "jdbc:mysql://mysql-gemp.alwaysdata.net:3306/gemp_chatapp";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, databaseUser, databasePassword);

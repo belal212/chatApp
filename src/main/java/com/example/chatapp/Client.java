@@ -11,13 +11,12 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
-public class Client  {
+public class Client {
 
     private User user;
-    //default values for server address and port
     private String SERVER_ADDRESS = "127.0.0.1";
     private int SERVER_PORT = 5005;
-    
+
     private PrintWriter out;
     private BufferedReader in;
     private Socket socket;
@@ -28,30 +27,25 @@ public class Client  {
         this.user = user;
         try {
             connectToServer();
-        }catch (IOException e){
+        } catch (IOException e) {
             System.err.println("Failed to connect to the server: " + e.getMessage());
             shutdown();
         }
-
     }
-    private void setData(){
+
+    private void setData() {
         Properties properties = new Properties();
-        FileInputStream fis = null;
-
-        try {
-            fis = new FileInputStream("src/main/java/com/example/chatapp/server.properties");
+        try (FileInputStream fis = new FileInputStream("src/main/java/com/example/chatapp/server.properties")) {
             properties.load(fis);
-            SERVER_ADDRESS =  properties.getProperty("SERVER_ADDRESS");
-            SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT"));
-
+            SERVER_ADDRESS = properties.getProperty("SERVER_ADDRESS", SERVER_ADDRESS);
+            SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT", String.valueOf(SERVER_PORT)));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error loading server properties: " + e.getMessage());
         }
     }
 
     public void connectToServer() throws IOException {
         socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
-        new ChatHandler(socket, this.user);
         System.out.println("Connected to the chat server!");
 
         out = new PrintWriter(socket.getOutputStream(), true);
@@ -64,13 +58,17 @@ public class Client  {
             try {
                 String serverResponse;
                 while (running && (serverResponse = in.readLine()) != null) {
-                    String nickname = serverResponse.split("%%8%%0d")[0];
-                    String message = serverResponse.split("%%8%%0d")[1];
-//                    String finalServerResponse = serverResponse;
-                    Platform.runLater(() ->{
-                        new GUIComponents().dataMessage(nickname, getTime(), v);
-                        new GUIComponents().otherMessages(message, v);
-                    });
+                    String[] parts = serverResponse.split("%%8%%0d");
+                    if (parts.length == 2) {
+                        String nickname = parts[0];
+                        String message = parts[1];
+                        Platform.runLater(() -> {
+                            new GUIComponents().dataMessage(nickname, getTime(), v);
+                            new GUIComponents().otherMessages(message, v);
+                        });
+                    } else {
+                        System.err.println("Received invalid message format: " + serverResponse);
+                    }
                 }
             } catch (IOException e) {
                 if (running) {
@@ -80,10 +78,13 @@ public class Client  {
         }).start();
     }
 
-
     public void sendMessage(String message) {
         if (message != null && !message.trim().isEmpty()) {
-            out.println(this.user.getUsername()+ "%%8%%0d" + message);
+            if (out != null) {
+                out.println(this.user.getUsername() + "%%8%%0d" + message);
+            } else {
+                System.err.println("Cannot send message, connection is not established.");
+            }
         }
     }
 
@@ -104,10 +105,10 @@ public class Client  {
             System.err.println("Error during shutdown: " + e.getMessage());
         }
     }
-    public String getTime(){
+
+    public String getTime() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mma dd/MM/yyyy");
         return new String(currentDateTime.format(formatter).getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
     }
-
 }
