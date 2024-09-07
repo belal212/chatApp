@@ -29,7 +29,7 @@
     </TextFlow>
    <ImageView blendMode="SCREEN" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@logo.png" />
+         <Image url="@images/logo.png" />
       </image>
    </ImageView>
 </AnchorPane>

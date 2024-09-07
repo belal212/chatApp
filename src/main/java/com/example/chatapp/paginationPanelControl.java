@@ -70,8 +70,6 @@ public class paginationPanelControl {
     private Tab bookingTab;
     @FXML
     private Tab chatroomTab;
-    @FXML
-    private Tab chatbotTab;
     private Tab currentTab = homeTab;
     @FXML
     private Pagination cover;
@@ -103,8 +101,6 @@ public class paginationPanelControl {
             StackPane chatroom = FXMLLoader.load(HelloApplication.class.getResource("chatRoom-view.fxml"));
             chatroomTab.setContent(chatroom);
 
-            StackPane chatbot = FXMLLoader.load(HelloApplication.class.getResource("ChatBotSB.fxml"));
-            chatbotTab.setContent(chatbot);
         }catch (Exception E){
             E.printStackTrace();
         }
@@ -134,17 +130,10 @@ public class paginationPanelControl {
         tabs.add(contactTab);
         tabs.add(bookingTab);
         tabs.add(chatroomTab);
-        tabs.add(chatbotTab);
         String pressedStyle = "-fx-font-weight: bold; -fx-font-family:Arial Rounded MT Bold; -fx-font-size: 14px;-fx-text-base-color:#fd7e14;-fx-background-color: white;";
         String defaultStyle = "-fx-font-weight: bold; -fx-font-family:Arial Rounded MT Bold; -fx-font-size: 14px;  -fx-text-base-color: white;-fx-background-color: #fd7e14;";
 
-        tabs.forEach(tab ->{
-            if(tab.equals(homeTab)&&tab.equals(currentTab)) tab.setStyle(pressedStyle);
-            tab.setStyle(defaultStyle);
-            tab.setOnSelectionChanged(e ->{
-                handleButtonPress(tab,pressedStyle,defaultStyle);
-            });
-        });
+
 
         pags.add(gem);
         pags.add(tour);
@@ -173,23 +162,23 @@ public class paginationPanelControl {
 
         // Create image views for each page
         try {
-            ImageView cover1 = new ImageView(new Image(getClass().getResource("coverPic 1.jpg").toExternalForm()));
-            ImageView cover2 = new ImageView(new Image(getClass().getResource("CoverPic 2.jpg").toExternalForm()));
-            ImageView cover3 = new ImageView(new Image(getClass().getResource("CoverPic 3.jpg").toExternalForm()));
-            ImageView cover4 = new ImageView(new Image(getClass().getResource("CoverPic 4.jpg").toExternalForm()));
+            ImageView cover1 = new ImageView(new Image(getClass().getResource("images/coverPic 1.jpg").toExternalForm()));
+            ImageView cover2 = new ImageView(new Image(getClass().getResource("images/CoverPic 2.jpg").toExternalForm()));
+            ImageView cover3 = new ImageView(new Image(getClass().getResource("images/CoverPic 3.jpg").toExternalForm()));
+            ImageView cover4 = new ImageView(new Image(getClass().getResource("images/CoverPic 4.jpg").toExternalForm()));
 
-            ImageView tour1 = new ImageView(new Image(getClass().getResource("tour-1.png").toExternalForm()));
-            ImageView tour2 = new ImageView(new Image(getClass().getResource("tour-2.png").toExternalForm()));
-            ImageView tour3 = new ImageView(new Image(getClass().getResource("tour-3.png").toExternalForm()));
+            ImageView tour1 = new ImageView(new Image(getClass().getResource("images/tour-1.png").toExternalForm()));
+            ImageView tour2 = new ImageView(new Image(getClass().getResource("images/tour-2.png").toExternalForm()));
+            ImageView tour3 = new ImageView(new Image(getClass().getResource("images/tour-3.png").toExternalForm()));
 
-            ImageView gem1 = new ImageView(new Image(getClass().getResource("gem-1.png").toExternalForm()));
-            ImageView gem2 = new ImageView(new Image(getClass().getResource("gem-2.png").toExternalForm()));
-            ImageView gem3 = new ImageView(new Image(getClass().getResource("gem-3.png").toExternalForm()));
-            ImageView gem4 = new ImageView(new Image(getClass().getResource("gem-4.png").toExternalForm()));
+            ImageView gem1 = new ImageView(new Image(getClass().getResource("images/gem-1.png").toExternalForm()));
+            ImageView gem2 = new ImageView(new Image(getClass().getResource("images/gem-2.png").toExternalForm()));
+            ImageView gem3 = new ImageView(new Image(getClass().getResource("images/gem-3.png").toExternalForm()));
+            ImageView gem4 = new ImageView(new Image(getClass().getResource("images/gem-4.png").toExternalForm()));
 
-            ImageView kids1 = new ImageView(new Image(getClass().getResource("kids-1.png").toExternalForm()));
-            ImageView kids2 = new ImageView(new Image(getClass().getResource("kids-2.png").toExternalForm()));
-            ImageView kids3 = new ImageView(new Image(getClass().getResource("kids-3.png").toExternalForm()));
+            ImageView kids1 = new ImageView(new Image(getClass().getResource("images/kids-1.png").toExternalForm()));
+            ImageView kids2 = new ImageView(new Image(getClass().getResource("images/kids-2.png").toExternalForm()));
+            ImageView kids3 = new ImageView(new Image(getClass().getResource("images/kids-3.png").toExternalForm()));
 
             Vector<ImageView> Images = new Vector<>();
             Images.add(tour1);
@@ -316,6 +305,7 @@ public class paginationPanelControl {
         timeline.play();
 
     }
+
     private void applyFadeTransition(javafx.scene.Node node, int durationInMillis, double fromValue, double toValue) {
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(durationInMillis), node);
         fadeTransition.setFromValue(fromValue);

@@ -305,46 +305,46 @@
     -fx-border-color: #fd7e14; /* Change border color when focused */
 }
 #eyeImage{
-    -fx-background-image: url("eye.png");
+    -fx-background-image: url("images/eye.png");
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-color: #F5F4EF;
 }
 #eyeImage:hover{
-    -fx-background-image: url("oEye.png");
+    -fx-background-image: url("images/oEye.png");
 }
 
 #hideImage{
-    -fx-background-image: url("hiding.png");
+    -fx-background-image: url("images/hiding.png");
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-color: #F5F4EF;
 }
 #hideImage:hover{
-    -fx-background-image: url("oHiding.png");
+    -fx-background-image: url("images/oHiding.png");
 }
 #eyeImage1{
-    -fx-background-image: url("eye.png");
+    -fx-background-image: url("images/eye.png");
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-color: #F5F4EF;
 }
 #eyeImage1:hover{
-    -fx-background-image: url("oEye.png");
+    -fx-background-image: url("images/oEye.png");
 }
 
 #hideImage1{
-    -fx-background-image: url("hiding.png");
+    -fx-background-image: url("images/hiding.png");
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-color: #F5F4EF;
 }
 #hideImage1:hover{
-    -fx-background-image: url("oHiding.png");
+    -fx-background-image: url("images/oHiding.png");
 }
 #forgetPasswordPane{
     -fx-background-color: #F5F4EF;

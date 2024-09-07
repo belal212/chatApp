@@ -29,7 +29,7 @@
                   <Label fx:id="chatBotlable" prefHeight="47.0" prefWidth="600.0" stylesheets="@style.css" text="  Chat Bot" />
                   <ImageView fitHeight="39.0" fitWidth="60.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@chatbot.png" />
+                        <Image url="@images/chatbot.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="qButtonCB" blendMode="MULTIPLY" layoutX="56.0" layoutY="153.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="440.0" stylesheets="@style.css" text="Q u e s t i o n  s ?" />
@@ -39,7 +39,7 @@
                <children>
                   <ImageView fitHeight="322.0" fitWidth="561.0" layoutY="1.0" opacity="0.1" pickOnBounds="true">
                      <image>
-                        <Image url="@2.jpeg" />
+                        <Image url="@images/2.jpeg" />
                      </image>
                   </ImageView>
                   <VBox fx:id="vBoxQBCB" layoutX="6.0" layoutY="7.0" prefHeight="302.0" prefWidth="269.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css">

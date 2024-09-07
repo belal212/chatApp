@@ -33,7 +33,7 @@
             <Button fx:id="send" mnemonicParsing="false" onAction="#send" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@send-message.png" />
+                     <Image url="@images/send-message.png" />
                   </ImageView>
                </graphic>
                <cursor>
@@ -60,7 +60,7 @@
          <Button fx:id="clear" layoutX="729.0" layoutY="15.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: transparent;">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@bin.png" />
+                  <Image url="@images/bin.png" />
                </ImageView>
             </graphic>
             <tooltip>
@@ -73,7 +73,7 @@
          <Button fx:id="memberListButton" layoutX="835.0" layoutY="15.0" mnemonicParsing="false" onAction="#showAndHideMembersPane" prefHeight="26.0" prefWidth="54.0" rotate="180.0" style="-fx-background-color: transparent;">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@right-arrow.png" />
+                  <Image url="@images/right-arrow.png" />
                </ImageView>
             </graphic>
             <cursor>
@@ -83,7 +83,7 @@
          <Button fx:id="export" layoutX="675.0" layoutY="15.0" mnemonicParsing="false" onAction="#exportChat" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: transparent;">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@file.png" />
+                  <Image url="@images/file.png" />
                </ImageView>
             </graphic>
             <tooltip>
@@ -122,7 +122,7 @@
                      </items>
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@sort.png" />
+                           <Image url="@images/sort.png" />
                         </ImageView>
                      </graphic>
                      <tooltip>

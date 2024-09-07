@@ -65,7 +65,7 @@
       </font></Hyperlink>
    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@logo.png" />
+         <Image url="@images/logo.png" />
       </image>
    </ImageView>
 </AnchorPane>

@@ -18,7 +18,7 @@
             </font>
          </Label>
          <ImageView fx:id="pcIcon" fitHeight="77.0" fitWidth="113.0" layoutX="17.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@logo.png" />
+            <Image url="@images/logo.png" />
          </ImageView>
          <Label fx:id="instructionLabel" alignment="CENTER" layoutX="12.0" layoutY="197.0" prefHeight="38.0" prefWidth="200.0" style="-fx-font-family: Arial Rounded MT Bold;" stylesheets="@style.css" text="Please enter login details below" />
          <TextField fx:id="userNameTextfield" layoutX="13.0" layoutY="267.0" prefHeight="40.0" prefWidth="240.0" promptText="Enter your user name" stylesheets="@style.css" />
@@ -46,7 +46,7 @@
       </AnchorPane>
       <AnchorPane fx:id="loginPage" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: white;" stylesheets="@style.css">
          <ImageView fx:id="image1" fitHeight="353.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@26f814f8-14a3-4751-9da2-5a3d0cef9e91.jpeg" />
+            <Image url="@images/26f814f8-14a3-4751-9da2-5a3d0cef9e91.jpeg" />
          </ImageView>
          <Label fx:id="adLabel" alignment="CENTER" layoutX="16.0" layoutY="447.0" prefHeight="38.0" prefWidth="266.0" stylesheets="@style.css" text="Chat easy and more efficient with oxChat " />
          <Button fx:id="signupButton" layoutX="58.0" layoutY="387.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="183.0" text="SIGN UP">
