@@ -1,13 +1,12 @@
 package com.example.chatapp;
 
+import com.example.chatapp.database.DataBase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -24,7 +23,7 @@ public class HelloApplication extends Application {
             Properties properties = new Properties();
             FileInputStream fis = null;
             try {
-                fis = new FileInputStream("src/main/java/com/example/chatapp/userdata.properties");
+                fis = new FileInputStream("src/main/java/com/example/chatapp/database/userdata.properties");
                 properties.load(fis);
             } catch (IOException e) {
                 throw new RuntimeException(e);

@@ -1,5 +1,7 @@
-package com.example.chatapp;
+package com.example.chatapp.chatroom;
 
+import com.example.chatapp.chatroom.GUIComponents;
+import com.example.chatapp.chatroom.User;
 import javafx.application.Platform;
 import javafx.scene.layout.VBox;
 
@@ -7,7 +9,6 @@ import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
@@ -35,7 +36,7 @@ public class Client {
 
     private void setData() {
         Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream("src/main/java/com/example/chatapp/server.properties")) {
+        try (FileInputStream fis = new FileInputStream("src/main/java/com/example/chatapp/database/server.properties")) {
             properties.load(fis);
             SERVER_ADDRESS = properties.getProperty("SERVER_ADDRESS", SERVER_ADDRESS);
             SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT", String.valueOf(SERVER_PORT)));

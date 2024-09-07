@@ -1,5 +1,6 @@
-package com.example.chatapp;
+package com.example.chatapp.about;
 
+import com.example.chatapp.HelloApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,12 +8,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ChatRoomApplication extends Application {
+public class AboutApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ChatRoomApplication.class.getResource("chatRoom-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EGMF code.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1366, 785);
         stage.setTitle("Hello!");
+        stage.setResizable(false);
+
+
+       // stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

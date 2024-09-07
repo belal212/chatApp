@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackR" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.CharRoomController">
+<StackPane fx:id="stackR" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.chatroom.CharRoomController">
    <HBox fx:id="mainPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="1095.0" style="-fx-background-color: transparent;">
       <Pane minWidth="663.0" prefHeight="598.0" prefWidth="900.0" style="-fx-background-color: #212121;">
          <ScrollPane hbarPolicy="NEVER" layoutY="60.0" prefHeight="481.0" prefWidth="896.0" style="-fx-background-color: transparent; -fx-background: #F0F0F0;">

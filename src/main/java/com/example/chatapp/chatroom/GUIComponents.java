@@ -1,4 +1,4 @@
-package com.example.chatapp;
+package com.example.chatapp.chatroom;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

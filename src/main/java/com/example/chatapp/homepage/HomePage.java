@@ -1,5 +1,6 @@
-package com.example.chatapp;
+package com.example.chatapp.homepage;
 
+import com.example.chatapp.HelloApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

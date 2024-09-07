@@ -1,4 +1,5 @@
-package com.example.chatapp;
+package com.example.chatapp.homepage;
+import com.example.chatapp.HelloApplication;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -162,23 +163,23 @@ public class paginationPanelControl {
 
         // Create image views for each page
         try {
-            ImageView cover1 = new ImageView(new Image(getClass().getResource("images/coverPic 1.jpg").toExternalForm()));
-            ImageView cover2 = new ImageView(new Image(getClass().getResource("images/CoverPic 2.jpg").toExternalForm()));
-            ImageView cover3 = new ImageView(new Image(getClass().getResource("images/CoverPic 3.jpg").toExternalForm()));
-            ImageView cover4 = new ImageView(new Image(getClass().getResource("images/CoverPic 4.jpg").toExternalForm()));
+            ImageView cover1 = new ImageView(new Image(HelloApplication.class.getResource("images/coverPic 1.jpg").toExternalForm()));
+            ImageView cover2 = new ImageView(new Image(HelloApplication.class.getResource("images/CoverPic 2.jpg").toExternalForm()));
+            ImageView cover3 = new ImageView(new Image(HelloApplication.class.getResource("images/CoverPic 3.jpg").toExternalForm()));
+            ImageView cover4 = new ImageView(new Image(HelloApplication.class.getResource("images/CoverPic 4.jpg").toExternalForm()));
 
-            ImageView tour1 = new ImageView(new Image(getClass().getResource("images/tour-1.png").toExternalForm()));
-            ImageView tour2 = new ImageView(new Image(getClass().getResource("images/tour-2.png").toExternalForm()));
-            ImageView tour3 = new ImageView(new Image(getClass().getResource("images/tour-3.png").toExternalForm()));
+            ImageView tour1 = new ImageView(new Image(HelloApplication.class.getResource("images/tour-1.png").toExternalForm()));
+            ImageView tour2 = new ImageView(new Image(HelloApplication.class.getResource("images/tour-2.png").toExternalForm()));
+            ImageView tour3 = new ImageView(new Image(HelloApplication.class.getResource("images/tour-3.png").toExternalForm()));
 
-            ImageView gem1 = new ImageView(new Image(getClass().getResource("images/gem-1.png").toExternalForm()));
-            ImageView gem2 = new ImageView(new Image(getClass().getResource("images/gem-2.png").toExternalForm()));
-            ImageView gem3 = new ImageView(new Image(getClass().getResource("images/gem-3.png").toExternalForm()));
-            ImageView gem4 = new ImageView(new Image(getClass().getResource("images/gem-4.png").toExternalForm()));
+            ImageView gem1 = new ImageView(new Image(HelloApplication.class.getResource("images/gem-1.png").toExternalForm()));
+            ImageView gem2 = new ImageView(new Image(HelloApplication.class.getResource("images/gem-2.png").toExternalForm()));
+            ImageView gem3 = new ImageView(new Image(HelloApplication.class.getResource("images/gem-3.png").toExternalForm()));
+            ImageView gem4 = new ImageView(new Image(HelloApplication.class.getResource("images/gem-4.png").toExternalForm()));
 
-            ImageView kids1 = new ImageView(new Image(getClass().getResource("images/kids-1.png").toExternalForm()));
-            ImageView kids2 = new ImageView(new Image(getClass().getResource("images/kids-2.png").toExternalForm()));
-            ImageView kids3 = new ImageView(new Image(getClass().getResource("images/kids-3.png").toExternalForm()));
+            ImageView kids1 = new ImageView(new Image(HelloApplication.class.getResource("images/kids-1.png").toExternalForm()));
+            ImageView kids2 = new ImageView(new Image(HelloApplication.class.getResource("images/kids-2.png").toExternalForm()));
+            ImageView kids3 = new ImageView(new Image(HelloApplication.class.getResource("images/kids-3.png").toExternalForm()));
 
             Vector<ImageView> Images = new Vector<>();
             Images.add(tour1);

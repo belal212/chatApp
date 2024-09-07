@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.Contact2Controller">
+<AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.entertainment.Contact2Controller">
     <Circle fx:id="circle" centerX="155.0" centerY="250.0" fill="DARKORANGE" radius="400.0" />
     <Circle fx:id="circle2" centerX="1555.0" centerY="850.0" fill="DARKORANGE" layoutX="-289.0" layoutY="-209.0" radius="300.0" />
     <Circle fx:id="circle4" centerX="785.0" centerY="630.0" fill="DARKORANGE" layoutX="-83.0" layoutY="-40.0" radius="80.0" />

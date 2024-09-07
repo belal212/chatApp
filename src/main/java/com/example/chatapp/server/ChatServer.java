@@ -1,4 +1,6 @@
-package com.example.chatapp;
+package com.example.chatapp.server;
+
+import com.example.chatapp.chatroom.User;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,7 +32,7 @@ public class ChatServer {
         FileInputStream fis = null;
 
         try {
-            fis = new FileInputStream("src/main/java/com/example/chatapp/server.properties");
+            fis = new FileInputStream("src/main/java/com/example/chatapp/database/server.properties");
             properties.load(fis);
             SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT"));
 

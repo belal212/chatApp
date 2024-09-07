@@ -1,4 +1,6 @@
-package com.example.chatapp;
+package com.example.chatapp.signlog;
+import com.example.chatapp.HelloApplication;
+import com.example.chatapp.Security;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -115,7 +117,7 @@ public class Login implements Initializable {
         @FXML
         private Label welcomeLabel;
         String verificationCode = "";
-        private static final String PROPERTIES_FILE_PATH = "src/main/java/com/example/chatapp/userdata.properties";
+        private static final String PROPERTIES_FILE_PATH = "src/main/java/com/example/chatapp/database/userdata.properties";
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
@@ -230,7 +232,7 @@ public class Login implements Initializable {
                 closingFade();
                 pause.setOnFinished(event -> {
                         try {
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Signup.fxml"));
+                                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("Signup.fxml"));
                                 Parent loginRoot = loader.load();
 
                                 Stage stage = (Stage) signupButton.getScene().getWindow();
@@ -349,7 +351,7 @@ public class Login implements Initializable {
 
                                 pause.setOnFinished(event -> {
                                         try {
-                                                FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+                                                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("homepage.fxml"));
                                                 Parent homePageRoot = loader.load();
                                                 Stage s = (Stage) subRoot.getScene().getWindow();
                                                 s.close();

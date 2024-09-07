@@ -1,4 +1,4 @@
-package com.example.chatapp;
+package com.example.chatapp.chatbot;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

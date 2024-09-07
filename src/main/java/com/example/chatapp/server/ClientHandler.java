@@ -1,4 +1,7 @@
-package com.example.chatapp;
+package com.example.chatapp.server;
+import com.example.chatapp.Security;
+import com.example.chatapp.database.DataBaseConnection;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

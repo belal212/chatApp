@@ -1,4 +1,4 @@
-package com.example.chatapp;
+package com.example.chatapp.chatroom;
 
 public class User {
     int id;

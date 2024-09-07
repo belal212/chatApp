@@ -1,4 +1,6 @@
-package com.example.chatapp;
+package com.example.chatapp.chatroom;
+
+import com.example.chatapp.database.DataBase;
 
 import java.util.ArrayList;
 import java.util.Collections;

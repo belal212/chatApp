@@ -1,4 +1,6 @@
-package com.example.chatapp;
+package com.example.chatapp.database;
+
+import com.example.chatapp.server.ClientHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;

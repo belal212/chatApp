@@ -1,4 +1,4 @@
-package com.example.chatapp;
+package com.example.chatapp.entertainment;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;

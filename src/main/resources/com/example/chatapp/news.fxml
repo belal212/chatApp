@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="785.0" prefWidth="1366.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.paginationPanelControl">
+<AnchorPane prefHeight="785.0" prefWidth="1366.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.homepage.paginationPanelControl">
    <AnchorPane layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="187.0" prefWidth="1367.0" styleClass="banner">
       <children>
       
               <ImageView fx:id="newsBanner" fitHeight="176.0" fitWidth="465.0" layoutX="900.0" layoutY="10.0" preserveRatio="true">
             <image>
-               <Image url="@../../../../../../../../project/news-banner.png" />
+               <Image url="@images/news-banner.png" />
             </image>
          </ImageView>
          <Label layoutX="237.0" layoutY="71.0" prefHeight="59.0" prefWidth="449.0" styleClass="banner-title" text="Latest News about the GEM" textAlignment="CENTER">

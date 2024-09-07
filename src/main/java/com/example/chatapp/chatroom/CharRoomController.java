@@ -1,5 +1,7 @@
-package com.example.chatapp;
+package com.example.chatapp.chatroom;
 
+import com.example.chatapp.database.DataBase;
+import com.example.chatapp.database.WriteToFile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
@@ -23,9 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import java.util.*;
@@ -198,7 +198,7 @@ public class CharRoomController implements Initializable {
                 }
             });
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(60
         ), event ->
                 updateMembersBox()
         ));
@@ -212,7 +212,7 @@ public class CharRoomController implements Initializable {
         try {
             Properties properties = new Properties();
             FileInputStream fis = null;
-            fis = new FileInputStream("src/main/java/com/example/chatapp/userdata.properties");
+            fis = new FileInputStream("src/main/java/com/example/chatapp/database/userdata.properties");
             properties.load(fis);
             String username = properties.getProperty("USERNAME");
             for (User u : users){

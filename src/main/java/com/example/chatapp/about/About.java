@@ -1,6 +1,6 @@
 
 
-package com.example.chatapp;
+package com.example.chatapp.about;
 
 
 

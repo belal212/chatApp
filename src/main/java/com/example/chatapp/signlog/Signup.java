@@ -1,5 +1,6 @@
-package com.example.chatapp;
+package com.example.chatapp.signlog;
 
+import com.example.chatapp.HelloApplication;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -494,7 +495,7 @@ public class Signup implements Initializable {
                 pause.setOnFinished(event -> {
                         try {
                                 // Load the login page FXML
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+                                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
                                 Parent loginRoot = loader.load();
 
                                 // Get the current stage (window)

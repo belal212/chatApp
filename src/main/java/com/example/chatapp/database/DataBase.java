@@ -1,6 +1,8 @@
-package com.example.chatapp;
+package com.example.chatapp.database;
 
-// import com.example.chatapp.GUIComponents;
+// import com.example.chatapp.chatroom.GUIComponents;
+import com.example.chatapp.chatroom.Message;
+import com.example.chatapp.chatroom.User;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 // import javafx.application.Platform;
@@ -25,7 +27,7 @@ public class DataBase {
         MysqlDataSource mysqlDataSource = new MysqlDataSource();
 
         try{
-            fis = new FileInputStream("src/main/java/com/example/chatapp/database.properties");
+            fis = new FileInputStream("src/main/java/com/example/chatapp/database/database.properties");
             properties.load(fis);
             Class.forName(properties.getProperty("DRIVER"));
             mysqlDataSource.setURL(properties.getProperty("MYSQL_DB_URL"));
