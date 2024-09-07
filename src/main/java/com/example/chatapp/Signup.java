@@ -223,6 +223,23 @@ public class Signup implements Initializable {
                         }
                 });
 
+                hiddencpassword.setOnKeyPressed(event -> {
+                        cpassword.setText(hiddencpassword.getText());
+                });
+
+                hiddenpassword1.setOnKeyPressed(event -> {
+                        password1.setText(hiddenpassword1.getText());
+                });
+
+                password1.setOnKeyPressed(event -> {
+                        hiddenpassword1.setText(password1.getText());
+                });
+
+                cpassword.setOnKeyPressed(event -> {
+                        hiddencpassword.setText(cpassword.getText());
+                });
+
+
 
                 openingFade();
 
@@ -237,10 +254,8 @@ public class Signup implements Initializable {
         private void showPassword(ActionEvent e) {
                 hiddenpassword1.setVisible(false);
                 password1.setVisible(true);
-                password1.setText(hiddenpassword1.getText());
                 hiddencpassword.setVisible(false);
                 cpassword.setVisible(true);
-                cpassword.setText(hiddencpassword.getText());
                 eyeImage1.setVisible(false);
                 hideImage1.setVisible(true);
 
@@ -249,10 +264,8 @@ public class Signup implements Initializable {
         private void hidePassword(ActionEvent e) {
                 hiddenpassword1.setVisible(true);
                 password1.setVisible(false);
-                hiddenpassword1.setText(password1.getText());
                 hiddencpassword.setVisible(true);
                 cpassword.setVisible(false);
-                hiddencpassword.setText(cpassword.getText());
                 eyeImage1.setVisible(true);
                 hideImage1.setVisible(false);
 
