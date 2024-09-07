@@ -510,7 +510,18 @@
     -fx-font-weight: bold;
     -fx-font-size: 15;
     -fx-text-fill: black;
-}
+}#qButtonCB:hover{
+     -fx-background-color: white;
+     -fx-background-radius: 22;
+     -fx-border-radius: 22;
+     -fx-font-family: "Arial Rounded MT Bold";
+     -fx-font-weight: bold;
+     -fx-font-size: 15;
+    -fx-border-color: #e96a00;
+     -fx-text-fill: #e96a00;
+
+
+ }
 #questionsPane{
     -fx-background-color: white;
 }
@@ -645,4 +656,150 @@
     -fx-font-weight: bold;
     -fx-font-size: 13;
     -fx-text-fill: white;
-}#mainSecen{-fx-background-color: white}
+}
+#mainSecen{-fx-background-color: white}
+#qB1:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB1:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB2:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB3:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB4:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB5:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB6:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB7:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB8:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB9:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB10:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB11:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB12:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB13:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB14:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}#qB15:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #e96a00;
+    -fx-text-fill: #e96a00;
+}

@@ -14,11 +14,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import java.io.*;
 import java.net.Socket;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
@@ -115,6 +115,7 @@ public class Login implements Initializable {
         @FXML
         private Label welcomeLabel;
         String verificationCode = "";
+        private static final String PROPERTIES_FILE_PATH = "src/main/java/com/example/chatapp/userdata.properties";
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
@@ -267,9 +268,6 @@ public class Login implements Initializable {
         private void SignInButtonAction(ActionEvent e) {
                 emptyRed();
                 LoginDB();
-
-
-
         }
 
         private void emptyRed() {
@@ -341,6 +339,14 @@ public class Login implements Initializable {
                                 PauseTransition pause = new PauseTransition(Duration.millis(500));
                                 applyFadeTransition(rootPane,500,1.0,0.0);
 
+
+                                Properties properties = new Properties();
+                                FileInputStream fis = new FileInputStream(PROPERTIES_FILE_PATH);
+                                properties.load(fis);
+                                properties.setProperty("USERNAME", username);
+                                FileOutputStream fos = new FileOutputStream(PROPERTIES_FILE_PATH);
+                                properties.store(fos, null);
+
                                 pause.setOnFinished(event -> {
                                         try {
                                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
@@ -387,6 +393,7 @@ public class Login implements Initializable {
         }
 
         private void sendButtonAction(ActionEvent e) {
+                //java mail API
                 Security sender = new Security();
                 String checkEmail = emailForgetField.getText();
                 verificationCode = sender.generateVerificationCode();

@@ -1,14 +1,4 @@
 package com.example.chatapp;
-
-import com.example.chatapp.CharRoomController;
-import com.example.chatapp.ChatRoomApplication;
-import com.example.chatapp.DataBase;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -67,6 +57,27 @@ public class ClientHandler extends Thread {
         }
     }
 
+    private boolean checkCredentials(String email, String password) {
+        try (Connection conn = DataBaseConnection.getConnection()) {
+            if (conn != null) {
+                Security security = new Security();
+                String encryptedPassword = security.encrypt(password);
+                String sql = "SELECT count(1) FROM users WHERE username = ? AND password = ?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, email);
+                statement.setString(2, encryptedPassword);
+                ResultSet result = statement.executeQuery();
+
+                if (result.next() && result.getInt(1) == 1) {
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Database query error: " + ex.getMessage());
+        }
+        return false;
+    }
+
     private void handleSignup(ObjectInputStream input, ObjectOutputStream output) {
         try {
             String username = (String) input.readObject();
@@ -83,7 +94,7 @@ public class ClientHandler extends Thread {
 
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println("Server exception: " + ex.getMessage());
-            ex.printStackTrace();
+
         }
     }
 
@@ -159,13 +170,14 @@ public class ClientHandler extends Thread {
                 if (!result.isBeforeFirst()) {
                     Security security = new Security();
                     String encryptedPassword = security.encrypt(password);
-                    String sqlInsert = "INSERT INTO users (username, email, password, nationality, gender) VALUES (?, ?, ?, ?, ?)";
+                    String sqlInsert = "INSERT INTO users (username, email, password, nationality, gender, state) VALUES (?, ?, ?, ?, ?, ?)";
                     PreparedStatement statementInsert = conn.prepareStatement(sqlInsert);
                     statementInsert.setString(1, username);
                     statementInsert.setString(2, email);
                     statementInsert.setString(3, encryptedPassword);
                     statementInsert.setString(4, nationality);
                     statementInsert.setString(5, gender);
+                    statementInsert.setBoolean(6, false);
                     int resultInt = statementInsert.executeUpdate();
                     return resultInt>0;
                 }
@@ -176,10 +188,10 @@ public class ClientHandler extends Thread {
         return false;
     }
 
-
     private void handleChat(ObjectInputStream input, ObjectOutputStream output) {
         // Implement chat room logic, broadcasting messages to other clients
     }
+
     private void handleChangePassword(ObjectInputStream input, ObjectOutputStream output) {
         try {
             String email = (String) input.readObject();
@@ -208,25 +220,4 @@ public class ClientHandler extends Thread {
         }
     }
 
-
-    private boolean checkCredentials(String email, String password) {
-        try (Connection conn = DataBaseConnection.getConnection()) {
-            if (conn != null) {
-                Security security = new Security();
-                String encryptedPassword = security.encrypt(password);
-                String sql = "SELECT count(1) FROM users WHERE username = ? AND password = ?";
-                PreparedStatement statement = conn.prepareStatement(sql);
-                statement.setString(1, email);
-                statement.setString(2, encryptedPassword);
-                ResultSet result = statement.executeQuery();
-
-                if (result.next() && result.getInt(1) == 1) {
-                    return true;
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println("Database query error: " + ex.getMessage());
-        }
-        return false;
-    }
 }

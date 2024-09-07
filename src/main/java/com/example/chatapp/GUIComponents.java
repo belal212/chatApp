@@ -18,6 +18,7 @@ public class GUIComponents {
     public HBox createMemberBox(String nickname, boolean state, VBox membersBox, Label noMembers){
         HBox hBox = new HBox();
         Button button = new Button(nickname);
+        button.setWrapText(true);
         button.setStyle("-fx-background-color: transparent");
         button.setPrefWidth(158);
         button.setPrefHeight(42);
@@ -44,7 +45,7 @@ public class GUIComponents {
         membersBox.getChildren().remove(1 , membersBox.getChildren().size());
         for (User user : members){
             System.out.println(user.getUsername());
-            HBox temp = createMemberBox(user.getUsername() + "\t"+user.getNationality(), user.isState(), membersBox, noMembers);
+            HBox temp = createMemberBox(user.getUsername() + "\n"+user.getNationality(), user.isState(), membersBox, noMembers);
             membersBox.getChildren().add(temp);
         }
 
@@ -68,8 +69,6 @@ public class GUIComponents {
 
         v.getChildren().add(label);
         v.setMargin(label , new Insets(0, 0 , 0,880 - label.getPrefWidth() -10));
-
-
 
     }
     public Label generateLabel(String text, double prefH, double minH, double prefW, int fontS){

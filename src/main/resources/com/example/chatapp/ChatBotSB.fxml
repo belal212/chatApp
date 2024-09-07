@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<StackPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.ChatBotSB">
+   <children>
+      <AnchorPane fx:id="mainSecen" maxHeight="400.0" maxWidth="600.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane fx:id="ScrollpaneCB" blendMode="MULTIPLY" layoutX="24.0" layoutY="194.0" prefHeight="267.0" prefWidth="554.0" stylesheets="@style.css">
+                     <content>
+                        <VBox fx:id="vBoxChatlogCB" blendMode="MULTIPLY" prefHeight="232.0" prefWidth="556.0" stylesheets="@style.css" />
+                     </content>
+                  </ScrollPane>
+                  <Canvas height="200.0" layoutX="200.0" layoutY="100.0" width="200.0" />
+                  <Label fx:id="WMlableCB" blendMode="MULTIPLY" layoutX="56.0" layoutY="91.0" prefHeight="55.0" prefWidth="440.0" stylesheets="@style.css" text="You have reached your personal assist Bot  how can i help you ? You also can choose from the following questions" wrapText="true" />
+                  <Label fx:id="HelloCBLable" blendMode="MULTIPLY" disable="true" layoutX="56.0" layoutY="70.0" prefHeight="25.0" prefWidth="75.0" text=" Hello!" />
+                  <Label fx:id="chatBotlable" prefHeight="47.0" prefWidth="600.0" stylesheets="@style.css" text="  Chat Bot" />
+                  <ImageView fitHeight="39.0" fitWidth="60.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@chatbot.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="qButtonCB" blendMode="MULTIPLY" layoutX="56.0" layoutY="153.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="440.0" stylesheets="@style.css" text="Q u e s t i o n  s ?" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="questionsPane" layoutX="20.0" layoutY="30.0" prefHeight="295.0" prefWidth="561.0" stylesheets="@style.css" visible="false">
+               <children>
+                  <ImageView fitHeight="322.0" fitWidth="561.0" layoutY="1.0" opacity="0.1" pickOnBounds="true">
+                     <image>
+                        <Image url="@2.jpeg" />
+                     </image>
+                  </ImageView>
+                  <VBox fx:id="vBoxQBCB" layoutX="6.0" layoutY="7.0" prefHeight="302.0" prefWidth="269.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css">
+                     <children>
+                        <Button fx:id="qB1" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="305.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="What is the Grand Egyptian Museum?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB2" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="Where is the Grand Egyptian Museum located?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB3" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="296.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="What are the operating hours?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB4" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="299.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="What exhibits can I see?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB5" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="297.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="How can I buy tickets?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB6" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="293.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="Are there guided tours available?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB7" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="304.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="What is the cost of entry?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB8" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="Is photography allowed inside the museum?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="1.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="290.0" layoutY="9.0" prefHeight="302.0" prefWidth="269.0">
+                     <children>
+                        <Button fx:id="qB9" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="287.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="Is there a gift shop?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB10" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="283.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="Are there restaurants or cafes inside?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB11" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="286.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="How long does it take to tour the museum?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB12" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="285.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="Is the museum accessible for people with disabilities?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB13" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="288.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="What safety measures are in place?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB14" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="289.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="What is the best time to visit?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="qB15" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="282.0" stylesheets="@../../../../../../target/classes/com/example/chatapp/style.css" text="Are there special exhibitions or events?" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -102,6 +102,9 @@ public class paginationPanelControl {
 
             StackPane chatroom = FXMLLoader.load(HelloApplication.class.getResource("chatRoom-view.fxml"));
             chatroomTab.setContent(chatroom);
+
+            StackPane chatbot = FXMLLoader.load(HelloApplication.class.getResource("ChatBotSB.fxml"));
+            chatbotTab.setContent(chatbot);
         }catch (Exception E){
             E.printStackTrace();
         }

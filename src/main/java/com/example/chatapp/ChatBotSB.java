@@ -19,38 +19,42 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 public class ChatBotSB implements Initializable {
 
-    @FXML
-    private AnchorPane mainSecen;
-
-    @FXML
-    private ImageView BGimageCB;
-
-    @FXML
-    private Label WMlableCB;
 
     @FXML
     private Label HelloCBLable;
 
     @FXML
-    private TextField TextFieldCB;
+    private ScrollPane ScrollpaneCB;
 
     @FXML
-    private Button sendButton;
+    private Label WMlableCB;
 
     @FXML
     private Label chatBotlable;
 
     @FXML
-    private Button qButtonCB;
-
-    @FXML
-    private AnchorPane questionsPane;
-
-    @FXML
-    private VBox vBoxQBCB;
+    private AnchorPane mainSecen;
 
     @FXML
     private Button qB1;
+
+    @FXML
+    private Button qB10;
+
+    @FXML
+    private Button qB11;
+
+    @FXML
+    private Button qB12;
+
+    @FXML
+    private Button qB13;
+
+    @FXML
+    private Button qB14;
+
+    @FXML
+    private Button qB15;
 
     @FXML
     private Button qB2;
@@ -77,34 +81,16 @@ public class ChatBotSB implements Initializable {
     private Button qB9;
 
     @FXML
-    private Button qB10;
+    private Button qButtonCB;
 
     @FXML
-    private Button qB11;
-
-    @FXML
-    private Button qB12;
-
-    @FXML
-    private Button qB13;
-
-    @FXML
-    private Button qB14;
-
-    @FXML
-    private Button qB15;
-
-    @FXML
-    private ScrollPane ScrollpaneCB;
+    private AnchorPane questionsPane;
 
     @FXML
     private VBox vBoxChatlogCB;
 
     @FXML
-    private Label WMlableCB1;
-
-    @FXML
-    private Label WMlableCB11;
+    private VBox vBoxQBCB;
 
     public void initializeCB(){
 

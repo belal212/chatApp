@@ -41,9 +41,9 @@
                </cursor>
             </Button>
          </HBox>
-         <Button fx:id="state" layoutX="599.0" layoutY="22.0" mnemonicParsing="false" onAction="#state" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: green; -fx-background-radius: 8;" text="Online  " textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="state" contentDisplay="RIGHT" layoutX="599.0" layoutY="22.0" mnemonicParsing="false" onAction="#state" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: red; -fx-background-radius: 8;" text="Offline" textAlignment="CENTER" textFill="WHITE">
             <graphic>
-               <Circle fill="GREEN" radius="12.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
+               <Circle fill="RED" radius="12.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
             </graphic>
             <padding>
                <Insets bottom="-5.0" left="-7.0" right="-7.0" top="-5.0" />
