@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.about.AboutC">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1366.0" prefWidth="1366.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d97609" height="198.0" layoutX="328.0" layoutY="606.0" opacity="0.18" rotate="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="453.0" />
+            <ImageView fitHeight="91.0" fitWidth="154.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="vision" layoutX="490.0" layoutY="393.0" prefHeight="176.0" prefWidth="454.0" text="Our Vision:&#10;To be a global leader in the conservation,&#10;research, and exhibition of ancient Egyptian&#10;artifacts, fostering a deeper understanding of &#10;Egypt's role in world history.">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="mission" layoutX="391.0" layoutY="604.0" prefHeight="149.0" prefWidth="420.0" text="Our Mission:&#10;Preserving and showcasing the rich &#10;cultural heritage of&#10;ancient Egypt for future generations.">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d97609" height="299.0" layoutX="-53.0" layoutY="1121.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1412.0" />
+            <Label layoutX="960.0" layoutY="1179.0" text="CONTACT US" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="phone" layoutX="983.0" layoutY="1211.0" text=": +20235317344" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="email" layoutX="983.0" layoutY="1254.0" text=": Tourism_info@easwaaqmisr.com" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="1179.0" text="FOLLOW US" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="face" fitHeight="36.0" fitWidth="40.0" layoutX="40.0" layoutY="1209.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/facebook.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Insta" fitHeight="36.0" fitWidth="40.0" layoutX="84.0" layoutY="1209.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/instagram.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="tik" fitHeight="36.0" fitWidth="40.0" layoutX="129.0" layoutY="1209.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/Tiktok.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="944.0" layoutY="1209.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/phone.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="944.0" layoutY="1252.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/email.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="y02" layoutX="167.0" layoutY="863.0" text="2002">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="586.0" layoutY="792.0" text="Our Story" textFill="#d97609">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="y03" layoutX="252.0" layoutY="863.0" text="2003">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="y05" layoutX="337.0" layoutY="863.0" text="2005">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="y10" layoutX="422.0" layoutY="863.0" text="2010">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="y17" layoutX="507.0" layoutY="863.0" text="2017">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="y18" layoutX="592.0" layoutY="863.0" text="2018">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="y19" layoutX="677.0" layoutY="863.0" text="2019">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="y23" layoutX="762.0" layoutY="863.0" text="2023">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="present" layoutX="847.0" layoutY="863.0" text="Present" textFill="#d97609">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="286.0" fitWidth="331.0" layoutX="988.0" layoutY="805.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/il_570xN.4459221038_5kfd.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d97609" height="379.0" layoutX="450.0" layoutY="275.0" opacity="0.18" rotate="-42.4" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="482.0" />
+            <Label fx:id="story" alignment="TOP_LEFT" layoutX="169.0" layoutY="910.0" prefHeight="188.0" prefWidth="812.0" text="The Grand Egyptian Museum is expected to become a central hub for &#10;Egyptology and cultural tourism, drawing millions of visitors annually.&#10;Its modern design, combined with one of the most extensive collections of &#10;ancient Egyptian artifacts, positions it as a world-class cultural institution.&#10;&#10;">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="259.0" fitWidth="1366.0" layoutY="118.0" pickOnBounds="true">
+               <image>
+                  <Image url="@images/29BA12C3-3256-4F82-A8B6-C2E97C161533.jpg" />
+               </image>
+            </ImageView>
+            <Text boundsType="VISUAL" fill="#d97609" layoutX="21.0" layoutY="199.0" strokeDashOffset="100.0" strokeMiterLimit="100.0" strokeType="OUTSIDE" strokeWidth="100.0" text="ABOUT THE GRAND EGYPTIAN MUSEUM" textOrigin="BOTTOM" wrappingWidth="535.73046875">
+               <cursor>
+                  <Cursor fx:constant="NW_RESIZE" />
+               </cursor>
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="pright" fitHeight="249.0" fitWidth="395.0" layoutX="944.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/The-Grand-Egyptian-Museum-Overview-Egypt-Tours-Portal02.jpg" />
+               </image>
+               <effect>
+                  <Reflection fraction="0.28" topOpacity="1.0" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="pleft" fitHeight="226.0" fitWidth="345.0" layoutX="21.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/The-Grand-Egyptian-Museum-Design-Egypt-Tours-Portal01.jpg" />
+               </image>
+               <effect>
+                  <InnerShadow height="255.0" radius="127.0" width="255.0" />
+               </effect>
+            </ImageView>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

@@ -93,7 +93,7 @@ public class paginationPanelControl {
     public void initialize() {
         applyFadeTransition(tabPane,2000,0.0,1.0);
         try{
-            ScrollPane about = FXMLLoader.load(HelloApplication.class.getResource("EGMF code.fxml"));
+            ScrollPane about = FXMLLoader.load(HelloApplication.class.getResource("About.fxml"));
             aboutTab.setContent(about);
 
 
