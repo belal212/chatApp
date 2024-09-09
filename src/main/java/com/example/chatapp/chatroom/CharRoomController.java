@@ -198,7 +198,7 @@ public class CharRoomController implements Initializable {
                 }
             });
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(60
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2
         ), event ->
                 updateMembersBox()
         ));

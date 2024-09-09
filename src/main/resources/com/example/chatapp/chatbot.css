@@ -1,0 +1,9 @@
+#sendButton{
+    -fx-background-color:  #5E3B2D;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+#sendButton:hover{
+    -fx-background-color:  #8B5E3C;
+}
+

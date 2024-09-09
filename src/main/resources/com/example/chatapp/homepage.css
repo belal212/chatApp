@@ -17,14 +17,53 @@
    -fx-border-radius: 25px;
 }
 
-.tab{
-   -fx-text-base-color: white;
+/* Default style for tabs */
+/* Default style for the tab */
+.tab .tab-label {
+   -fx-font-weight: bold;
+   -fx-font-family: "Arial Rounded MT Bold";
+   -fx-font-size: 14px;
+   -fx-text-fill: white;
+}
+
+/* Remove focus border from the tab when selected */
+.tab:selected {
+   -fx-background-color: white;
+   -fx-border-color: transparent; /* Removes the blue border */
+   -fx-focus-color: transparent; /* Removes focus border */
+   -fx-faint-focus-color: transparent; /* Removes faint focus border */
+}
+
+/* Optionally, remove the focus border from the entire TabPane */
+.tab-pane:focused {
+   -fx-focus-color: transparent;
+   -fx-faint-focus-color: transparent;
+}
+
+/* Default style for the tab label */
+.tab .tab-label {
+   -fx-font-weight: bold;
+   -fx-font-family: "Arial Rounded MT Bold";
+   -fx-font-size: 14px;
+   -fx-text-fill: white;
+}
+
+.tab {
    -fx-background-color: #fd7e14;
 }
 
-.tab:hover{
-   -fx-text-base-color:#fd7e14;
+/* Style for hovered tabs */
+.tab:hover .tab-label {
+   -fx-text-fill: #fd7e14;
+}
+
+.tab:hover {
    -fx-background-color: white;
+}
+
+/* Style for selected tabs */
+.tab:selected .tab-label {
+   -fx-text-fill: #fd7e14;
 }
 
 .pag-pane{
@@ -131,4 +170,14 @@
    -fx-background-color: white;
    -fx-text-fill: #fd7e14;
 }
+#chatbotButton{
+   -fx-background-color:  #5E3B2D;
+   -fx-border-width: 2px;
+   -fx-border-radius: 100%;
+   -fx-background-radius: 100%;
+}
+#chatbotButton:hover{
+   -fx-background-color: #8B5E3C;
+}
+
 

@@ -10,6 +10,8 @@ module com.example.chatapp {
     requires java.sql.rowset;
     requires com.google.gson;
     requires java.desktop;
+    requires com.fasterxml.jackson.databind;
+    requires javafx.media;
 
 
     opens com.example.chatapp to javafx.fxml;

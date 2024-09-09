@@ -19,7 +19,7 @@ public class HomePage extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("homepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1366, 785);
         stage.setTitle("GEM");
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setScene(scene);
         stage.show();
     }

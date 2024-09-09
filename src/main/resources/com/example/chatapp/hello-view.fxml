@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="558.0" prefWidth="468.0" style="-fx-background: #5E3B2D; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.chatbot.ChatApiClient">
+   <children>
+      <AnchorPane layoutX="37.0" layoutY="37.0" prefHeight="489.0" prefWidth="394.0" style="-fx-background-color: #5E3B2D; -fx-border-color: #8B5E3C; -fx-border-radius: 20; -fx-border-width: 2;">
+         <children>
+         
+                                         <!-- Chat history area inside a ScrollPane -->
+              <ScrollPane fx:id="chatScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="236.0" prefWidth="390.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+                  <content>
+                      <VBox fx:id="chatBox" minWidth="327.0" prefHeight="232.0" prefWidth="389.0" spacing="10" style="-fx-background-color: transparent; -fx-background-radius: 20; -fx-border-radius: 20;">
+                          <padding>
+                              <Insets bottom="5.0" left="3.0" right="3.0" top="12.0" />
+                          </padding>
+                      </VBox>
+                  </content>
+              </ScrollPane>
+         
+                                         <!-- Input area -->
+              <HBox alignment="CENTER" fillHeight="false" layoutX="12.0" layoutY="245.0" prefHeight="228.0" prefWidth="372.0" spacing="8.0" style="-fx-background-color: #5E3B2D;">
+                  <TextField fx:id="userInput" prefHeight="34.0" prefWidth="540.0" promptText="Type a message" style="-fx-background-color: #8B5E3C; -fx-background-radius: 20; -fx-text-fill: white;">
+                  <HBox.margin>
+                     <Insets top="200.0" />
+                  </HBox.margin>
+               </TextField>
+                  <Button fx:id="sendButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#handleSendButton" prefHeight="74.0" prefWidth="36.0" stylesheets="@chatbot.css">
+                      <graphic>
+                          <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                              <Image url="@images/send-message.png" />
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                          </ImageView>
+                      </graphic>
+                      <cursor>
+                          <Cursor fx:constant="HAND" />
+                      </cursor>
+                  <HBox.margin>
+                     <Insets top="200.0" />
+                  </HBox.margin>
+                  <opaqueInsets>
+                     <Insets left="15.0" />
+                  </opaqueInsets>
+                  </Button>
+              </HBox>
+         
+                                                                   <!-- Video area on the far left -->
+             <VBox fx:id="mediaPane" alignment="BOTTOM_RIGHT" layoutX="78.0" layoutY="234.0" prefHeight="70.0" prefWidth="163.0">
+                 <padding>
+                     <Insets bottom="10" left="10" right="10" top="10" />
+                 </padding>
+             </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+   <padding>
+      <Insets bottom="50.0" />
+   </padding>
+</AnchorPane>

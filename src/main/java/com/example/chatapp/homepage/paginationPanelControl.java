@@ -96,6 +96,7 @@ public class paginationPanelControl {
             ScrollPane about = FXMLLoader.load(HelloApplication.class.getResource("EGMF code.fxml"));
             aboutTab.setContent(about);
 
+
             AnchorPane contact = FXMLLoader.load(HelloApplication.class.getResource("contact.fxml"));
             contactTab.setContent(contact);
 
@@ -105,6 +106,10 @@ public class paginationPanelControl {
         }catch (Exception E){
             E.printStackTrace();
         }
+
+
+
+
         setLinksFunctional();
 
         bookingImg1.setOnMouseClicked(mouseEvent -> {
@@ -122,9 +127,7 @@ public class paginationPanelControl {
         newsBtn.setOnAction(e->{
             switchToTab("newsTab");
         });
-        chatbotBtn.setOnAction(e->{
-            switchToTab("chatbotTab");
-        });
+
         tabs.add(homeTab);
         tabs.add(newsTab);
         tabs.add(aboutTab);
