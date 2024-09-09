@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="785.0" prefWidth="1366.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.homepage.paginationPanelControl">
+<AnchorPane prefHeight="785.0" prefWidth="1366.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.homepage.paginationPanelControl">
    <AnchorPane layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="187.0" prefWidth="1367.0" styleClass="banner">
       <children>
       
