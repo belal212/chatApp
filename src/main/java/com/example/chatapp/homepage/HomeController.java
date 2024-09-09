@@ -330,7 +330,7 @@ public class HomeController implements Initializable {
     }
     private void loadAbout(){
         try {
-            loadTabContent(aboutTab.getId(),"EGMF code.fxml");
+            loadTabContent(aboutTab.getId(),"About.fxml");
         } catch (IOException e) {
             System.out.println("About pane can not loaded");
         }
