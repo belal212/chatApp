@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.json.JSONObject;
@@ -22,6 +23,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class Signup implements Initializable {
 
@@ -45,6 +47,10 @@ public class Signup implements Initializable {
 
         @FXML
         private Label adLabel;
+
+        @FXML
+        private Label invalid;
+
 
         @FXML
         private ComboBox<File> comboBox = new ComboBox<>();
@@ -114,6 +120,9 @@ public class Signup implements Initializable {
 
         @FXML
         private Label welcomeLabel;
+
+        @FXML
+        private Label Strength;
 
         @FXML
         private Button eyeImage1;
@@ -230,10 +239,12 @@ public class Signup implements Initializable {
 
                 hiddenpassword1.setOnKeyPressed(event -> {
                         password1.setText(hiddenpassword1.getText());
+                        checkPasswordStrength(hiddenpassword1.getText());
                 });
 
                 password1.setOnKeyPressed(event -> {
                         hiddenpassword1.setText(password1.getText());
+                        checkPasswordStrength(password1.getText());
                 });
 
                 cpassword.setOnKeyPressed(event -> {
@@ -407,6 +418,12 @@ public class Signup implements Initializable {
                         hiddenpassword1.setStyle("-fx-border-color: red;");
                         Errors ++;
                 }
+                if (!isValidEmail(email1.getText())){
+                        invalid.setVisible(true);
+                        Errors++;
+                }else {
+                        invalid.setVisible(false);
+                }
 
                 if (Errors != 0) {
                         Timeline timeline = new Timeline(new KeyFrame(
@@ -516,8 +533,67 @@ public class Signup implements Initializable {
                 pause.play();
         }
 
+        public void checkPasswordStrength(String password) {
+                if (password == null || password.length() < 8) {
+                        Strength.setText("Weak");
+                        Strength.setTextFill(Color.RED);
+                }
+                int strengthPoints = 0;
+                // Check for the presence of a digit
+                if (password.matches(".*\\d.*")) {
+                        strengthPoints++;
+                }
+                // Check for the presence of a lowercase letter
+                if (password.matches(".*[a-z].*")) {
+                        strengthPoints++;
+                }
+                // Check for the presence of an uppercase letter
+                if (password.matches(".*[A-Z].*")) {
+                        strengthPoints++;
+                }
+                // Check for the presence of a special character
+                if (password.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
+                        strengthPoints++;
+                }
+                // Determine strength based on points
+                if (strengthPoints <= 1) {
+                        Strength.setText("Weak");
+                        Strength.setTextFill(Color.RED);
+                } else if (strengthPoints == 2 || strengthPoints == 3) {
+                        Strength.setText("Medium");
+                        Strength.setTextFill(Color.ORANGE);
+                } else if (strengthPoints == 4) {
+                        Strength.setText("Strong");
+                        Strength.setTextFill(Color.GREEN);
+                }else{
+                        Strength.setText("Weak");
+                        Strength.setTextFill(Color.RED);
+                }}
 
 
+        public static boolean isValidEmail(String email) {
+                // Define a regex pattern for a valid email address
+                String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+                Pattern pattern = Pattern.compile(emailRegex);
 
+                // Check if the email matches the pattern
+                if (email == null || !pattern.matcher(email).matches()) {
+                        return false;
+                }
 
+                // List of valid email domains
+                String[] validDomains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
+
+                // Extract the domain from the email
+                String domain = email.substring(email.indexOf("@") + 1);
+
+                // Check if the domain is in the list of valid domains
+                for (String validDomain : validDomains) {
+                        if (domain.equalsIgnoreCase(validDomain)) {
+                                return true;
+                        }
+                }
+
+                return false;
+        }
 }
