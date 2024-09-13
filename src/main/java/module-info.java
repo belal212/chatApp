@@ -12,6 +12,7 @@ module com.example.chatapp {
     requires java.desktop;
     requires com.fasterxml.jackson.databind;
     requires javafx.media;
+    requires javafx.web;
 
 
     opens com.example.chatapp to javafx.fxml;
