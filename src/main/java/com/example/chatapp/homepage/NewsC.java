@@ -1,4 +1,4 @@
-package com.example.chatapp.News;
+package com.example.chatapp.homepage;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

@@ -1,9 +1,11 @@
 package com.example.chatapp.homepage;
 import com.example.chatapp.HelloApplication;
+import com.example.chatapp.TranslatorClient;
 import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
@@ -14,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.Scene;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,9 +31,12 @@ import javafx.util.Duration;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 import java.util.*;
+import javafx.scene.control.Hyperlink;
 
 public class HomeController implements Initializable {
     @FXML
@@ -140,8 +147,7 @@ public class HomeController implements Initializable {
     @FXML
     private Hyperlink link9;
 
-    @FXML
-    private ImageView newsBanner;
+
 
     @FXML
     private Button newsBtn;
@@ -166,11 +172,10 @@ public class HomeController implements Initializable {
     int coverCurrentIndex = 0;
 
     Vector<Pagination> pags = new Vector<>();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        applyFadeTransition(Root, 1500);
-        setLinksFunctional();
+        applyFadeTransition(Root,1500);
+
         imageLoader();
         pagsTransitions();
         bookingImg1.setOnMouseClicked(mouseEvent -> openWebpage("https://visit-gem.com/en/tours"));
@@ -192,8 +197,7 @@ public class HomeController implements Initializable {
         chatbotButton.setOnAction(this::setChatbotButtonAction);
 
     }
-
-    private void handleCloseRequest(WindowEvent e) {
+    private void handleCloseRequest(WindowEvent e){
         try {
             Rectangle2D screenBounds = Screen.getPrimary().getBounds();
             double screenWidth = screenBounds.getWidth();
@@ -205,7 +209,7 @@ public class HomeController implements Initializable {
             s.close();
 
             Stage stage = new Stage();
-            Scene scene = new Scene(homePageRoot, screenWidth, screenHeight, Color.TRANSPARENT);
+            Scene scene = new Scene(homePageRoot,screenWidth,screenHeight,Color.TRANSPARENT);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.setScene(scene);
             stage.show();
@@ -214,7 +218,7 @@ public class HomeController implements Initializable {
         }
     }
 
-    private void imageLoader() {
+    private void imageLoader(){
         try {
             // Create ImageViews for cover pages and other images
             ImageView[] covers = {
@@ -224,7 +228,7 @@ public class HomeController implements Initializable {
                     new ImageView(new Image(Objects.requireNonNull(HelloApplication.class.getResource("images/CoverPic 4.jpg")).toExternalForm()))
             };
             bookingTab.setStyle("");
-            newsBanner.setVisible(true);
+
             homeTab.setStyle("");
             newsTab.setStyle("");
 
@@ -271,8 +275,8 @@ public class HomeController implements Initializable {
         }
 
 
-    }
 
+    }
     private void setupImagesWithRoundedCorners(Vector<ImageView> images) {
         for (ImageView image : images) {
             Rectangle clip = new Rectangle(220, 220);
@@ -283,7 +287,6 @@ public class HomeController implements Initializable {
             image.setFitHeight(220);
         }
     }
-
     public void setPageFactory(Pagination pagination, Vector<ImageView> imageViews, int startIdx, int endIdx) {
         int pageCount = endIdx - startIdx + 1;
 
@@ -305,19 +308,6 @@ public class HomeController implements Initializable {
         timeline.play();
     }
 
-    private void setLinksFunctional() {
-        link1.setOnAction(actionEvent -> openLink("https://www.youtube.com/watch?v=0nwZkVldpvI"));
-        link2.setOnAction(actionEvent -> openLink("https://globaldesignnews.com/heneghan-peng-architects-complete-worlds-largest-museum-building-encompassing-90000-square-meters-the-grand-egyptian-museum/"));
-        link3.setOnAction(actionEvent -> openLink("https://www.dailynewsegypt.com/2024/04/01/tourism-minister-inspects-grand-egyptian-museum-giza-pyramids/"));
-        link4.setOnAction(actionEvent -> openLink("https://egyptianstreets.com/2021/08/08/in-photos-pharaoh-khufus-boat-transported-to-the-grand-egyptian-museum/#google_vignette"));
-        link5.setOnAction(actionEvent -> openLink("https://www.egypttoday.com/Article/1/130124/Photos-Grand-Egyptian-Museum-project-nears-completion-as-Prime-Minister"));
-        link6.setOnAction(actionEvent -> openLink("https://www.architecturaldigest.com/story/everything-we-know-about-the-billion-dollar-grand-egyptian-museum"));
-        link7.setOnAction(actionEvent -> openLink("https://www.globalconstructionreview.com/nearly-there-previewing-the-grand-egyptian-museum/"));
-        link8.setOnAction(actionEvent -> openLink("https://egyptindependent.com/the-grand-egyptian-museum-receives-13-huge-artifacts/"));
-        link9.setOnAction(actionEvent -> openLink("https://egyptianstreets.com/2021/08/08/in-photos-pharaoh-khufus-boat-transported-to-the-grand-egyptian-museum/#google_vignette"));
-        link10.setOnAction(actionEvent -> openLink("https://egyptindependent.com/preparations-for-grand-egyptian-museums-opening-ceremony-90-complete-official/"));
-    }
-
     private void openLink(String url) {
         try {
             Desktop.getDesktop().browse(new URI(url));
@@ -325,7 +315,6 @@ public class HomeController implements Initializable {
             System.out.println("Error in Open Link");
         }
     }
-
     private void openWebpage(String url) {
         try {
             Desktop.getDesktop().browse(new URI(url));
@@ -342,8 +331,7 @@ public class HomeController implements Initializable {
             }
         }
     }
-
-    private void pagsTransitions() {
+    private void pagsTransitions(){
         pags.add(gem);
         pags.add(tour);
         pags.add(kids);
@@ -369,14 +357,12 @@ public class HomeController implements Initializable {
 
         });
     }
-
     private void applyFadeTransition(Node node, int durationInMillis) {
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(durationInMillis), node);
         fadeTransition.setFromValue(0.0);
         fadeTransition.setToValue(1.0);
         fadeTransition.play();
     }
-
     private void loadTabContent(String tabId, String fxmlFile) throws IOException {
         // Find the tab by ID from the tabPane's tabs list
         Tab targetTab = tabPane.getTabs().stream()
@@ -395,7 +381,6 @@ public class HomeController implements Initializable {
             System.err.println("Tab with id " + tabId + " not found.");
         }
     }
-
     private void handleTabSelection(Tab selectedTab) {
         if (selectedTab.equals(aboutTab)) {
             loadAbout();
@@ -403,32 +388,38 @@ public class HomeController implements Initializable {
             loadContact();
         } else if (selectedTab.equals(chatroomTab)) {
             loadChatRoom();
+        } else if (selectedTab.equals(newsTab)) {
+            loadNews();
         }
 
         // Handle other tabs if needed
     }
-
-    private void loadAbout() {
+    private void loadAbout(){
         try {
-            loadTabContent(aboutTab.getId(), "About.fxml");
+            loadTabContent(aboutTab.getId(),"About.fxml");
         } catch (IOException e) {
             System.out.println("About pane can not loaded");
         }
     }
-
-    private void loadChatRoom() {
+    private void loadChatRoom(){
         try {
-            loadTabContent(chatroomTab.getId(), "chatRoom-view.fxml");
+            loadTabContent(chatroomTab.getId(),"chatRoom-view.fxml");
         } catch (IOException e) {
             System.out.println("chat room pane can not loaded");
         }
     }
-
-    private void loadContact() {
+    private void loadContact(){
         try {
-            loadTabContent(contactTab.getId(), "contact.fxml");
+            loadTabContent(contactTab.getId(),"contact.fxml");
         } catch (IOException e) {
             System.out.println("contact pane can not loaded");
+        }
+    }
+    private void loadNews(){
+        try {
+            loadTabContent(newsTab.getId(),"News.fxml");
+        } catch (IOException e) {
+            System.out.println("news pane can not loaded");
         }
     }
 
@@ -483,8 +474,66 @@ public class HomeController implements Initializable {
         translateTransition.setToX(to);
         translateTransition.play();
     }
+    @FXML
+    private void setArabic() {
+        // Original text storage
+        Map<String, String> originalTexts = new HashMap<>();
+        originalTexts.put("hoursLabel", hoursLabel.getText());
+        originalTexts.put("welcome", welcomeLabel.getText());
+        originalTexts.put("intro", introLabel.getText());
+        originalTexts.put("time", timeLabel.getText());
+        originalTexts.put("activities", activitesLabel.getText());
+        originalTexts.put("pyramids", pyramidLabel.getText());
+        originalTexts.put("kids", kidsLabel.getText());
+        originalTexts.put("gem", GemLabel.getText());
+        originalTexts.put("contact", contactLabel.getText());
+        originalTexts.put("contactBTN", contactBtn.getText());
+        originalTexts.put("home", homeTab.getText());
+        originalTexts.put("news", newsTab.getText());
+        originalTexts.put("about", aboutTab.getText());
+        originalTexts.put("booking", bookingTab.getText());
+        originalTexts.put("contactTAB", contactTab.getText());
+        originalTexts.put("newsLab", newsLabel.getText());
+        originalTexts.put("newsBTN", newsBtn.getText());
+        originalTexts.put("bookingBTN", bookingBtn.getText());
+        originalTexts.put("languageSelector", languageSelcetor.getText());
 
-}
+        // Translation Map
+        Map<String, String> translatedTexts = new HashMap<>();
+
+        // Translation process
+        try {
+            for (Map.Entry<String, String> entry : originalTexts.entrySet()) {
+                String originalText = entry.getValue();
+                String translatedText = TranslatorClient.translateText(originalText, "en", "ar");
+                translatedTexts.put(entry.getKey(), translatedText);
+            }
+
+            // Set translated texts to respective components
+            hoursLabel.setText(translatedTexts.get("hoursLabel"));
+            welcomeLabel.setText(translatedTexts.get("welcome"));
+            introLabel.setText(translatedTexts.get("intro"));
+            timeLabel.setText(translatedTexts.get("time"));
+            activitesLabel.setText(translatedTexts.get("activities"));
+            pyramidLabel.setText(translatedTexts.get("pyramids"));
+            kidsLabel.setText(translatedTexts.get("kids"));
+            GemLabel.setText(translatedTexts.get("gem"));
+            contactLabel.setText(translatedTexts.get("contact"));
+            contactBtn.setText(translatedTexts.get("contactBTN"));
+            homeTab.setText(translatedTexts.get("home"));
+            newsTab.setText(translatedTexts.get("news"));
+            aboutTab.setText(translatedTexts.get("about"));
+            bookingTab.setText(translatedTexts.get("booking"));
+            contactTab.setText(translatedTexts.get("contactTAB"));
+            newsLabel.setText(translatedTexts.get("newsLab"));
+            newsBtn.setText(translatedTexts.get("newsBTN"));
+            bookingBtn.setText(translatedTexts.get("bookingBTN"));
+            languageSelcetor.setText(translatedTexts.get("languageSelector"));
+
+        } catch (IOException ex) {
+            System.out.println("error in trans");
+        }
+    }}
 
 
 

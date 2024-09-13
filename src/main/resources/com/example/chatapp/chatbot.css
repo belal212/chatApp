@@ -24,3 +24,26 @@
  .scroll-bar:vertical .decrement-arrow {
     -fx-background-color: #ffb38a; /* Color of the arrow inside the buttons */
 }
+#anchor{
+    -fx-background-color: #ffd8b0;
+    -fx-background-radius: 50;
+}
+#anchor:hover{
+    -fx-background-color: #ffb38a; /* Color of the arrow inside the buttons */
+}
+#leftButton {
+    -fx-background-color: #ffd8b0;
+    -fx-background-radius: 20;
+}
+#rightButton{
+    -fx-background-color: #ffd8b0;
+    -fx-background-radius: 20;
+}
+#leftButton:hover {
+    -fx-background-color: #ffb38a;
+
+}
+#rightButton:hover{
+    -fx-background-color: #ffb38a;
+
+}
