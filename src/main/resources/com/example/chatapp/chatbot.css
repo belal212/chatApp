@@ -6,4 +6,23 @@
 #sendButton:hover{
     -fx-background-color:  #8B5E3C;
 }
+.scroll-bar:vertical{
+    -fx-background-color: #fd7e14;
+    -fx-background-radius: 20px;
+}
+.scroll-bar:vertical .thumb{
+    -fx-background-color: #ffb38a;
+    -fx-background-radius: 20px;
+    -fx-padding: 5px;
+    -fx-pref-width: 12px; /* Width of the thumb */
+    -fx-min-width: 12px; /* Minimum width of the thumb */
+    -fx-max-width: 12px;
 
+
+}
+
+
+.scroll-bar:vertical .increment-arrow,
+ .scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: #ffb38a; /* Color of the arrow inside the buttons */
+}

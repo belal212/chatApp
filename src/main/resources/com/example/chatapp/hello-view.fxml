@@ -11,16 +11,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="558.0" prefWidth="468.0" style="-fx-background: #5E3B2D; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.chatbot.ChatApiClient">
    <children>
       <AnchorPane layoutX="37.0" layoutY="37.0" prefHeight="489.0" prefWidth="394.0" style="-fx-background-color: #5E3B2D; -fx-border-color: #8B5E3C; -fx-border-radius: 20; -fx-border-width: 2;">
          <children>
          
                                          <!-- Chat history area inside a ScrollPane -->
-              <ScrollPane fx:id="chatScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="236.0" prefWidth="390.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+              <ScrollPane fx:id="chatScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutY="8.0" pannable="true" prefHeight="228.0" prefWidth="394.0" style="-fx-background-color: transparent; -fx-background: transparent;" stylesheets="@chatbot.css">
                   <content>
-                      <VBox fx:id="chatBox" minWidth="327.0" prefHeight="232.0" prefWidth="389.0" spacing="10" style="-fx-background-color: transparent; -fx-background-radius: 20; -fx-border-radius: 20;">
+                      <VBox fx:id="chatBox" minWidth="327.0" prefHeight="224.0" prefWidth="393.0" spacing="10" style="-fx-background-color: transparent; -fx-background-radius: 20; -fx-border-radius: 20;">
                           <padding>
                               <Insets bottom="5.0" left="3.0" right="3.0" top="12.0" />
                           </padding>
@@ -30,7 +29,7 @@
          
                                          <!-- Input area -->
               <HBox alignment="CENTER" fillHeight="false" layoutX="12.0" layoutY="245.0" prefHeight="228.0" prefWidth="372.0" spacing="8.0" style="-fx-background-color: #5E3B2D;">
-                  <TextField fx:id="userInput" prefHeight="34.0" prefWidth="540.0" promptText="Type a message" style="-fx-background-color: #8B5E3C; -fx-background-radius: 20; -fx-text-fill: white;">
+                  <TextField fx:id="userInput" onAction="#handleSendButton" prefHeight="34.0" prefWidth="540.0" promptText="Type a message" style="-fx-background-color: #8B5E3C; -fx-background-radius: 20; -fx-text-fill: white;">
                   <HBox.margin>
                      <Insets top="200.0" />
                   </HBox.margin>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.chatapp.OpenApp" style="-fx-background-color: rgba(0,0,0,0);">
+</Pane>
