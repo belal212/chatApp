@@ -39,7 +39,7 @@
          </PasswordField>
 
          <TextField fx:id="email1" layoutX="31.0" layoutY="227.0" prefHeight="40.0" prefWidth="240.0" promptText="Enter the email" stylesheets="@style.css" />
-         <Label fx:id="passwordLabel" alignment="BOTTOM_LEFT" layoutX="39.0" layoutY="273.0" prefHeight="19.0" prefWidth="57.0" stylesheets="@style.css" text=" Password">
+         <Label fx:id="passwordLabel" alignment="BOTTOM_LEFT" layoutX="39.0" layoutY="276.0" prefHeight="16.0" prefWidth="56.0" stylesheets="@style.css" text=" Password">
             <font>
                <Font name="Segoe Print Bold" size="11.0" />
             </font>
@@ -80,8 +80,10 @@
       <Button fx:id="eyeImage1" layoutX="229.0" layoutY="293.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" stylesheets="@style.css" />
       <Button fx:id="hideImage1" layoutX="227.0" layoutY="290.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="35.0" stylesheets="@style.css" visible="false" />
       <Label fx:id="Signuptest" alignment="CENTER" layoutX="71.0" layoutY="431.0" prefHeight="17.0" prefWidth="150.0" />
-      <Label fx:id="usernameused" layoutX="139.0" layoutY="209.0" prefHeight="17.0" prefWidth="130.0" text="Username already used." textFill="RED" visible="false"/>
-      <Label fx:id="emailused" layoutX="156.0" layoutY="266.0" prefHeight="17.0" prefWidth="105.0" text="Email already used." textFill="RED" visible="false"/>
+      <Label fx:id="usernameused" layoutX="139.0" layoutY="209.0" prefHeight="17.0" prefWidth="130.0" text="Username already used." textFill="RED" visible="false" />
+      <Label fx:id="emailused" layoutX="156.0" layoutY="266.0" prefHeight="17.0" prefWidth="105.0" text="Email already used." textFill="RED" visible="false" />
+      <Label fx:id="Strength" layoutX="181.0" layoutY="327.0" prefHeight="17.0" prefWidth="78.0" />
+      <Label fx:id="invalid" alignment="CENTER_RIGHT" layoutX="156.0" layoutY="268.0" prefHeight="17.0" prefWidth="105.0" text="Invalid Username." textFill="RED" visible="false"/>
       </AnchorPane>
    <AnchorPane fx:id="loginPage" layoutX="300.0" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: white;" stylesheets="@style.css">
       <ImageView fx:id="image1" fitHeight="448.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
