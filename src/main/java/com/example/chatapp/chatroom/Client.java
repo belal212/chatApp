@@ -1,9 +1,10 @@
-package com.example.chatapp.chatroom;
+package com.example.bluePrints;
 
-import com.example.chatapp.chatroom.GUIComponents;
-import com.example.chatapp.chatroom.User;
 import javafx.application.Platform;
 import javafx.scene.layout.VBox;
+
+import com.example.bluePrints.*;
+import com.example.utilities.*;
 
 import java.io.*;
 import java.net.Socket;
@@ -12,12 +13,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
-public class Client {
+public class Client  {
 
     private User user;
+    //default values for server address and port
     private String SERVER_ADDRESS = "127.0.0.1";
     private int SERVER_PORT = 5005;
-
+    
     private PrintWriter out;
     private BufferedReader in;
     private Socket socket;
@@ -28,25 +30,30 @@ public class Client {
         this.user = user;
         try {
             connectToServer();
-        } catch (IOException e) {
+        }catch (IOException e){
             System.err.println("Failed to connect to the server: " + e.getMessage());
             shutdown();
         }
-    }
 
-    private void setData() {
+    }
+    private void setData(){
         Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream("src/main/java/com/example/chatapp/database/server.properties")) {
+        FileInputStream fis = null;
+
+        try {
+            fis = new FileInputStream("src/main/java/com/example/chatroomapplication/server.properties");
             properties.load(fis);
-            SERVER_ADDRESS = properties.getProperty("SERVER_ADDRESS", SERVER_ADDRESS);
-            SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT", String.valueOf(SERVER_PORT)));
+            SERVER_ADDRESS =  properties.getProperty("SERVER_ADDRESS");
+            SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT"));
+
         } catch (IOException e) {
-            System.err.println("Error loading server properties: " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
     public void connectToServer() throws IOException {
         socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+        new ChatHandler(socket, this.user);
         System.out.println("Connected to the chat server!");
 
         out = new PrintWriter(socket.getOutputStream(), true);
@@ -54,22 +61,17 @@ public class Client {
         running = true;
     }
 
-    public void handleIncomingMessages(VBox v) {
+    public void handleIncomingMessages(VBox v,VBox replayBox) {
         new Thread(() -> {
             try {
                 String serverResponse;
                 while (running && (serverResponse = in.readLine()) != null) {
-                    String[] parts = serverResponse.split("%%8%%0d");
-                    if (parts.length == 2) {
-                        String nickname = parts[0];
-                        String message = parts[1];
-                        Platform.runLater(() -> {
-                            new GUIComponents().dataMessage(nickname, getTime(), v);
-                            new GUIComponents().otherMessages(message, v);
-                        });
-                    } else {
-                        System.err.println("Received invalid message format: " + serverResponse);
-                    }
+                    String nickname = serverResponse.split("%%8%%0d")[0];
+                    String message = serverResponse.split("%%8%%0d")[1];
+//                    String finalServerResponse = serverResponse;
+                    Platform.runLater(() ->{
+                        new GUIComponents().generateOtherMessageBox(nickname,"eg.png", message, v,replayBox);
+                    });
                 }
             } catch (IOException e) {
                 if (running) {
@@ -79,13 +81,10 @@ public class Client {
         }).start();
     }
 
+
     public void sendMessage(String message) {
         if (message != null && !message.trim().isEmpty()) {
-            if (out != null) {
-                out.println(this.user.getUsername() + "%%8%%0d" + message);
-            } else {
-                System.err.println("Cannot send message, connection is not established.");
-            }
+            out.println(this.user.getUsername()+ "%%8%%0d" + message);
         }
     }
 
@@ -106,10 +105,10 @@ public class Client {
             System.err.println("Error during shutdown: " + e.getMessage());
         }
     }
-
-    public String getTime() {
+    public String getTime(){
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mma dd/MM/yyyy");
         return new String(currentDateTime.format(formatter).getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
     }
+
 }
