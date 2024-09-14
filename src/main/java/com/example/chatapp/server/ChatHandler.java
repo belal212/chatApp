@@ -1,8 +1,6 @@
-package com.example.chatapp.server;
+package com.example.bluePrints;
 
 // import com.example.chatapp.chatroom.ServerDB.DBConnection;
-
-import com.example.chatapp.chatroom.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,6 +51,7 @@ public class ChatHandler extends Thread {
     }
 
     private void sendMessageToAll(String msg) {
+        System.out.println(msg);
         for (ChatHandler client : clientsList) {
             if (client != this) {
                 client.ps.println(msg);
