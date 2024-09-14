@@ -41,7 +41,7 @@ import java.util.Properties;
 public class GUIComponents {
     private final String OTHERS_MESSAGE_COLOR = "#FF7F50";
     private ImageView createImageView(String imagePath, double width, double height) {
-        Image image = new Image(getClass().getResource("/flagsPng/"+imagePath+".png").toString());
+        Image image = new Image(getClass().getResource("/png100px/"+imagePath+".png").toString());
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(width);
         imageView.setFitHeight(height);
