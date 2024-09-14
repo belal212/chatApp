@@ -1,4 +1,4 @@
-package com.example.chatapp.chatroom;
+package com.example.chatroomapplication;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

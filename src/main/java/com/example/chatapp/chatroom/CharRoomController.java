@@ -1,7 +1,9 @@
-package com.example.chatapp.chatroom;
+package com.example.chatroomapplication;
 
-import com.example.chatapp.database.DataBase;
-import com.example.chatapp.database.WriteToFile;
+import com.example.utilities.GUIComponents;
+import com.example.database.*;
+import com.example.bluePrints.*;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
@@ -25,7 +27,9 @@ import java.io.IOException;
 import java.net.URL;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import java.util.*;
@@ -44,7 +48,7 @@ public class CharRoomController implements Initializable {
     private HBox mainPane;
 
     @FXML
-    private VBox chatBox, membersBox;
+    private VBox chatBox, membersBox,replayContainer;
 
     @FXML
     private Button memberListButton;
@@ -123,10 +127,15 @@ public class CharRoomController implements Initializable {
     }
     public void send(){
         if (!textField.getText().isEmpty() && this.user.isState()) {
+            if (replayContainer.getChildren().size() > 1){
+                replayContainer.getChildren().removeLast();
+                new GUIComponents().generateMyMessageBoxWithReplay(user.getUsername(),user.getNationality(),textField.getText(), this.chatBox,replayContainer);
+            }else
+                new GUIComponents().generateMyMessageBox(user.getUsername(), user.getNationality(), textField.getText(), this.chatBox, replayContainer);
+//            client.sendMessage(textField.getText());
             client.sendMessage(textField.getText());
-            client.sendMessage(textField.getText());
-            new GUIComponents().myMessages(textField.getText(), this.chatBox);
-            new DataBase().insertMessage(this.user.getUsername(), getTime() , textField.getText());
+//            new GUIComponents().generateMyMessageBox(user.getUsername(),user.getNationality(),textField.getText(), this.chatBox,replayContainer);
+           //TODO: new DataBase().insertMessage(this.user.getUsername(), getTime() , textField.getText());
             textField.setText("");
         }
         if (!this.user.isState()){
@@ -167,7 +176,7 @@ public class CharRoomController implements Initializable {
     void sort(ActionEvent event) {
         //state
         if (event.getSource() == sort.getItems().get(1)){
-             new GUIComponents().fillMembersBox(new UsersHandler().SortByState(), membersBox, noMembers);
+            new GUIComponents().fillMembersBox(new UsersHandler().SortByState(), membersBox, noMembers);
         }else{
             //name
             if (event.getSource() == sort.getItems().get(2)){
@@ -182,8 +191,12 @@ public class CharRoomController implements Initializable {
         ArrayList<User> users = new DataBase().readUsers();
         setUser(users);
         Platform.runLater(() ->{
-            fillChatBox();
+            //TODO: fillChatBox();
             usernameL.setText(this.user.getUsername());
+            if (this.user.isState())
+                setOnline();
+            else
+                setOnline();
         });
 
         client  = new Client(this.user);
@@ -191,19 +204,19 @@ public class CharRoomController implements Initializable {
 
         new GUIComponents().fillMembersBox(users, membersBox, noMembers);
 
-        client.handleIncomingMessages(chatBox);
-            textField.setOnKeyReleased(event -> {
-                if (event.getCode() == KeyCode.ENTER) {
-                    send();
-                }
-            });
+        client.handleIncomingMessages(chatBox,replayContainer);
+        textField.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                send();
+            }
+        });
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2
-        ), event ->
-                updateMembersBox()
-        ));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+//        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2
+//        ), event ->
+//                updateMembersBox()
+//        ));
+//        timeline.setCycleCount(Timeline.INDEFINITE);
+//        timeline.play();
 
 
     }
@@ -212,7 +225,7 @@ public class CharRoomController implements Initializable {
         try {
             Properties properties = new Properties();
             FileInputStream fis = null;
-            fis = new FileInputStream("src/main/java/com/example/chatapp/database/userdata.properties");
+            fis = new FileInputStream("src/main/java/com/example/chatroomapplication/userdata.properties");
             properties.load(fis);
             String username = properties.getProperty("USERNAME");
             for (User u : users){
@@ -222,17 +235,19 @@ public class CharRoomController implements Initializable {
         }catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     public void fillChatBox(){
         ArrayList<Message> messages = new DataBase().readMessages();
         for (Message m : messages){
             if (m.getUsername().equals(this.user.getUsername())){
-                new GUIComponents().myMessages(m.getMessageText(), chatBox);
+                new GUIComponents().generateMyMessageBox(user.getUsername(),user.getNationality(),m.getMessageText(), this.chatBox,replayContainer);
             }else {
-                new GUIComponents().dataMessage(m.getUsername(), m.getDate(), chatBox);
-                new GUIComponents().otherMessages(m.getMessageText(), chatBox);
+                new GUIComponents().generateOtherMessageBox(m.getUsername(), user.getNationality(), m.getMessageText(), chatBox,replayContainer);
             }
         }
     }
+
+
 }
