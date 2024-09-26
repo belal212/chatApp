@@ -19,8 +19,8 @@ module com.example.chatapp {
     exports com.example.chatapp;
     exports com.example.chatapp.signlog;
     opens com.example.chatapp.signlog to javafx.fxml;
-    exports com.example.chatapp.chatroom;
-    opens com.example.chatapp.chatroom to javafx.fxml;
+    exports com.example.chatapp.chatroomapplication;
+    opens com.example.chatapp.chatroomapplication to javafx.fxml;
     exports com.example.chatapp.about;
     opens com.example.chatapp.about to javafx.fxml;
     exports com.example.chatapp.server;

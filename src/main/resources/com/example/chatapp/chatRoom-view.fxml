@@ -18,29 +18,33 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackR" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.chatroom.CharRoomController">
+<StackPane fx:id="stackR" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapp.chatroomapplication.CharRoomController">
    <HBox fx:id="mainPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="1095.0" style="-fx-background-color: transparent;">
       <Pane minWidth="663.0" prefHeight="598.0" prefWidth="900.0" style="-fx-background-color: #212121;">
-         <ScrollPane hbarPolicy="NEVER" layoutY="60.0" prefHeight="481.0" prefWidth="896.0" style="-fx-background-color: transparent; -fx-background: #F0F0F0;">
-            <VBox fx:id="chatBox" minWidth="662.0" prefHeight="478.0" prefWidth="895.0" spacing="2.0">
+         <ScrollPane hbarPolicy="NEVER" layoutY="60.0" prefHeight="481.0" prefWidth="864.0" style="-fx-background-color: transparent; -fx-background: #F0F0F0;">
+            <VBox fx:id="chatBox" minWidth="662.0" prefHeight="478.0" prefWidth="865.0" spacing="2.0">
                <padding>
                   <Insets bottom="5.0" left="3.0" right="3.0" top="12.0" />
                </padding>
             </VBox>
          </ScrollPane>
-         <HBox alignment="CENTER" layoutY="542.0" prefHeight="58.0" prefWidth="896.0" spacing="8.0" style="-fx-background-color: #212121;">
-            <TextField fx:id="textField" prefHeight="34.0" prefWidth="826.0" promptText="Type a message" style="-fx-background-color: #121212; -fx-background-radius: 80; -fx-text-fill: white;" />
-            <Button fx:id="send" mnemonicParsing="false" onAction="#send" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@images/send-message.png" />
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-         </HBox>
+         <VBox fx:id="replayContainer" layoutY="542.0" prefHeight="58.0" prefWidth="864.0">
+            <children>
+               <HBox alignment="CENTER" prefHeight="58.0" prefWidth="896.0" spacing="8.0" style="-fx-background-color: #212121;">
+                  <TextField fx:id="textField" prefHeight="34.0" prefWidth="826.0" promptText="Type a message" style="-fx-background-color: #121212; -fx-background-radius: 80; -fx-text-fill: white;" />
+                  <Button fx:id="send" mnemonicParsing="false" onAction="#send" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <Image url="@images/send-message.png" />
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </HBox>
+            </children>
+         </VBox>
          <Button fx:id="state" contentDisplay="RIGHT" layoutX="599.0" layoutY="22.0" mnemonicParsing="false" onAction="#state" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: red; -fx-background-radius: 8;" text="Offline" textAlignment="CENTER" textFill="WHITE">
             <graphic>
                <Circle fill="RED" radius="12.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
@@ -70,7 +74,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </Button>
-         <Button fx:id="memberListButton" layoutX="835.0" layoutY="15.0" mnemonicParsing="false" onAction="#showAndHideMembersPane" prefHeight="26.0" prefWidth="54.0" rotate="180.0" style="-fx-background-color: transparent;">
+         <Button fx:id="memberListButton" layoutX="820.0" layoutY="15.0" mnemonicParsing="false" onAction="#showAndHideMembersPane" prefHeight="26.0" prefWidth="54.0" rotate="180.0" style="-fx-background-color: transparent;">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@images/right-arrow.png" />
@@ -137,5 +141,6 @@
 
          </VBox>
       </ScrollPane>
+      <VBox prefHeight="200.0" prefWidth="100.0" />
    </HBox>
 </StackPane>

@@ -557,16 +557,16 @@ public class Signup implements Initializable {
                 }
                 // Determine strength based on points
                 if (strengthPoints <= 1) {
-                        Strength.setText("Weak");
+                        Strength.setText("ضعيف");
                         Strength.setTextFill(Color.RED);
                 } else if (strengthPoints == 2 || strengthPoints == 3) {
-                        Strength.setText("Medium");
+                        Strength.setText("متوسط");
                         Strength.setTextFill(Color.ORANGE);
                 } else if (strengthPoints == 4) {
-                        Strength.setText("Strong");
+                        Strength.setText("قوي");
                         Strength.setTextFill(Color.GREEN);
                 }else{
-                        Strength.setText("Weak");
+                        Strength.setText("ضعيف");
                         Strength.setTextFill(Color.RED);
                 }}
 

@@ -1,11 +1,6 @@
-package com.example.chatroomapplication;
+package com.example.chatapp.chatroomapplication;
 
-import com.example.utilities.GUIComponents;
-import com.example.database.*;
-import com.example.bluePrints.*;
-
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import com.example.chatapp.database.*;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -20,16 +15,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-import javafx.util.Duration;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import java.util.*;
@@ -225,7 +216,7 @@ public class CharRoomController implements Initializable {
         try {
             Properties properties = new Properties();
             FileInputStream fis = null;
-            fis = new FileInputStream("src/main/java/com/example/chatroomapplication/userdata.properties");
+            fis = new FileInputStream("src/main/java/com/example/chatapp/chatroomapplication/userdata.properties");
             properties.load(fis);
             String username = properties.getProperty("USERNAME");
             for (User u : users){

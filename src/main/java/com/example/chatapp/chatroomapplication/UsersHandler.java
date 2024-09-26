@@ -1,4 +1,4 @@
-package com.example.chatapp.chatroom;
+package com.example.chatapp.chatroomapplication;
 
 import com.example.chatapp.database.DataBase;
 

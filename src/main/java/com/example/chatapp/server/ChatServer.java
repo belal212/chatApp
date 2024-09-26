@@ -1,4 +1,6 @@
-package com.example.bluePrints;
+package com.example.chatapp.server;
+
+import com.example.chatapp.chatroomapplication.User;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,7 +33,7 @@ public class ChatServer {
         FileInputStream fis = null;
 
         try {
-            fis = new FileInputStream("src/main/java/com/example/database/database.properties");
+            fis = new FileInputStream("src/main/java/com/example/chatapp/database/database.properties");
             properties.load(fis);
             SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT"));
 

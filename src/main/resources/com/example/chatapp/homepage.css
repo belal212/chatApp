@@ -180,4 +180,12 @@
    -fx-background-color: #8B5E3C;
 }
 
-
+#languageSelcetor:hover{
+   -fx-background-color: #fd7e10;
+   -fx-opacity: .8;
+   -fx-background:#fd7e10;
+}
+.menu-item{
+   -fx-background-color: #fd7e14;
+   -fx-text-fill: white;
+}

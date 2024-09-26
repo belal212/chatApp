@@ -1,6 +1,6 @@
 package com.example.chatapp.database;
 
-import com.example.chatapp.chatroom.Message;
+import com.example.chatapp.chatroomapplication.Message;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 

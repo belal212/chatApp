@@ -1,8 +1,8 @@
 package com.example.chatapp.database;
 
 // import com.example.chatapp.chatroom.GUIComponents;
-import com.example.chatapp.chatroom.Message;
-import com.example.chatapp.chatroom.User;
+import com.example.chatapp.chatroomapplication.Message;
+import com.example.chatapp.chatroomapplication.User;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 // import javafx.application.Platform;

@@ -117,7 +117,7 @@ public class Login implements Initializable {
         @FXML
         private Label welcomeLabel;
         String verificationCode = "";
-        private static final String PROPERTIES_FILE_PATH = "src/main/java/com/example/chatapp/database/userdata.properties";
+        private static final String PROPERTIES_FILE_PATH = "src/main/java/com/example/chatapp/chatroomapplication/userdata.properties";
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {

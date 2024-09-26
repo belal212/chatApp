@@ -38,7 +38,7 @@
                             <ImageView fitHeight="150.0" fitWidth="127.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
                                 <Image url="@images/logo.png" />
                             </ImageView>
-                            <Label fx:id="introLabel" layoutX="120.0" layoutY="584.0" lineSpacing="10.0" prefHeight="146.0" prefWidth="559.0" text="The GEM Complex is now offering limited tours to test site readiness and the&#10; visitor experience ahead of the official opening. Access is currently limited to the &#10;Grand Hall, Grand Staircase, commercial area, and exterior gardens. All other &#10;interior spaces, including access to the galleries and collections, are restricted &#10;until the official opening.">
+                            <Label fx:id="introLabel" layoutX="130.0" layoutY="584.0" lineSpacing="10.0" prefHeight="146.0" prefWidth="559.0" text="The GEM Complex is now offering limited tours to test site readiness and the&#10; visitor experience ahead of the official opening. Access is currently limited to the &#10;Grand Hall, Grand Staircase, commercial area, and exterior gardens. All other &#10;interior spaces, including access to the galleries and collections, are restricted &#10;until the official opening.">
                                 <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                 </font>
@@ -96,7 +96,7 @@
                                         <String fx:value="contact-banner-title" />
                                     </styleClass>
                                 </Label>
-                                <Button fx:id="contactBtn" layoutX="545.0" layoutY="100.0" mnemonicParsing="false" text="navigate to contact us">
+                                <Button fx:id="contactBtn" layoutX="545.0" layoutY="100.0" mnemonicParsing="false" text="About the museum">
                                     <styleClass>
                                         <String fx:value="contact-button" />
                                         <String fx:value="banner-button" />
@@ -146,7 +146,7 @@
                         <Image url="@images/logo.png" />
                     </ImageView>
                     <AnchorPane layoutX="-5.0" layoutY="145.0" prefHeight="200.0" prefWidth="1372.0" styleClass="contact-chatbot-banner">
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="166.0" layoutY="78.0" text="Hurry up and secure your ticket to your favorite events!" textAlignment="CENTER" textFill="WHITE">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="166.0" layoutY="78.0" text="سارع بالحصول على تذكرتك لحضور فعالياتك المفضلة!" textAlignment="CENTER" textFill="WHITE">
                             <font>
                                 <Font name="Arial Rounded MT Bold" size="36.0" />
                             </font>
@@ -180,10 +180,10 @@
                 </ImageView>
             </graphic>
         </Button>
-        <SplitMenuButton fx:id="languageSelcetor" layoutX="683.0" layoutY="13.0" mnemonicParsing="false" text="Translation">
+        <SplitMenuButton fx:id="languageSelcetor" layoutX="683.0" layoutY="13.0" mnemonicParsing="false" stylesheets="@homepage.css" text="Translation" AnchorPane.leftAnchor="790.0">
             <items>
-                <MenuItem fx:id="english" mnemonicParsing="false" text="English" />
-                <MenuItem fx:id="arabic" mnemonicParsing="false" onAction="#setArabic" text="Arabic" />
+                <MenuItem fx:id="english" mnemonicParsing="false" onAction="#setEnglish" text="English" />
+                <MenuItem fx:id="arabic" mnemonicParsing="false" onAction="#setArabic" onMenuValidation="#setArabic" text="Arabic" />
             </items>
         </SplitMenuButton>
     </children>

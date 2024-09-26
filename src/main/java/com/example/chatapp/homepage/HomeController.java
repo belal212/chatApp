@@ -148,7 +148,6 @@ public class HomeController implements Initializable {
     private Hyperlink link9;
 
 
-
     @FXML
     private Button newsBtn;
 
@@ -172,15 +171,16 @@ public class HomeController implements Initializable {
     int coverCurrentIndex = 0;
 
     Vector<Pagination> pags = new Vector<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        applyFadeTransition(Root,1500);
+        applyFadeTransition(Root, 1500);
 
         imageLoader();
         pagsTransitions();
         bookingImg1.setOnMouseClicked(mouseEvent -> openWebpage("https://visit-gem.com/en/tours"));
         bookingImg2.setOnMouseClicked(mouseEvent -> openWebpage("https://visit-gem.com/en/children"));
-        contactBtn.setOnAction(e -> switchToTab("contactTab"));
+        contactBtn.setOnAction(e -> switchToTab("aboutTab"));
         bookingBtn.setOnAction(e -> switchToTab("bookingTab"));
         newsBtn.setOnAction(e -> switchToTab("newsTab"));
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
@@ -188,6 +188,7 @@ public class HomeController implements Initializable {
                 handleTabSelection(newTab);
             }
         });
+        setArabic();
 
         chatbotButton.setOnAction(this::setChatbotButtonAction);
         Platform.runLater(() -> {
@@ -197,7 +198,8 @@ public class HomeController implements Initializable {
         chatbotButton.setOnAction(this::setChatbotButtonAction);
 
     }
-    private void handleCloseRequest(WindowEvent e){
+
+    private void handleCloseRequest(WindowEvent e) {
         try {
             Rectangle2D screenBounds = Screen.getPrimary().getBounds();
             double screenWidth = screenBounds.getWidth();
@@ -209,7 +211,7 @@ public class HomeController implements Initializable {
             s.close();
 
             Stage stage = new Stage();
-            Scene scene = new Scene(homePageRoot,screenWidth,screenHeight,Color.TRANSPARENT);
+            Scene scene = new Scene(homePageRoot, screenWidth, screenHeight, Color.TRANSPARENT);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.setScene(scene);
             stage.show();
@@ -218,7 +220,7 @@ public class HomeController implements Initializable {
         }
     }
 
-    private void imageLoader(){
+    private void imageLoader() {
         try {
             // Create ImageViews for cover pages and other images
             ImageView[] covers = {
@@ -275,8 +277,8 @@ public class HomeController implements Initializable {
         }
 
 
-
     }
+
     private void setupImagesWithRoundedCorners(Vector<ImageView> images) {
         for (ImageView image : images) {
             Rectangle clip = new Rectangle(220, 220);
@@ -287,6 +289,7 @@ public class HomeController implements Initializable {
             image.setFitHeight(220);
         }
     }
+
     public void setPageFactory(Pagination pagination, Vector<ImageView> imageViews, int startIdx, int endIdx) {
         int pageCount = endIdx - startIdx + 1;
 
@@ -315,6 +318,7 @@ public class HomeController implements Initializable {
             System.out.println("Error in Open Link");
         }
     }
+
     private void openWebpage(String url) {
         try {
             Desktop.getDesktop().browse(new URI(url));
@@ -331,7 +335,8 @@ public class HomeController implements Initializable {
             }
         }
     }
-    private void pagsTransitions(){
+
+    private void pagsTransitions() {
         pags.add(gem);
         pags.add(tour);
         pags.add(kids);
@@ -357,12 +362,14 @@ public class HomeController implements Initializable {
 
         });
     }
+
     private void applyFadeTransition(Node node, int durationInMillis) {
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(durationInMillis), node);
         fadeTransition.setFromValue(0.0);
         fadeTransition.setToValue(1.0);
         fadeTransition.play();
     }
+
     private void loadTabContent(String tabId, String fxmlFile) throws IOException {
         // Find the tab by ID from the tabPane's tabs list
         Tab targetTab = tabPane.getTabs().stream()
@@ -381,6 +388,7 @@ public class HomeController implements Initializable {
             System.err.println("Tab with id " + tabId + " not found.");
         }
     }
+
     private void handleTabSelection(Tab selectedTab) {
         if (selectedTab.equals(aboutTab)) {
             loadAbout();
@@ -394,30 +402,35 @@ public class HomeController implements Initializable {
 
         // Handle other tabs if needed
     }
-    private void loadAbout(){
+
+    private void loadAbout() {
         try {
-            loadTabContent(aboutTab.getId(),"About.fxml");
+            loadTabContent(aboutTab.getId(), "About.fxml");
         } catch (IOException e) {
             System.out.println("About pane can not loaded");
         }
     }
-    private void loadChatRoom(){
+
+    private void loadChatRoom() {
         try {
-            loadTabContent(chatroomTab.getId(),"chatRoom-view.fxml");
+            loadTabContent(chatroomTab.getId(), "chatRoom-view.fxml");
+
         } catch (IOException e) {
             System.out.println("chat room pane can not loaded");
         }
     }
-    private void loadContact(){
+
+    private void loadContact() {
         try {
-            loadTabContent(contactTab.getId(),"contact.fxml");
+            loadTabContent(contactTab.getId(), "contact.fxml");
         } catch (IOException e) {
             System.out.println("contact pane can not loaded");
         }
     }
-    private void loadNews(){
+
+    private void loadNews() {
         try {
-            loadTabContent(newsTab.getId(),"News.fxml");
+            loadTabContent(newsTab.getId(), "News.fxml");
         } catch (IOException e) {
             System.out.println("news pane can not loaded");
         }
@@ -474,66 +487,67 @@ public class HomeController implements Initializable {
         translateTransition.setToX(to);
         translateTransition.play();
     }
+
     @FXML
     private void setArabic() {
-        // Original text storage
-        Map<String, String> originalTexts = new HashMap<>();
-        originalTexts.put("hoursLabel", hoursLabel.getText());
-        originalTexts.put("welcome", welcomeLabel.getText());
-        originalTexts.put("intro", introLabel.getText());
-        originalTexts.put("time", timeLabel.getText());
-        originalTexts.put("activities", activitesLabel.getText());
-        originalTexts.put("pyramids", pyramidLabel.getText());
-        originalTexts.put("kids", kidsLabel.getText());
-        originalTexts.put("gem", GemLabel.getText());
-        originalTexts.put("contact", contactLabel.getText());
-        originalTexts.put("contactBTN", contactBtn.getText());
-        originalTexts.put("home", homeTab.getText());
-        originalTexts.put("news", newsTab.getText());
-        originalTexts.put("about", aboutTab.getText());
-        originalTexts.put("booking", bookingTab.getText());
-        originalTexts.put("contactTAB", contactTab.getText());
-        originalTexts.put("newsLab", newsLabel.getText());
-        originalTexts.put("newsBTN", newsBtn.getText());
-        originalTexts.put("bookingBTN", bookingBtn.getText());
-        originalTexts.put("languageSelector", languageSelcetor.getText());
 
-        // Translation Map
-        Map<String, String> translatedTexts = new HashMap<>();
+        // Set translated texts to respective components
+        hoursLabel.setText("ساعات العمل");
+        welcomeLabel.setText("نتطلع إلى الترحيب بكم في المتحف المصري الكبير\n");
+        introLabel.setText("يقدم مجمع GEM الآن جولات محدودة لاختبار جاهزية الموقع وتجربة الزائر قبل الافتتاح الرسمي.\n يقتصر الوصول حاليًا على القاعة الكبرى والدرج الكبير والمنطقة التجارية والحدائق الخارجية. جميع المساحات الداخلية الأخرى،\n بما في ذلك الوصول إلى المعارض والمجموعات، مقيدة\n" +
+                "حتى الافتتاح الرسمي.");
+        timeLabel.setText("الأحد إلى الخميس: 9 صباحًا - 6 مساءً\n" +
+                "آخر موعد لشراء التذاكر: 4 مساءً\n" +
+                "الجمعة والسبت: 9 صباحًا - 10 مساءً\n" +
+                "آخر موعد لشراء التذاكر: 7:30 مساءً");
+        activitesLabel.setText("أنشطة");
+        pyramidLabel.setText("جولة الأهرامات");
+        kidsLabel.setText("جولة الاطفال");
+        GemLabel.setText("جولة المتحف");
+        contactLabel.setText("غير راض عن إجابتنا؟");
+        contactBtn.setText("روبوت الدردشة");
+        homeTab.setText("الرئيسيه");
+        newsTab.setText("الأخبار");
+        aboutTab.setText("عن المتحف");
+        bookingTab.setText("الحجز");
+        contactTab.setText("تيك توك");
+        newsLabel.setText("تصفح الأحداث القادمة واحصل على تذكرة قبل بيعها!");
+        newsBtn.setText("الاخبار");
+        bookingBtn.setText("الحجز");
+        languageSelcetor.setText("الترجمه");
+        chatroomTab.setText("غرفة الدردشه");
 
-        // Translation process
-        try {
-            for (Map.Entry<String, String> entry : originalTexts.entrySet()) {
-                String originalText = entry.getValue();
-                String translatedText = TranslatorClient.translateText(originalText, "en", "ar");
-                translatedTexts.put(entry.getKey(), translatedText);
-            }
+    }
+    @FXML
+    private void setEnglish() {
+// Set translated texts to respective components
+        hoursLabel.setText("Working Hours");
+        welcomeLabel.setText("We look forward to welcoming you to the Grand Egyptian Museum\n");
+        introLabel.setText("The GEM complex now offers limited tours to test site readiness and the visitor experience before the official opening. Currently, access is limited to the Grand Hall, the Grand Staircase, the commercial area, and the outdoor gardens. All other indoor areas, including access to exhibitions and collections, are restricted until the official opening.");
+        timeLabel.setText("Sunday to Thursday: 9 AM - 6 PM\n" +
+                "Last ticket purchase: 4 PM\n" +
+                "Friday and Saturday: 9 AM - 10 PM\n" +
+                "Last ticket purchase: 7:30 PM");
+        activitesLabel.setText("Activities");
+        pyramidLabel.setText("Pyramids Tour");
+        kidsLabel.setText("Kids Tour");
+        GemLabel.setText("Museum Tour");
+        contactLabel.setText("Not satisfied with our answer?");
+        contactBtn.setText("Chatbot");
+        homeTab.setText("Home");
+        newsTab.setText("News");
+        aboutTab.setText("About the Museum");
+        bookingTab.setText("Booking");
+        contactTab.setText("TikTok");
+        newsLabel.setText("Browse upcoming events and get a ticket before they sell out!");
+        newsBtn.setText("News");
+        bookingBtn.setText("Booking");
+        languageSelcetor.setText("Translation");
+        chatroomTab.setText("Chat Room");
 
-            // Set translated texts to respective components
-            hoursLabel.setText(translatedTexts.get("hoursLabel"));
-            welcomeLabel.setText(translatedTexts.get("welcome"));
-            introLabel.setText(translatedTexts.get("intro"));
-            timeLabel.setText(translatedTexts.get("time"));
-            activitesLabel.setText(translatedTexts.get("activities"));
-            pyramidLabel.setText(translatedTexts.get("pyramids"));
-            kidsLabel.setText(translatedTexts.get("kids"));
-            GemLabel.setText(translatedTexts.get("gem"));
-            contactLabel.setText(translatedTexts.get("contact"));
-            contactBtn.setText(translatedTexts.get("contactBTN"));
-            homeTab.setText(translatedTexts.get("home"));
-            newsTab.setText(translatedTexts.get("news"));
-            aboutTab.setText(translatedTexts.get("about"));
-            bookingTab.setText(translatedTexts.get("booking"));
-            contactTab.setText(translatedTexts.get("contactTAB"));
-            newsLabel.setText(translatedTexts.get("newsLab"));
-            newsBtn.setText(translatedTexts.get("newsBTN"));
-            bookingBtn.setText(translatedTexts.get("bookingBTN"));
-            languageSelcetor.setText(translatedTexts.get("languageSelector"));
 
-        } catch (IOException ex) {
-            System.out.println("error in trans");
-        }
-    }}
+    }
+    }
 
 
 

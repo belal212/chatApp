@@ -52,10 +52,12 @@ public class Contact2Controller {
         if (!rightButton.isVisible()) {
             // Show a larger image when anchor is clicked for the first time
             tiktokImage.setImage(new Image("file:C:\\Users\\Lenovo\\IdeaProjects\\chatApp\\src\\main\\resources\\com\\example\\chatapp\\images\\f1.png"));
-            clip.setWidth(1100);
-            clip.setHeight(400);
-            tiktokImage.setFitWidth(1100);
-            tiktokImage.setFitHeight(400);
+            clip.setWidth(500);
+            clip.setHeight(300);
+            clip.setArcWidth(30);
+            clip.setArcHeight(30);
+            tiktokImage.setFitWidth(500);
+            tiktokImage.setFitHeight(300);
 
 
             rightButton.setVisible(true);

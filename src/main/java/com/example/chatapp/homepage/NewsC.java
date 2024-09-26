@@ -127,14 +127,8 @@ public class NewsC implements Initializable {
 
 
         // Load initial videos
-        loadVideos1(5); // Load the first 5 videos
+        loadVideos1(10); // Load the first 5 videos
 
-        // Infinite scrolling logic
-        scrollPane.hvalueProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal.doubleValue() >= 0.9) { // Near the end of the scroll
-                loadVideos(5); // Load 3 more videos
-            }
-        });
 
         scrollPane.addEventFilter(MouseEvent.ANY, event -> {
             if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {

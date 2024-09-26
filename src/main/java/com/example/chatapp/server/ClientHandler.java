@@ -109,7 +109,7 @@ public class ClientHandler extends Thread {
 
         String checkQueryU = "SELECT COUNT(*) FROM users WHERE username = ?";
         String checkQueryE = "SELECT COUNT(*) FROM users WHERE email = ?";
-        String insertQuery = "INSERT INTO users (username, email, password, nationality, gender) VALUES (?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO users (username, email, password, nationality, gender, state) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             // Step 1: Check if the username already exists
@@ -138,7 +138,12 @@ public class ClientHandler extends Thread {
                 insertStatement.setString(2, email);
                 insertStatement.setString(3, security.encrypt(password));
                 insertStatement.setString(4, nationality);
+                if (gender == "ذكر")
+                    gender = "male";
+                else
+                    gender = "female";
                 insertStatement.setString(5, gender);
+                insertStatement.setBoolean(6, true);
 
                 int result = insertStatement.executeUpdate();
                 booleans[2] = result > 0;
